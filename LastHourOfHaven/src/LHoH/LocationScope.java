@@ -70,7 +70,7 @@ void addLocation (){
 		break;
 	case 1:
 		inName="Проповедь Лжепророка";
-		inPower=195;
+		inPower=196;
 		inwinR=0.15;
 		try {
 			inEnemy = ImageIO.read(new File("data/image/loc/loc3.gif"));
