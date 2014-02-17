@@ -127,7 +127,7 @@ void addLocation (){
 	
 	
 	
-	Location tmpL = new LocationRaid(inName,inPower,inwinR,inEnemy,inbonus50Gold,inbonus50Soul,inbonus50Tear,inbonusALLexp);
+	Location tmpL = new Location(inName,inPower,inwinR,inEnemy,inbonus50Gold,inbonus50Soul,inbonus50Tear,inbonusALLexp);
 	allScope.add(tmpL);
 	//add(tmpL);
 	

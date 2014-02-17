@@ -179,7 +179,7 @@ public class Hero extends JPanel implements DragGestureListener, DragSourceListe
 
 	public void paintComponent(Graphics g) {
 		
-		System.out.println("repaint");
+		
 	 
 		//removeAll();
 		//Graphics2D g2 = (Graphics2D) g;

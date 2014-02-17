@@ -97,6 +97,7 @@ public class GameScreen extends JFrame {
 		bossPanel.update();
 		taverna.update();
 		locationPanel.update();
+		itemStock.update();
 	}
 
 	void reDrow() {

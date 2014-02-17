@@ -245,7 +245,7 @@ double inDeltaPower;
 			nheroCostGold=(int)rndModif(nheroCostGold, dispersion);
 			
 			
-			hero=new HeroDemolog(nname, npower, nexp, nttl, "2", 1, nimage, inDeltaExp, inDeltaPower);
+			hero=new Hero(nname, npower, nexp, nttl, "2", 1, nimage, inDeltaExp, inDeltaPower);
 			heroCostGold=nheroCostGold;
 			heroCostSoul=nheroCostSoul;
 			heroCostTear=nheroCostTear;

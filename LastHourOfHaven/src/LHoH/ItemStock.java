@@ -16,15 +16,19 @@ public class ItemStock extends JPanel{
 	static List<Item> allScope = new ArrayList<Item>();
 	
 	public ItemStock() {
-		setPreferredSize(new Dimension(500, 500));
-		new FlowLayout(FlowLayout.CENTER,1,1);
-		setBorder(BorderFactory.createLineBorder(Color.black));
+		setPreferredSize(new Dimension(700, 450));
+		new FlowLayout(FlowLayout.CENTER,3,3);
+		setSize(700, 450);
+		//setBorder(BorderFactory.createLineBorder(Color.red));
 		
 		
-		allScope.add(new Item());
-		allScope.add(new Item());
-		allScope.add(new Item());
-		
+
+		allScope.add(new Item_chest());
+		allScope.add(new Item_lamp());
+		allScope.add(new Item_LegionGorn());
+		allScope.add(new Item_TaroDemolog());
+
+		setOpaque(false);
 		//add(LHoH.gameScreen.itemStock);
 		
 	}
@@ -39,7 +43,16 @@ public class ItemStock extends JPanel{
 	    reDrow(g);
 	}
 	
+	void update (){
+		for (Item	 item : allScope) {
+			item.update();
+
+	}
+
+	}
+	
 	void reDrow (Graphics g){
+		revalidate();
 		removeAll();
 		for (Item	 item : allScope) {
 				add(item);
