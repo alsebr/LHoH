@@ -25,6 +25,7 @@ public class ScreenChoizer extends JPanel{
 	JButton buttonLocation = new JButton();
 	JButton buttonMission = new JButton();
 	JButton buttonOption = new JButton();
+	JButton buttonItem = new JButton();
 	
 	Image bckground;
 	
@@ -97,7 +98,19 @@ public class ScreenChoizer extends JPanel{
 		
 		buttonOption.setPreferredSize(new Dimension(75, 75));
 		buttonOption.setText("Option");
-		add(buttonOption);
+		//add(buttonOption);
+		
+		buttonItem.setPreferredSize(new Dimension(75, 75));
+		buttonItem.setText("Items");
+		add(buttonItem);
+		
+		buttonItem.addActionListener(new ActionListener(){
+	    	  public void actionPerformed(ActionEvent e) {
+					LHoH.gameScreen.activateItemPanel();
+	    	  }
+	    	});
+		
+		
 		
 	}
 	public void paintComponent(Graphics g) {

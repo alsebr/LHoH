@@ -37,11 +37,13 @@ public class GameScreen extends JFrame {
 	JScrollPane heroStockScroll;
 
 	LocationScope locationScope;
+	ItemStock itemStock;
 	ScreenChoizer screenChoizer = new ScreenChoizer();
 	BottomInfo bottomInfo = new BottomInfo();
 	LocationPanel locationPanel;
 	BossPanel bossPanel;
 	HeroPanel heroPanel;
+	ItemPanel itemPanel;
 	JPanel actionPart = new JPanel();
 	Player player = new Player();
 	Taverna taverna;
@@ -63,6 +65,12 @@ public class GameScreen extends JFrame {
 		actionPart.removeAll();
 		// heroPanel.addComp();
 		actionPart.add(townPanel);
+	}
+	
+	void activateItemPanel() {
+		actionPart.removeAll();
+		// heroPanel.addComp();
+		actionPart.add(itemPanel);
 	}
 
 	void activateLocationPanel() {
@@ -102,6 +110,9 @@ public class GameScreen extends JFrame {
 		setResizable(false);
 		locationScope = new LocationScope();
 
+		itemStock=new ItemStock();
+		itemPanel=new ItemPanel();
+		
 		heroStockScroll = new JScrollPane(LHoH.gameScreen.heroStock);
 		heroStockScroll.setAutoscrolls(true);
 		heroStockScroll.setPreferredSize(new Dimension(260, 370));
