@@ -104,7 +104,7 @@ void addLocation (){
 
 	case 3:
 		inName="Люцифер";
-		inPower=175;
+		inPower=176;
 		inwinR=0.5;
 		try {
 			inEnemy = ImageIO.read(new File("data/image/loc/loc4.gif"));
