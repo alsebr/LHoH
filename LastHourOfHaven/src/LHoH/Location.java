@@ -202,28 +202,13 @@ public class Location extends JPanel{
 			
 			winR+=delta*speed;
 			
-		//if (delta>3) delta=3;
-			//if (delta<0.3) delta=0.3;
-			//if (delta<1) delta=-1/delta;
-			//if (delta==1)delta=0;
-			//winR+=(delta)*0.0001;
-			
-			
-			//!!!!!!!!!!
-	//		winR+=(delta)*0.005;
-//			
-		//	if (powerH<power){
-				
-			//}
-			
-			
 			if (winR<0.) winR=0;
 			if (winR>1) {
 				winR=1;
-				status=2;
-				hero1.setStatus(2);
+				//status=2;
+				//hero1.setStatus(2);
 				
-				LHoH.gameScreen.bottomInfo.chat.addTextChat(name+" захвачен нами");
+				//LHoH.gameScreen.bottomInfo.chat.addTextChat(name+" захвачен нами");
 			}
 			
 			

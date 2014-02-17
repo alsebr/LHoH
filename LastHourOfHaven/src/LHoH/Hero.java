@@ -41,7 +41,7 @@ public class Hero extends JPanel implements DragGestureListener, DragSourceListe
 	DragSource dragSource;
 
 	double power,exp, ttl;
-	String name,classH;
+	protected String name,classH;
 	Image image;
 	int status; // 1 - live, 0 - dead, 2 - strage
 	int lvl;
@@ -55,7 +55,7 @@ public class Hero extends JPanel implements DragGestureListener, DragSourceListe
 	
 	//int[] arrayLvlExp = new int[] {0,10,40,100,150};
 	//double[] arrayLvlPower = new double[] {10,20,40,50,70};
-	Hero(String name, double power,double exp,double ttl, String  classH, int zoneId, Image inImage, double inDeltaExp, double inDeltaPower){
+	public Hero(String name, double power,double exp,double ttl, String  classH, int zoneId, Image inImage, double inDeltaExp, double inDeltaPower){
 		setSize(80	,105);
 		setPreferredSize(new Dimension(80,105));
 		setBorder(BorderFactory.createLineBorder(Color.black));
@@ -106,7 +106,7 @@ public class Hero extends JPanel implements DragGestureListener, DragSourceListe
 		exp+=addExp;
 	}
 	
-	void Update (){
+	protected void Update (){
 		if (status==1) ttl-=0.017;
 		if (ttl<=0) status=0;
 		
