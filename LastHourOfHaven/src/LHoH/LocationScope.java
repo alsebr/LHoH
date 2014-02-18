@@ -110,7 +110,7 @@ void addLocationSilence(){
 	}
 	
 	inbonus50Gold=(double)0.0/60;
-	inbonus50Soul=(double)0.4/60;
+	inbonus50Soul=(double)0.3/60;
 	inbonus50Tear=0;
 	inbonusALLexp=(double)1/60;
 	
