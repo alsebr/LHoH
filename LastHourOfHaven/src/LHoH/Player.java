@@ -16,7 +16,7 @@ Player (){
 	locationActiveNumber=0;
 	
 	
-	towerProgress=new int[] {0,0,0,0,0,0,0,0};
+	towerProgress=new int[] {0,-1,-1,-1,0,-1,-1,-1};
 }
 
 void update (){
@@ -31,6 +31,9 @@ void update (){
 	}
 }
 
+int getTowerLvlProgress(int lvlTower){
+	return towerProgress[lvlTower];
+}
 
 
 
