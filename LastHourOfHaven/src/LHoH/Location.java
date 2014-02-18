@@ -53,6 +53,12 @@ public class Location extends JPanel{
 	double bonus50Soul;
 	double bonus50Tear;
 	double bonusALLexp;
+	
+	double bonus50Gold_final=666;
+	double bonus50Soul_final=666;
+	double bonus50Tear_final=666;
+	double bonusALLexp_final=666;
+	
 	String name;
 	
 	Image imageGold, imageSoul,imageTear;
@@ -141,11 +147,26 @@ public class Location extends JPanel{
         g2.setFont(new Font("Arial", Font.BOLD, 14)); 
 		g2.drawString(name, 115, 15);
 		
-		
+		g2.setFont(new Font("Arial", Font.BOLD, 18)); 
+		g2.setColor(Color.black);
+
+
+
+
+			
 		if (winR>0.5){
-			if (bonus50Gold>0) g2.drawImage(imageGold, (int)(d.getWidth()/2 + 2), 12, null);
-			if (bonus50Soul>0) g2.drawImage(imageSoul, (int)(d.getWidth()/2 + 2), 43, null);
-			if (bonus50Tear>0)g2.drawImage(imageTear, (int)(d.getWidth()/2 + 2), 74, null);
+			if (bonus50Gold_final>0) {
+				//
+				g2.drawImage(imageGold, (int)(d.getWidth()/2 + 2), 12, null);
+				g2.drawString(String.format("%.2g%n", bonus50Gold_final*60), (int)(d.getWidth()/2 + 35), 32);
+			}
+			if (bonus50Soul_final>0){
+				g2.drawImage(imageSoul, (int)(d.getWidth()/2 + 2), 43, null);
+				g2.drawString(String.format("%.2g%n", bonus50Soul_final*60), (int)(d.getWidth()/2 + 35), 62);
+			}
+			if (bonus50Tear_final>0){
+				g2.drawImage(imageTear, (int)(d.getWidth()/2 + 2), 74, null);
+			}
 		}
 		
 		if (status==2){
@@ -164,10 +185,22 @@ public class Location extends JPanel{
 
     }
 	
+	void modifyIncome(){
+		bonus50Gold_final=bonus50Gold;
+		bonus50Soul_final=bonus50Soul;
+		bonus50Tear_final=bonus50Tear;
+		bonusALLexp_final=bonusALLexp;		
+	}
+	
 	void update (){
+		modifyIncome();
+
+		
 		if (status==1){
 			
 		
+			
+			
 			double powerH=hero1.getPower();
 			double delta= powerH/power;
 			
@@ -213,20 +246,20 @@ public class Location extends JPanel{
 			
 			
 			if (winR>0.5) {
-				LHoH.gameScreen.player.addGold(bonus50Gold);
-				LHoH.gameScreen.player.addSoul(bonus50Soul);
-				LHoH.gameScreen.player.addTear(bonus50Tear);
+				LHoH.gameScreen.player.addGold(bonus50Gold_final);
+				LHoH.gameScreen.player.addSoul(bonus50Soul_final);
+				LHoH.gameScreen.player.addTear(bonus50Tear_final);
 			}
 			
-			hero1.addExp(bonusALLexp);
+			hero1.addExp(bonusALLexp_final);
 			
 			hero1.removeHeroIfDead();
 			
 		}
 		if (status==2){
-			LHoH.gameScreen.player.addGold(bonus50Gold);
-			LHoH.gameScreen.player.addSoul(bonus50Soul);
-			LHoH.gameScreen.player.addTear(bonus50Tear);
+			LHoH.gameScreen.player.addGold(bonus50Gold_final);
+			LHoH.gameScreen.player.addSoul(bonus50Soul_final);
+			LHoH.gameScreen.player.addTear(bonus50Tear_final);
 		}
 	}
 	

@@ -11,7 +11,7 @@ Player (){
 	soul=0;
 	tear=0;
 	ttl=15*60;
-	maxPortal=3;
+	maxPortal=4;
 	locationAddCostGold=10;
 	locationActiveNumber=0;
 	
@@ -23,7 +23,7 @@ void update (){
 	ttl-=0.017;
 	//gold+=0.01;
 	
-	locationAddCostGold=10*LHoH.gameScreen.locationScope.allScope.size();
+	locationAddCostGold=4*LHoH.gameScreen.locationScope.allScope.size();
 	
 	locationActiveNumber=0;
 	for (Location location : LHoH.gameScreen.locationScope.allScope) {

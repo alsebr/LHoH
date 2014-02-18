@@ -73,7 +73,7 @@ double inDeltaExp;
 double inDeltaPower;
 			
 			Random random = new Random();
-			int count=random.nextInt(9);
+			int count=random.nextInt(7);
 			
 			nexp=1;
 			nlvl=1;
@@ -149,8 +149,8 @@ double inDeltaPower;
 					nimage = ImageIO.read(new File("data/image/hero/demon11.gif"));
 				} catch (IOException e) {
 				}
-				nheroCostGold=9;
-				nheroCostSoul=1;
+				nheroCostGold=0;
+				nheroCostSoul=2;
 				nheroCostTear=0;//+random.nextInt(1);
 				nttl=70;
 				inDeltaExp=9;

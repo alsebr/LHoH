@@ -34,7 +34,7 @@ void addLocation (){
 	//Location(String inName,int inPower, int inwinR, Image inEnemy,double inbonus50Gold,double inbonus50Soul, double inbonus50Tear, double inbonusALLexp){
 	
 	Random random = new Random();
-	int count=random.nextInt(4);
+	int count=random.nextInt(3);
 	
 	inName="ERROR";
 	inPower=65;
@@ -53,55 +53,14 @@ void addLocation (){
 	
 	switch (count) {
 	case 0:
-		inName="Пещера бесов";
-		inPower=32;
-		inwinR=0.35;
-		try {
-			inEnemy = ImageIO.read(new File("data/image/loc/loc2.gif"));
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		inbonus50Gold=(double)0.5/60;
-		inbonus50Soul=(double)0.2/60;
-		inbonus50Tear=0;
-		inbonusALLexp=(double)0.8/60;
+		addLocationCavenImp();
 		break;
 	case 1:
-		inName="Проповедь Лжепророка";
-		inPower=196;
-		inwinR=0.15;
-		try {
-			inEnemy = ImageIO.read(new File("data/image/loc/loc3.gif"));
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		inbonus50Gold=(double)1/60;
-		inbonus50Soul=(double)2/120;
-		inbonus50Tear=0;
-		inbonusALLexp=(double)15/60;
-		break;
-		
+addLocationForhottenForest();
+break;
 	case 2:
-		inName="Обелиск времени";
-		inPower=125;
-		inwinR=0.75;
-		try {
-			inEnemy = ImageIO.read(new File("data/image/loc/loc1.gif"));
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		inbonus50Gold=(double)0.5/60;
-		inbonus50Soul=(double)1/220;
-		inbonus50Tear=0;
-		inbonusALLexp=(double)2/60;
-		break;
-
+		addLocationSilence();
+break;
 	case 3:
 		inName="Люцифер";
 		inPower=176;
@@ -124,14 +83,92 @@ void addLocation (){
 		break;
 	}
 	
+
 	
 	
-	
-	Location tmpL = new Location(inName,inPower,inwinR,inEnemy,inbonus50Gold,inbonus50Soul,inbonus50Tear,inbonusALLexp);
-	allScope.add(tmpL);
+	//Location tmpL = new Location(inName,inPower,inwinR,inEnemy,inbonus50Gold,inbonus50Soul,inbonus50Tear,inbonusALLexp);
+	//allScope.add(tmpL);
 	//add(tmpL);
 	
 }
+
+
+void addLocationSilence(){
+	String inName;
+	int inPower;
+	double inwinR;
+	Image inEnemy=null;;
+	double inbonus50Gold,inbonus50Soul,inbonus50Tear,inbonusALLexp;
+	inName="Пустыня безмолвия";
+	inPower=46;
+	inwinR=0.35;
+	try {
+		inEnemy = ImageIO.read(new File("data/image/loc/loc2.gif"));
+	} catch (IOException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	
+	inbonus50Gold=(double)0.0/60;
+	inbonus50Soul=(double)0.15/60;
+	inbonus50Tear=0;
+	inbonusALLexp=(double)1/60;
+	
+	Location tmpL = new Location(inName,inPower,inwinR,inEnemy,inbonus50Gold,inbonus50Soul,inbonus50Tear,inbonusALLexp);
+	allScope.add(tmpL);	
+}
+
+void addLocationForhottenForest(){
+	String inName;
+	int inPower;
+	double inwinR;
+	Image inEnemy=null;;
+	double inbonus50Gold,inbonus50Soul,inbonus50Tear,inbonusALLexp;
+	inName="Забытый лес";
+	inPower=62;
+	inwinR=0.35;
+	try {
+		inEnemy = ImageIO.read(new File("data/image/loc/loc2.gif"));
+	} catch (IOException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	
+	inbonus50Gold=(double)0.5/60;
+	inbonus50Soul=(double)0.06/60;
+	inbonus50Tear=0;
+	inbonusALLexp=(double)1.2/60;
+	
+	Location tmpL = new Location(inName,inPower,inwinR,inEnemy,inbonus50Gold,inbonus50Soul,inbonus50Tear,inbonusALLexp);
+	allScope.add(tmpL);	
+}
+
+
+void addLocationCavenImp(){
+	String inName;
+	int inPower;
+	double inwinR;
+	Image inEnemy=null;;
+	double inbonus50Gold,inbonus50Soul,inbonus50Tear,inbonusALLexp;
+	inName="Пещера бесов";
+	inPower=32;
+	inwinR=0.35;
+	try {
+		inEnemy = ImageIO.read(new File("data/image/loc/loc2.gif"));
+	} catch (IOException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	
+	inbonus50Gold=(double)0.2/60;
+	inbonus50Soul=(double)0.0/60;
+	inbonus50Tear=0;
+	inbonusALLexp=(double)1.5/60;
+	
+	Location tmpL = new Location_imp(inName,inPower,inwinR,inEnemy,inbonus50Gold,inbonus50Soul,inbonus50Tear,inbonusALLexp);
+	allScope.add(tmpL);
+}
+
 public LocationScope() {
 	//setSize(420,500);
 	setPreferredSize(new Dimension(420, 1500));
@@ -142,9 +179,9 @@ public LocationScope() {
 	//allScope.add(new Location());
 	//add(new BattleZone());
 
-	addLocation();
-	addLocation();
-	
+	//addLocation();
+	//addLocation();
+	addLocationCavenImp();
 
 
 	

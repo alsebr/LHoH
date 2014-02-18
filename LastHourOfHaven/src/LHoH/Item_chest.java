@@ -37,16 +37,16 @@ public class Item_chest extends Item {
 		double inDeltaPower;
 			
 			nname="Мимик";
-			npower=18;
+			npower=21;
 			nimage=null;
 			try {
-				nimage = ImageIO.read(new File("data/image/hero/demon21.gif"));
+				nimage = ImageIO.read(new File("data/image/hero/demon20.gif"));
 			} catch (IOException e) {
 			}
 
-			nttl=120;
-			inDeltaExp=12;
-			inDeltaPower=12;
+			nttl=87;
+			inDeltaExp=6;
+			inDeltaPower=5;
 			
 			Hero hero=new Hero(nname, npower, nexp, nttl, "2", 1, nimage, inDeltaExp, inDeltaPower);
 			LHoH.gameScreen.heroStock.addHero(hero);
