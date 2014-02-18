@@ -14,6 +14,7 @@ import javax.swing.JPanel;
 
 public class TowerChoize extends JPanel{
 	Image bckground=null;
+	Image imageKey1,imageKey2;
 	public TowerChoize() {
 		setSize(700, 450);
 		setLayout(null);
@@ -26,6 +27,14 @@ public class TowerChoize extends JPanel{
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}
+		try {
+			imageKey1 = ImageIO.read(new File("data/image/item/key1.gif"));
+		} catch (IOException e) {
+		}
+		try {
+			imageKey2 = ImageIO.read(new File("data/image/item/key2.gif"));
+		} catch (IOException e) {
 		}
 		init();
 	}
@@ -56,5 +65,7 @@ public class TowerChoize extends JPanel{
 	public void paintComponent(Graphics g) {
 		revalidate();	
 		g.drawImage(bckground, 0, 0, null);
+		g.drawImage(imageKey1, 0, 100, null);
+		g.drawImage(imageKey2, 0, 200, null);
 		}
 }
