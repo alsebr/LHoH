@@ -33,6 +33,8 @@ void update (){
 
 
 
+
+
 void addGold(double dGold){
 	gold+=dGold;
 }

@@ -21,6 +21,7 @@ public class Item extends JPanel implements MouseListener{
 	Image image;
 	double charge_now=0;
 	double charge_max=0;
+	private String name="ERROR";
 	public Item() {
 		setSize(80	,105);
 		setPreferredSize(new Dimension(80,105));
@@ -48,7 +49,14 @@ public class Item extends JPanel implements MouseListener{
 		
 	}
 	
-
+	public String getName(){
+		return name;
+	}
+	
+	public void setName(String name){
+		this.name=name;
+	}
+	
 	
 	void reDrow (Graphics g){
 		Graphics2D g2 = (Graphics2D) g;

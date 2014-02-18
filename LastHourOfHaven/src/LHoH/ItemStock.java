@@ -60,4 +60,27 @@ public class ItemStock extends JPanel{
 		}
 
 	}
+	
+	boolean getItem(String nameItem){
+		for (Item	 item : allScope) {
+			if (item.getName()==nameItem){
+				allScope.remove(item);
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	int checkItemCount(String nameItem){
+		int count=0;
+		for (Item	 item : allScope) {
+			if (item.getName()==nameItem){
+				count++;
+				
+			}
+		}
+		return count;
+	}
+	
+	
 }

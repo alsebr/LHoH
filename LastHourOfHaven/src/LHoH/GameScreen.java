@@ -105,6 +105,7 @@ public class GameScreen extends JFrame {
 		taverna.update();
 		locationPanel.update();
 		itemStock.update();
+		towerPanel.update();
 	}
 
 	void reDrow() {

@@ -21,12 +21,13 @@ import javax.imageio.ImageIO;
 public class ScreenChoizer extends JPanel{
 	
 	JButton buttonTower = new JButton();
+	
 	JButton buttonHero = new JButton();
 	JButton buttonLocation = new JButton();
 	JButton buttonMission = new JButton();
 	JButton buttonOption = new JButton();
 	JButton buttonItem = new JButton();
-	
+	JButton buttonTown = new JButton();
 	
 	Image bckground;
 	
@@ -56,11 +57,11 @@ public class ScreenChoizer extends JPanel{
 		
 		//buttonTower.setIcon(new ImageIcon(image1));
 		
-		buttonTower.setPreferredSize(new Dimension(75, 75));
-		buttonTower.setText("Town");
-		add(buttonTower);
+		buttonTown.setPreferredSize(new Dimension(75, 75));
+		buttonTown.setText("Town");
+		add(buttonTown);
 		
-		buttonTower.addActionListener(new ActionListener(){
+		buttonTown.addActionListener(new ActionListener(){
 	    	  public void actionPerformed(ActionEvent e) {
 					LHoH.gameScreen.activateTownPanel();
 	    	  }
