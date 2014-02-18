@@ -16,8 +16,22 @@ Player (){
 	locationActiveNumber=0;
 	
 	
-	towerProgress=new int[] {0,-1,-1,-1,0,-1,-1,-1};
+	towerProgress=new int[] {0,-1,-1,-1,-1,-1,-1,-1};
 }
+
+void setTowerProgress(int inLvl,double proc){
+	
+	int procInt=(int)(proc*100);
+	
+	if (towerProgress[inLvl]<procInt){
+		towerProgress[inLvl]=procInt;
+		if ((towerProgress[inLvl+1]==-1)&&(procInt>=25)){
+			towerProgress[inLvl+1]=0;
+		}
+	}
+	
+}
+
 
 void update (){
 	ttl-=0.017;

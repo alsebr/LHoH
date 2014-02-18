@@ -14,6 +14,8 @@ public class Item_chest extends Item {
 			image = ImageIO.read(new File("data/image/item/item2.gif"));
 		} catch (IOException e) {
 		}
+		
+		setToolTipText("Содержит великие сокровища");
 	}
 
 	void activateItem() {

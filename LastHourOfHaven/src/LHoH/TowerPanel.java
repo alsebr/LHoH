@@ -51,7 +51,7 @@ public class TowerPanel extends JPanel {
 	}
 
 	void addComp() {
-
+towerFight.addComp();
 	}
 	
 	void update(){

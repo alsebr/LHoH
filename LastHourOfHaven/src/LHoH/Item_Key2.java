@@ -8,10 +8,11 @@ import javax.imageio.ImageIO;
 public class Item_Key2 extends Item{
 	public Item_Key2() {
 		try {
-			image = ImageIO.read(new File("data/image/item/key2.gif"));
+			image = ImageIO.read(new File("data/image/item/item10.gif"));
 		} catch (IOException e) {
 		}
 		setName("Серебрянный ключ");
 		
+		setToolTipText("Позволяет зайти на средние этажи Бесконечной Башни");
 	}
 }

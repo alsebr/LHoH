@@ -14,6 +14,8 @@ try {
 	image = ImageIO.read(new File("data/image/item/item4.gif"));
 } catch (IOException e) {
 }
+
+setToolTipText("Âûחûגאוע טפנטעא");
 }
 
 void activateItem(){

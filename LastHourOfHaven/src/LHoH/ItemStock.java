@@ -25,8 +25,13 @@ public class ItemStock extends JPanel{
 
 		allScope.add(new Item_chest());
 		allScope.add(new Item_chest());
+		allScope.add(new Item_chest());
+				
 		
-		allScope.add(new Item_lamp());
+		
+		allScope.add(new Item_Key1());
+		allScope.add(new Item_Key1());
+		allScope.add(new Item_Key1());
 		//allScope.add(new Item_LegionGorn());
 		//allScope.add(new Item_TaroDemolog());
 
