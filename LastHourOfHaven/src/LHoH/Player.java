@@ -6,9 +6,9 @@ int maxPortal;
 int locationAddCostGold;
 int locationActiveNumber;
 Player (){
-	gold=150;
-	soul=4;
-	tear=1;
+	gold=3;
+	soul=0;
+	tear=0;
 	ttl=15*60;
 	maxPortal=3;
 	locationAddCostGold=10;
