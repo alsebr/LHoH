@@ -103,14 +103,14 @@ void addLocationSilence(){
 	inPower=46;
 	inwinR=0.35;
 	try {
-		inEnemy = ImageIO.read(new File("data/image/loc/loc2.gif"));
+		inEnemy = ImageIO.read(new File("data/image/loc/loc7.gif"));
 	} catch (IOException e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
 	}
 	
 	inbonus50Gold=(double)0.0/60;
-	inbonus50Soul=(double)0.15/60;
+	inbonus50Soul=(double)0.4/60;
 	inbonus50Tear=0;
 	inbonusALLexp=(double)1/60;
 	
@@ -128,13 +128,13 @@ void addLocationForhottenForest(){
 	inPower=62;
 	inwinR=0.35;
 	try {
-		inEnemy = ImageIO.read(new File("data/image/loc/loc2.gif"));
+		inEnemy = ImageIO.read(new File("data/image/loc/loc5.gif"));
 	} catch (IOException e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
 	}
 	
-	inbonus50Gold=(double)0.5/60;
+	inbonus50Gold=(double)0.6/60;
 	inbonus50Soul=(double)0.06/60;
 	inbonus50Tear=0;
 	inbonusALLexp=(double)1.2/60;

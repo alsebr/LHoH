@@ -105,7 +105,12 @@ public class BattleZone extends JPanel implements DropTargetListener{
 	    	
 	    	for (Hero hero : HeroStock.allScope) {
 	    		if (hero.getZone()==zoneId)	{
-	    			add(hero);
+	    			if (hero.status==1) add(hero);
+	    		}
+	    	}
+	    	for (Hero hero : HeroStock.allScope) {
+	    		if (hero.getZone()==zoneId)	{
+	    			if (hero.status!=1) add(hero);
 	    		}
 	    	}
 		

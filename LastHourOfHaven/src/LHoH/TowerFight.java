@@ -88,6 +88,7 @@ JButton endTower;
 							if ((winR<0.25)&&(winR+delta*speed>=0.25)){
 								LHoH.gameScreen.bottomInfo.chat.addTextChat("Вы получили награду за битву с "+bossName+" (25%)");
 								LHoH.gameScreen.itemStock.allScope.add(new Item_chest());
+								LHoH.gameScreen.itemStock.allScope.add(new Item_PowerUp());
 							}
 							if ((winR<0.50)&&(winR+delta*speed>=0.50)){
 								LHoH.gameScreen.bottomInfo.chat.addTextChat("Вы получили награду за битву с "+bossName+" (50%)");
@@ -135,6 +136,32 @@ JButton endTower;
 						LHoH.gameScreen.itemStock.allScope.add(new Item_PowerUp());
 					}
 		}
+				
+				if (lvl==2){
+					if ((winR<0.25)&&(winR+delta*speed>=0.25)){
+						LHoH.gameScreen.bottomInfo.chat.addTextChat("Вы получили награду за битву с "+bossName+" (25%)");
+						LHoH.gameScreen.itemStock.allScope.add(new Item_Soul());
+					}
+					if ((winR<0.50)&&(winR+delta*speed>=0.50)){
+						LHoH.gameScreen.bottomInfo.chat.addTextChat("Вы получили награду за битву с "+bossName+" (50%)");
+						LHoH.gameScreen.itemStock.allScope.add(new Item_Soul());
+					}
+					if ((winR<0.75)&&(winR+delta*speed>=0.75)){
+						LHoH.gameScreen.bottomInfo.chat.addTextChat("Вы получили награду за битву с "+bossName+" (75%)");
+						LHoH.gameScreen.itemStock.allScope.add(new Item_Soul());
+					}
+					winR+=delta*speed;
+					if (winR>=1) {
+						winR=1;
+						status=2;
+						//hero1.setStatus(2);
+						//winR=0.7;
+						//bossPower=6666;
+						LHoH.gameScreen.bottomInfo.chat.addTextChat("Нами окончательно повержен "+bossName);
+						LHoH.gameScreen.itemStock.allScope.add(new Item_LegionGorn());
+					}
+		}
+				
 		}
 		
 		

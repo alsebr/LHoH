@@ -25,7 +25,8 @@ public class ItemStock extends JPanel{
 
 		allScope.add(new Item_chest());
 		allScope.add(new Item_chest());
-		allScope.add(new Item_chest());
+		//allScope.add(new Item_chest());
+		
 				
 		
 		
