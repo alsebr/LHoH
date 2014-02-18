@@ -64,62 +64,76 @@ JButton endTower;
 	
 	void update(){
 		if (status==1){
-			
-			if(lvl==1){
-				bossPower=bossPower+(double)10/60;
-			}
-			
-			powerH=0;
-			ttl-=(double)1/60;
-			if (ttl<=0)status=2;
-			for (Hero hero : LHoH.gameScreen.heroStock.allScope) {
-			if ((hero.getZone()==1)&&(hero.status==1))	{
-				powerH+=hero.power;
-			}
-			}
-		
-		double winRT;
-		double power=bossPower;
-		double speed=0.0005;
-		double delta=0;
-		delta=(double)powerH/power;
-		
-		
-		if ((winR<0.25)&&(winR+delta*speed>=0.25)){
-			LHoH.gameScreen.bottomInfo.chat.addTextChat("Вы получили награду за битву с "+bossName+" (25%)");
-			LHoH.gameScreen.itemStock.allScope.add(new Item_chest());
-		}
-		
-		if ((winR<0.50)&&(winR+delta*speed>=0.50)){
-			LHoH.gameScreen.bottomInfo.chat.addTextChat("Вы получили награду за битву с "+bossName+" (50%)");
-			LHoH.gameScreen.itemStock.allScope.add(new Item_chest());
-			LHoH.gameScreen.itemStock.allScope.add(new Item_Key1());
-		}
-		
-		if ((winR<0.75)&&(winR+delta*speed>=0.75)){
-			LHoH.gameScreen.bottomInfo.chat.addTextChat("Вы получили награду за битву с "+bossName+" (75%)");
-			LHoH.gameScreen.itemStock.allScope.add(new Item_Plague());
-		}
-		
-		
-		winR+=delta*speed;
-		
-		
-		
-		
-		
-		if (winR>=1) {
-			winR=1;
-			status=2;
-			//hero1.setStatus(2);
-			//winR=0.7;
-			//bossPower=6666;
-			
-			LHoH.gameScreen.bottomInfo.chat.addTextChat("Нами окончательно повержен "+bossName);
-			LHoH.gameScreen.itemStock.allScope.add(new Item_Key2());
-			
-			LHoH.gameScreen.itemStock.allScope.add(new Item_lamp());
-			
+					
+					if(lvl==2){
+						bossPower=bossPower+(double)10/60;
+					}
+					
+					powerH=0;
+					ttl-=(double)1/60;
+					if (ttl<=0)status=2;
+					for (Hero hero : LHoH.gameScreen.heroStock.allScope) {
+					if ((hero.getZone()==1)&&(hero.status==1))	{
+						powerH+=hero.power;
+					}
+					}
+				
+				double winRT;
+				double power=bossPower;
+				double speed=0.0005;
+				double delta=0;
+				delta=(double)powerH/power;
+				
+				if (lvl==1){
+							if ((winR<0.25)&&(winR+delta*speed>=0.25)){
+								LHoH.gameScreen.bottomInfo.chat.addTextChat("Вы получили награду за битву с "+bossName+" (25%)");
+								LHoH.gameScreen.itemStock.allScope.add(new Item_chest());
+							}
+							if ((winR<0.50)&&(winR+delta*speed>=0.50)){
+								LHoH.gameScreen.bottomInfo.chat.addTextChat("Вы получили награду за битву с "+bossName+" (50%)");
+								LHoH.gameScreen.itemStock.allScope.add(new Item_chest());
+								LHoH.gameScreen.itemStock.allScope.add(new Item_Key1());
+							}
+							if ((winR<0.75)&&(winR+delta*speed>=0.75)){
+								LHoH.gameScreen.bottomInfo.chat.addTextChat("Вы получили награду за битву с "+bossName+" (75%)");
+								LHoH.gameScreen.itemStock.allScope.add(new Item_Plague());
+							}
+							winR+=delta*speed;
+							if (winR>=1) {
+								winR=1;
+								status=2;
+								//hero1.setStatus(2);
+								//winR=0.7;
+								//bossPower=6666;
+								LHoH.gameScreen.bottomInfo.chat.addTextChat("Нами окончательно повержен "+bossName);
+								LHoH.gameScreen.itemStock.allScope.add(new Item_Key2());
+								LHoH.gameScreen.itemStock.allScope.add(new Item_lamp());
+							}
+				}
+				
+				if (lvl==0){
+					if ((winR<0.25)&&(winR+delta*speed>=0.25)){
+						LHoH.gameScreen.bottomInfo.chat.addTextChat("Вы получили награду за битву с "+bossName+" (25%)");
+						LHoH.gameScreen.itemStock.allScope.add(new Item_chest());
+					}
+					if ((winR<0.50)&&(winR+delta*speed>=0.50)){
+						LHoH.gameScreen.bottomInfo.chat.addTextChat("Вы получили награду за битву с "+bossName+" (50%)");
+						LHoH.gameScreen.itemStock.allScope.add(new Item_Key1());
+					}
+					if ((winR<0.75)&&(winR+delta*speed>=0.75)){
+						LHoH.gameScreen.bottomInfo.chat.addTextChat("Вы получили награду за битву с "+bossName+" (75%)");
+						LHoH.gameScreen.itemStock.allScope.add(new Item_chest());
+					}
+					winR+=delta*speed;
+					if (winR>=1) {
+						winR=1;
+						status=2;
+						//hero1.setStatus(2);
+						//winR=0.7;
+						//bossPower=6666;
+						LHoH.gameScreen.bottomInfo.chat.addTextChat("Нами окончательно повержен "+bossName);
+						LHoH.gameScreen.itemStock.allScope.add(new Item_PowerUp());
+					}
 		}
 		}
 		
@@ -129,6 +143,26 @@ JButton endTower;
 	void init(int inLvl) {
 		
 		if (inLvl==0){
+			
+			
+			lvl = inLvl;
+			try {
+				bckground = ImageIO.read(new File("data/image/bos/bos3.gif"));
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
+			addComp();
+			bossName = "Болотный дух";
+			winR = 0.03;
+			bossPower = 80;
+			status = 1;
+			ttl=1*120;
+			}
+		
+		
+		if (inLvl==1){
 			
 		
 		lvl = inLvl;
@@ -146,7 +180,8 @@ JButton endTower;
 		status = 1;
 		ttl=1*59;
 		}
-		else{
+		if (inLvl==2){
+			
 			lvl = inLvl;
 			try {
 				bckground = ImageIO.read(new File("data/image/bos/bos1.gif"));

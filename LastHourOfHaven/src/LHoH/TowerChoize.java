@@ -44,13 +44,22 @@ public class TowerChoize extends JPanel{
 	
 	
 	void goFightTower(int inLvl){
-		if (LHoH.gameScreen.itemStock.getItem("Демонический ключ")){
-			LHoH.gameScreen.bottomInfo.chat.addTextChat("Вы вступаете на "+inLvl +" этаж Бесконечной башни, использовав Демонический ключ");
+		if (inLvl!=0){
+		
+			if (LHoH.gameScreen.itemStock.getItem("Демонический ключ")){
+				LHoH.gameScreen.bottomInfo.chat.addTextChat("Вы вступаете на "+inLvl +" этаж Бесконечной башни, использовав Демонический ключ");
+				LHoH.gameScreen.towerPanel.towerFight.init(inLvl);
+				LHoH.gameScreen.towerPanel.activateTowerFightScrenn();
+			}else{
+				LHoH.gameScreen.bottomInfo.chat.addTextChat("Для входа в Бесконечную башню вам нужен Демонический ключ");
+			}
+		}else{
+			LHoH.gameScreen.bottomInfo.chat.addTextChat("Вы вступаете на "+inLvl +" этаж Бесконечной башни");
 			LHoH.gameScreen.towerPanel.towerFight.init(inLvl);
 			LHoH.gameScreen.towerPanel.activateTowerFightScrenn();
-		}else{
-			LHoH.gameScreen.bottomInfo.chat.addTextChat("Для входа в Бесконечную башню вам нужен Демонический ключ");
 		}
+			
+			
 		
 	}
 	
