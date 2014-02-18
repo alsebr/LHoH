@@ -5,6 +5,7 @@ double gold, soul,tear,ttl;
 int maxPortal;
 int locationAddCostGold;
 int locationActiveNumber;
+int[] towerProgress;
 Player (){
 	gold=3;
 	soul=0;
@@ -13,6 +14,9 @@ Player (){
 	maxPortal=3;
 	locationAddCostGold=10;
 	locationActiveNumber=0;
+	
+	
+	towerProgress=new int[] {0,0,0,0,0,0,0,0};
 }
 
 void update (){

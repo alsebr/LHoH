@@ -44,6 +44,7 @@ public class GameScreen extends JFrame {
 	BossPanel bossPanel;
 	HeroPanel heroPanel;
 	ItemPanel itemPanel;
+	TowerPanel towerPanel;
 	JPanel actionPart = new JPanel();
 	Player player = new Player();
 	Taverna taverna;
@@ -66,7 +67,7 @@ public class GameScreen extends JFrame {
 		// heroPanel.addComp();
 		actionPart.add(townPanel);
 	}
-	
+
 	void activateItemPanel() {
 		actionPart.removeAll();
 		// heroPanel.addComp();
@@ -83,6 +84,12 @@ public class GameScreen extends JFrame {
 		actionPart.removeAll();
 		bossPanel.addComp();
 		actionPart.add(bossPanel);
+	}
+	
+	void activateTowerPanel() {
+		actionPart.removeAll();
+		towerPanel.addComp();
+		actionPart.add(towerPanel);
 	}
 
 	private void gameTick() {
@@ -101,19 +108,11 @@ public class GameScreen extends JFrame {
 	}
 
 	void reDrow() {
-		// heroStock.reDrow();
-
 		repaint();
 	}
 
-	void initiate() {
-
-		setResizable(false);
-		locationScope = new LocationScope();
-
-		itemStock=new ItemStock();
-		itemPanel=new ItemPanel();
-		
+	
+	void createHeroStockScroll (){
 		heroStockScroll = new JScrollPane(LHoH.gameScreen.heroStock);
 		heroStockScroll.setAutoscrolls(true);
 		heroStockScroll.setPreferredSize(new Dimension(260, 370));
@@ -123,7 +122,19 @@ public class GameScreen extends JFrame {
 				.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 		heroStockScroll.setOpaque(false);
 		heroStockScroll.setBorder(null);
+	}
+	
+	void initiate() {
 
+		setResizable(false);
+		locationScope = new LocationScope();
+
+		itemStock = new ItemStock();
+		itemPanel = new ItemPanel();
+
+		createHeroStockScroll();
+
+		towerPanel=new TowerPanel();
 		bossPanel = new BossPanel();
 		locationPanel = new LocationPanel();
 
@@ -133,9 +144,6 @@ public class GameScreen extends JFrame {
 		screenChoizer.setBounds(0, 0, screenChoizer.getWidth(),
 				screenChoizer.getHeight());
 		add(screenChoizer);
-
-		// heroPanel.setBounds(101,0,heroPanel.getWidth(),heroPanel.getHeight());
-		// add(heroPanel);
 
 		bottomInfo.setBounds(0, 450, bottomInfo.getWidth(),
 				bottomInfo.getHeight());
@@ -147,7 +155,7 @@ public class GameScreen extends JFrame {
 		add(actionPart);
 		activateHeroPanel();
 		activateLocationPanel();
-		
+
 		timer.scheduleAtFixedRate(new TimerTask() {
 			@Override
 			public void run() {

@@ -27,6 +27,7 @@ public class ScreenChoizer extends JPanel{
 	JButton buttonOption = new JButton();
 	JButton buttonItem = new JButton();
 	
+	
 	Image bckground;
 	
 	public ScreenChoizer() {
@@ -85,6 +86,7 @@ public class ScreenChoizer extends JPanel{
 	    	  }
 	    	});
 		
+		/*
 		buttonMission.setPreferredSize(new Dimension(75, 75));
 		buttonMission.setText("Boss");
 		add(buttonMission);		
@@ -92,6 +94,17 @@ public class ScreenChoizer extends JPanel{
 		buttonMission.addActionListener(new ActionListener(){
 	    	  public void actionPerformed(ActionEvent e) {
 					LHoH.gameScreen.activateBossPanel();
+	    	  }
+	    	});
+		*/
+		
+		buttonTower.setPreferredSize(new Dimension(75, 75));
+		buttonTower.setText("Tower");
+		add(buttonTower);		
+		
+		buttonTower.addActionListener(new ActionListener(){
+	    	  public void actionPerformed(ActionEvent e) {
+					LHoH.gameScreen.activateTowerPanel();
 	    	  }
 	    	});
 		
