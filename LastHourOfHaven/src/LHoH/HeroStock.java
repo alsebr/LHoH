@@ -39,6 +39,13 @@ public class HeroStock extends JPanel{
 	add(heroZone);
 	heroZone.zoneId=1;
 	heroZone.setPreferredSize(new Dimension(250, 860));
+	
+	
+	
+	
+	
+	
+	
 }
 
 void reDrow (Graphics g){

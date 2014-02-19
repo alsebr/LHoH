@@ -84,7 +84,7 @@ void update (){
 	
 	for (Hero hero : LHoH.gameScreen.heroStock.allScope) {
 		if (hero.getZone()==1)	{
-			powerH+=hero.power;
+			powerH+=hero.getPower();
 		}
 	}
 	

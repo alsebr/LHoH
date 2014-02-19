@@ -262,7 +262,7 @@ double inDeltaPower;
 			tmptext+="<p><font color=black> Опыт на уровень " +inDeltaExp;
 			tmptext+="<br> Мощь за уровень "+String.format("%.2g%n", inDeltaPower);
 			//tmptext+="<p> Exp "+(int)hero.exp;
-			tmptext+="<br> Мощь "+(int)hero.power;
+			tmptext+="<br> Мощь "+(int)hero.getPower();
 			
 			int min,sec;
 			min=(int)(hero.ttl/60);

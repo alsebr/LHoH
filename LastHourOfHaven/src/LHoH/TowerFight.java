@@ -74,7 +74,7 @@ JButton endTower;
 					if (ttl<=0)status=2;
 					for (Hero hero : LHoH.gameScreen.heroStock.allScope) {
 					if ((hero.getZone()==1)&&(hero.status==1))	{
-						powerH+=hero.power;
+						powerH+=hero.getPower();
 					}
 					}
 				

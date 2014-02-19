@@ -31,7 +31,8 @@ void activateItem(){
 	}
 	if (tmp!=null){
 		tmpText=tmp.name+ " Был отмечен печатью Великого! (+25 мощи)";
-		tmp.power+=25;
+		tmp.addPower(25);
+		
 		LHoH.gameScreen.bottomInfo.chat.addTextChat(tmpText);
 
 		

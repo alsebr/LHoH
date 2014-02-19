@@ -42,7 +42,7 @@ public class BattleZone extends JPanel implements DropTargetListener{
 	double getPower (){
 		for (Hero hero : HeroStock.allScope) {
     		if (hero.getZone()==zoneId)	{
-    			return hero.power;
+    			return hero.getPower();
     		}
     	}
 		return 0;

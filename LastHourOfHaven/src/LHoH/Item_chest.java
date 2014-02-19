@@ -17,7 +17,7 @@ public class Item_chest extends Item {
 		
 		setToolTipText("Содержит великие сокровища");
 		
-		ttl=6;
+		//ttl=6;
 	}
 
 	void activateItem() {

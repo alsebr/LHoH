@@ -51,7 +51,7 @@ double inDeltaPower;
 	inDeltaExp=30;
 	inDeltaPower=17;
 	
-	Hero hero=new Hero(nname, npower, nexp, nttl, "2", 1, nimage, inDeltaExp, inDeltaPower);
+	Hero hero=new Hero_Ifreet(nname, npower, nexp, nttl, "2", 1, nimage, inDeltaExp, inDeltaPower);
 	LHoH.gameScreen.heroStock.addHero(hero);
 	
 	SelfDestroy();

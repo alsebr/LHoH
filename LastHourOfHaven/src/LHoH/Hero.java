@@ -41,15 +41,45 @@ public class Hero extends JPanel implements DragGestureListener,
 		DragSourceListener, MouseListener {
 	DragSource dragSource;
 
-	double power, exp, ttl;
+	private double power;
+
+	public double getPower() {
+		return power+getBonusPower();
+	}
+	
+	public double getPurePower() {
+		return power;
+	}
+	
+	public double getBonusPower(){
+		return 0;
+	}
+
+	public void setPower(double power) {
+		this.power = power;
+	}
+
+	public String getStatusTip(){
+		String htmltext="";
+		
+		return htmltext;
+	}
+	
+	public String getHeroTip(){
+		String htmltext="";
+		
+		return htmltext;
+	}
+	
+	double exp, ttl;
 	protected String name, classH;
 	Image image;
 	int status; // 1 - live, 0 - dead, 2 - strage
 	int lvl;
 	private int zone;
 	int id;
-	
-	HeroStat heroStat;
+	double expNeedExp;
+	private HeroStat heroStat;
 
 	double deltaExp;
 	double deltaPower;
@@ -66,7 +96,6 @@ public class Hero extends JPanel implements DragGestureListener,
 		Random randomGenerator = new Random();
 		id = randomGenerator.nextInt(32000);
 
-
 		this.name = name;
 		this.power = power;
 		this.exp = 1;
@@ -78,8 +107,7 @@ public class Hero extends JPanel implements DragGestureListener,
 		this.deltaExp = inDeltaExp;
 		this.deltaPower = inDeltaPower;
 		this.image = inImage;
-		this.heroStat=new HeroStat(4, 5, 6);
-		
+		this.setHeroStat(new HeroStat(4, 5, 6));
 
 		dragSource = new DragSource();
 		dragSource.createDefaultDragGestureRecognizer(this,
@@ -89,28 +117,42 @@ public class Hero extends JPanel implements DragGestureListener,
 
 	}
 
+	String getHeroName() {
+		return name;
+	}
+
 	void addPower(double addP) {
 		power += addP;
-		System.out.println(power);
+
 	}
 
 	void addExp(double addExp) {
 		exp += addExp;
 	}
 
+	void lvlUp (){
+		lvl += 1;
+		
+		heroStat.intp+=3;
+		heroStat.strp+=4;
+		heroStat.vitp+=2;
+		
+		LHoH.gameScreen.bottomInfo.chat.addTextChat(name + " достиг " + lvl
+				+ " уровня, его мощь теперь " + (int) power);
+	}
+	
 	protected void Update() {
 		if (status == 1)
 			ttl -= 0.017;
 		if (ttl <= 0)
 			status = 0;
 
-		double expNeedExp = deltaExp * ((double) lvl + (double) lvl * lvl / 20);
+		expNeedExp = deltaExp * ((double) lvl + (double) lvl * lvl / 20);
 
 		if (expNeedExp < exp) {
 			power += deltaPower;
-			lvl += 1;
-			LHoH.gameScreen.bottomInfo.chat.addTextChat(name + " достиг " + lvl
-					+ " уровня, его мощь теперь " + (int) power);
+			lvlUp();
+			
 		}
 
 		// power=exp; //!!
@@ -134,9 +176,7 @@ public class Hero extends JPanel implements DragGestureListener,
 
 	public void mouseClicked(MouseEvent arg0) {
 		if (arg0.getClickCount() == 2) {
-
-			LHoH.gameScreen.heroViewScreen.setVisible(true);
-			LHoH.gameScreen.heroViewScreen.toFront();
+			LHoH.gameScreen.heroViewScreen.activate(id);
 		}
 
 	}
@@ -153,19 +193,21 @@ public class Hero extends JPanel implements DragGestureListener,
 		min = (int) (ttl / 60);
 		sec = (int) (ttl - min * 60);
 
+		g2.drawString(Integer.toString((int) getPower()), 15, 98);
+
 		switch (status) {
 		case 0:
 			g2.drawString("DEAD", 5, 15);
-			g2.drawString(Integer.toString((int) power), 5, 98);
+
 			break;
 		case 1:
+
 			g2.drawString(min + ":" + sec, 5, 15);
-			g2.drawString(Integer.toString((int) power), 15, 98);
+
 			break;
 		case 2:
 			g2.drawString("Страж", 15, 50);
 			g2.drawString(min + ":" + sec, 5, 15);
-			g2.drawString(Integer.toString((int) power), 5, 98);
 
 			break;
 		default:
@@ -273,6 +315,14 @@ public class Hero extends JPanel implements DragGestureListener,
 	public void mouseReleased(MouseEvent arg0) {
 		// TODO Auto-generated method stub
 
+	}
+
+	public HeroStat getHeroStat() {
+		return heroStat;
+	}
+
+	public void setHeroStat(HeroStat heroStat) {
+		this.heroStat = heroStat;
 	}
 
 }
