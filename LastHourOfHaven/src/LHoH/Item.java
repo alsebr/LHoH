@@ -22,6 +22,7 @@ public class Item extends JPanel implements MouseListener{
 	double charge_now=0;
 	double charge_max=0;
 	private String name="ERROR";
+	double ttl=-1000;
 	public Item() {
 		setSize(80	,105);
 		setPreferredSize(new Dimension(80,105));
@@ -43,9 +44,24 @@ public class Item extends JPanel implements MouseListener{
 		
 	}
 	
+	void doActionBeforeTtlDead(){
+		
+	}
+	
+	void checkTTL(){
+		if (ttl>-1000){
+			ttl-=(double)1/60;
+			
+			if (ttl<=0){
+				doActionBeforeTtlDead();
+				SelfDestroy();
+			}
+		}
+	}
+	
 	void update (){
 		checkCharge();
-		
+		checkTTL();
 		
 	}
 	
@@ -66,6 +82,13 @@ public class Item extends JPanel implements MouseListener{
 		//g.fillRect(0, 0,80 ,105);
 		
 		g.drawImage(image, 0, 0, null);
+		
+		if(ttl!=-1000){
+			g2.setColor(Color.red);
+			g2.setFont(new Font("Arial", Font.BOLD, 14)); 
+			g2.drawString(FrameWorkLHoH.ttlToTime(ttl), 20, 95);
+		}
+		
 		
 	}
 	

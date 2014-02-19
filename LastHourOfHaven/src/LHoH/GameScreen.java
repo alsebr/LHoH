@@ -48,6 +48,7 @@ public class GameScreen extends JFrame {
 	JPanel actionPart = new JPanel();
 	Player player = new Player();
 	Taverna taverna;
+	HeroViewScreen heroViewScreen;
 
 	GameScreen() {
 		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -127,6 +128,9 @@ public class GameScreen extends JFrame {
 	
 	void initiate() {
 
+		heroViewScreen=new HeroViewScreen();
+
+		
 		setResizable(false);
 		locationScope = new LocationScope();
 
