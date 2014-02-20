@@ -71,6 +71,15 @@ void addHero(Hero hero){
 	allScope.add(hero);
 }
 
+Hero getHeroById(int id){
+	for (Hero hero : allScope) {
+		if (hero.getId()==id) return hero;
+	}
+	
+	
+	return null;
+}
+
 void update (){
 	for (Hero hero : allScope) {
 		hero.Update();

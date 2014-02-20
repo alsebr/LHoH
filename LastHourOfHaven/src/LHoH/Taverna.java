@@ -94,7 +94,9 @@ double inDeltaPower;
 			inDeltaExp=10;
 			inDeltaPower=4;
 			
-			hero=new Hero(nname, npower, nexp, nttl, "2", 1, nimage, inDeltaExp, inDeltaPower);
+			hero=new Hero_Ifreet();
+			
+			//hero.init(nname, npower, nexp, nttl, "2", 1, nimage, inDeltaExp, inDeltaPower);
 			
 			switch (count) {
 			case 0:
@@ -111,7 +113,7 @@ double inDeltaPower;
 				nttl=60;
 				inDeltaExp=10;
 				inDeltaPower=4;
-				hero=new Hero_Imp();
+				//hero=new Hero_Imp();
 				break;
 			case 1:
 				nname="Малая тень";
@@ -369,7 +371,7 @@ double inDeltaPower;
 	
 	updateHeroes();
 	
-	//Hero tmpH = new Hero("234", 100, 1, 180, "воин",2);
+		// Hero tmpH = new Hero("234", 100, 1, 180, "воин",2);
 	//LHoH.gameScreen.heroStock.allScope.add(tmpH);
 	
 }
@@ -380,12 +382,6 @@ double inDeltaPower;
 	}
 	
 	void updateHeroes(){
-		//allScope.remove
-		//allScope.add(new HeroForTrade());
-		
-	//	for (HeroForTrade heroForTrade : allScope){
-	//	allScope.remove(heroForTrade);
-		//}
 
 		allScope.removeAll(allScope);
 		

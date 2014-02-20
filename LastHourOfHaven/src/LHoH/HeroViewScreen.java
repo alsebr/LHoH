@@ -50,12 +50,10 @@ public class HeroViewScreen extends JFrame {
 		toFront();
 		setVisible(true);
 
-		for (Hero thero : HeroStock.allScope) {
-			if (thero.id == heroId) {
-				hero = thero;
-
-			}
-		}
+		
+		hero=LHoH.gameScreen.heroStock.getHeroById(heroId);
+		
+		
 
 		heroName = hero.getHeroName();
 		imageHero = hero.image;
@@ -89,7 +87,7 @@ public class HeroViewScreen extends JFrame {
 				htmltext += "<br>Int: " + heroStat.intp;
 				htmltext += "<br>";
 				htmltext += "<br>Power: " + (int) hero.getPurePower() +"+"+(int) hero.getBonusPower();
-				htmltext += "<br>Time: " + FrameWorkLHoH.ttlToTime(hero.ttl);
+				htmltext += "<br>Time: " + FrameWorkLHoH.ttlToTime(hero.getLeftTime())+"/"+FrameWorkLHoH.ttlToTime(hero.getLifeTimeTotal());
 				htmltext += "<br>Exp: " + (int) hero.exp + "/"
 						+ (int) hero.expNeedExp;
 				htmltext += "<br>";

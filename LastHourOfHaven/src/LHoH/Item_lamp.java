@@ -39,21 +39,7 @@ void activateItem(){
 double inDeltaExp;
 double inDeltaPower;
 	
-	nname="ָפנטע";
-	npower=50;
-	nimage=null;
-	try {
-		nimage = ImageIO.read(new File("data/image/hero/demon12.gif"));
-	} catch (IOException e) {
-	}
-	nheroCostGold=40;
-	nheroCostSoul=2;
-	nheroCostTear=0;//+random.nextInt(1);
-	nttl=300;
-	inDeltaExp=30;
-	inDeltaPower=17;
-	
-	Hero hero=new Hero_Ifreet(nname, npower, nexp, nttl, "2", 1, nimage, inDeltaExp, inDeltaPower);
+	Hero hero=new Hero_Ifreet();
 	LHoH.gameScreen.heroStock.addHero(hero);
 	
 	SelfDestroy();

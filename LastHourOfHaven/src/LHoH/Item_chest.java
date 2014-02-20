@@ -52,8 +52,8 @@ public class Item_chest extends Item {
 			inDeltaExp=6;
 			inDeltaPower=5;
 			
-			Hero hero=new Hero(nname, npower, nexp, nttl, "2", 1, nimage, inDeltaExp, inDeltaPower);
-			LHoH.gameScreen.heroStock.addHero(hero);
+		//	Hero hero=new Hero(nname, npower, nexp, nttl, "2", 1, nimage, inDeltaExp, inDeltaPower);
+			//LHoH.gameScreen.heroStock.addHero(hero);
 			
 			
 		} else {

@@ -180,8 +180,12 @@ public class BattleZone extends JPanel implements DropTargetListener{
 				} 
 		  }
 		  
+		  
+		  //LHoH.gameScreen.heroStock.getHeroById(heroId);
+		  
+		  
 		  for (Hero hero : HeroStock.allScope) {
-			if (hero.id==Integer.parseInt(dragContents)) {
+			if (hero.getId()==Integer.parseInt(dragContents)) {
 				hero.setZone(zoneId);
 				
 			}

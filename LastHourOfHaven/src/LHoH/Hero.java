@@ -41,54 +41,73 @@ public class Hero extends JPanel implements DragGestureListener,
 		DragSourceListener, MouseListener {
 	DragSource dragSource;
 
-	private double power;
+
 
 	public double getPower() {
-		return power+getBonusPower();
-	}
-	
-	public double getPurePower() {
-		return power;
-	}
-	
-	public double getBonusPower(){
-		return 0;
+		double tmpPower=heroStat.strp*strToPowerRatio;
+		
+		return tmpPower + getBonusPower();
 	}
 
-	public void setPower(double power) {
+	public double getPurePower() {
+		return heroStat.strp*strToPowerRatio;
+	}
+
+	public double getBonusPower() {
+		return getPower_bonus();
+	}
+
+	public void setPower (double power) {
 		this.power = power;
 	}
 
-	public String getStatusTip(){
-		String htmltext="";
-		
+	public String getStatusTip() {
+		String htmltext = "";
+
 		return htmltext;
 	}
-	
-	public String getHeroTip(){
-		String htmltext="";
-		
+
+	public String getHeroTip() {
+		String htmltext = "";
+
 		return htmltext;
 	}
-	
+
 	double exp, ttl;
 	protected String name, classH;
 	Image image;
 	int status; // 1 - live, 0 - dead, 2 - strage
 	int lvl;
 	private int zone;
-	int id;
+	private int id;
 	double expNeedExp;
 	private HeroStat heroStat;
+	private HeroStat heroStatBonus=new HeroStat(0, 0, 0);
+	
+	private double power;
+	private double power_bonus;
+	
+	double statPointForLvl;
+	HeroStat statPointForLvlRatio;
+	
+	public int getId() {
+		return id;
+	}
 
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	HeroStat statPointForLvlRatioPlayerModify;
+	HeroStat statPointForLvlRatioFinal;
+	double strToPowerRatio=2;
+	double vitToTTLRatio=2;
+	
+	
 	double deltaExp;
 	double deltaPower;
 
-	// int[] arrayLvlExp = new int[] {0,10,40,100,150};
-	// double[] arrayLvlPower = new double[] {10,20,40,50,70};
-	public Hero(String name, double power, double exp, double ttl,
-			String classH, int zoneId, Image inImage, double inDeltaExp,
-			double inDeltaPower) {
+	public Hero() {
 		setSize(80, 105);
 		setPreferredSize(new Dimension(80, 105));
 		setBorder(BorderFactory.createLineBorder(Color.black));
@@ -96,25 +115,39 @@ public class Hero extends JPanel implements DragGestureListener,
 		Random randomGenerator = new Random();
 		id = randomGenerator.nextInt(32000);
 
-		this.name = name;
-		this.power = power;
-		this.exp = 1;
-		this.ttl = ttl;
-		this.classH = classH;
-		this.status = 1;
-		this.lvl = 1;
-		this.zone = zoneId;
-		this.deltaExp = inDeltaExp;
-		this.deltaPower = inDeltaPower;
-		this.image = inImage;
-		this.setHeroStat(new HeroStat(4, 5, 6));
-
 		dragSource = new DragSource();
 		dragSource.createDefaultDragGestureRecognizer(this,
 				DnDConstants.ACTION_COPY_OR_MOVE, this);
 
 		this.addMouseListener(this);
 
+	}
+	
+	public void addTTL (){
+		
+	}
+
+	public void init(String name,  Image inImage, double inDeltaExp, double statPointPerLvl, HeroStat heroStat, HeroStat heroStatRatio,double strToPowerRatio,double vitToTTLRatio) {
+
+		Random randomGenerator = new Random();
+		id = randomGenerator.nextInt(32000);
+
+		this.name = name;
+		//this.power = power;
+		this.exp = 1;
+		
+		this.ttl = 0;
+
+		this.status = 1;
+		this.lvl = 1;
+		this.zone = 1;
+		this.deltaExp = inDeltaExp;
+		this.image = inImage;
+		this.setHeroStat(heroStat);
+		this.statPointForLvlRatio=heroStatRatio;
+		this.strToPowerRatio= strToPowerRatio;
+		this.vitToTTLRatio=vitToTTLRatio;
+		
 	}
 
 	String getHeroName() {
@@ -130,44 +163,55 @@ public class Hero extends JPanel implements DragGestureListener,
 		exp += addExp;
 	}
 
-	void lvlUp (){
+	void lvlUp() {
 		lvl += 1;
-		
-		heroStat.intp+=3;
-		heroStat.strp+=4;
-		heroStat.vitp+=2;
-		
+
+		heroStat.intp += 3;
+		heroStat.strp += 4;
+		heroStat.vitp += 2;
+
 		LHoH.gameScreen.bottomInfo.chat.addTextChat(name + " достиг " + lvl
 				+ " уровня, его мощь теперь " + (int) power);
 	}
+
+	
+	double getLeftTime(){
+		
+		
+		
+		return heroStat.vitp*vitToTTLRatio-ttl;
+	}
+	
+	double getLifeTimeTotal(){
+		
+		
+		
+		return heroStat.vitp*vitToTTLRatio;
+	}
+	
+	void resetBonus(){
+		power_bonus=0;
+		heroStatBonus.strp=0;
+		heroStatBonus.vitp=0;
+		heroStatBonus.intp=0;
+	}
 	
 	protected void Update() {
-		if (status == 1)
-			ttl -= 0.017;
-		if (ttl <= 0)
-			status = 0;
+		
+		if (status == 1) ttl += 0.017;
+		if (getLeftTime() <= 0)	status = 0;
 
 		expNeedExp = deltaExp * ((double) lvl + (double) lvl * lvl / 20);
 
+		resetBonus();
+		LHoH.gameScreen.heroAbilityStock.useAllAbilityByHero(id);
+		
 		if (expNeedExp < exp) {
 			power += deltaPower;
 			lvlUp();
-			
+
 		}
 
-		// power=exp; //!!
-		String tmptext;
-		tmptext = "<html> <p align=center>" + name + "</p>";
-		tmptext += "<p> Lvl:" + (int) lvl;
-		tmptext += "<p> Exp:" + (int) exp;
-		tmptext += "<p> Power:" + (int) power;
-
-		int min, sec;
-		min = (int) (ttl / 60);
-		sec = (int) (ttl - min * 60);
-
-		tmptext += "<p> Left time:" + min + ":" + sec;
-		setToolTipText(tmptext);
 	}
 
 	void setStatus(int inStatus) {
@@ -190,8 +234,8 @@ public class Hero extends JPanel implements DragGestureListener,
 		g2.setFont(new Font("Arial", Font.BOLD, 16));
 
 		int min, sec;
-		min = (int) (ttl / 60);
-		sec = (int) (ttl - min * 60);
+		min = (int) (getLeftTime() / 60);
+		sec = (int) (getLeftTime() - min * 60);
 
 		g2.drawString(Integer.toString((int) getPower()), 15, 98);
 
@@ -202,6 +246,7 @@ public class Hero extends JPanel implements DragGestureListener,
 			break;
 		case 1:
 
+			
 			g2.drawString(min + ":" + sec, 5, 15);
 
 			break;
@@ -295,25 +340,21 @@ public class Hero extends JPanel implements DragGestureListener,
 
 	@Override
 	public void mouseEntered(MouseEvent arg0) {
-		// TODO Auto-generated method stub
 
 	}
 
 	@Override
 	public void mouseExited(MouseEvent arg0) {
-		// TODO Auto-generated method stub
 
 	}
 
 	@Override
 	public void mousePressed(MouseEvent arg0) {
-		// TODO Auto-generated method stub
 
 	}
 
 	@Override
 	public void mouseReleased(MouseEvent arg0) {
-		// TODO Auto-generated method stub
 
 	}
 
@@ -323,6 +364,18 @@ public class Hero extends JPanel implements DragGestureListener,
 
 	public void setHeroStat(HeroStat heroStat) {
 		this.heroStat = heroStat;
+	}
+
+	public double getPower_bonus() {
+		return power_bonus;
+	}
+
+	public void setPower_bonus(double power_bonus) {
+		this.power_bonus = power_bonus;
+	}
+	
+	public void addPower_bonus(double power_bonus) {
+		this.power_bonus += power_bonus;
 	}
 
 }

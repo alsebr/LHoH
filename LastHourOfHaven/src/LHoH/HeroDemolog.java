@@ -9,7 +9,7 @@ import javax.imageio.ImageIO;
 
 public class HeroDemolog extends Hero{
 public HeroDemolog(String name, double power,double exp,double ttl, String  classH, int zoneId, Image inImage, double inDeltaExp, double inDeltaPower) {
-	super(name,power,exp,ttl,classH,zoneId,inImage,inDeltaExp,inDeltaPower);
+//	super(name,power,exp,ttl,classH,zoneId,inImage,inDeltaExp,inDeltaPower);
 }
 
 protected void Update(){
@@ -47,7 +47,7 @@ nttl=60;
 inDeltaExp=10;
 inDeltaPower=4;
 	
-	Hero hero=new Hero(nname, npower, nexp, nttl, "2", 1, nimage, inDeltaExp, inDeltaPower);
+	//Hero hero=new Hero(nname, npower, nexp, nttl, "2", 1, nimage, inDeltaExp, inDeltaPower);
 	//LHoH.gameScreen.heroStock.addHero(hero);
 	LHoH.gameScreen.itemStock.allScope.add(new Item_Soul());
 
