@@ -73,7 +73,7 @@ double inDeltaExp;
 double inDeltaPower;
 			
 			Random random = new Random();
-			int count=random.nextInt(7);
+			int count=random.nextInt(1);
 			
 			nexp=1;
 			nlvl=1;
@@ -94,6 +94,8 @@ double inDeltaPower;
 			inDeltaExp=10;
 			inDeltaPower=4;
 			
+			hero=new Hero(nname, npower, nexp, nttl, "2", 1, nimage, inDeltaExp, inDeltaPower);
+			
 			switch (count) {
 			case 0:
 				nname="Имп";
@@ -109,6 +111,7 @@ double inDeltaPower;
 				nttl=60;
 				inDeltaExp=10;
 				inDeltaPower=4;
+				hero=new Hero_Imp();
 				break;
 			case 1:
 				nname="Малая тень";
@@ -245,7 +248,7 @@ double inDeltaPower;
 			nheroCostGold=(int)rndModif(nheroCostGold, dispersion);
 			
 			
-			hero=new Hero(nname, npower, nexp, nttl, "2", 1, nimage, inDeltaExp, inDeltaPower);
+			
 			heroCostGold=nheroCostGold;
 			heroCostSoul=nheroCostSoul;
 			heroCostTear=nheroCostTear;

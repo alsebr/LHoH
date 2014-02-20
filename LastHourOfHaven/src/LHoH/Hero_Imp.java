@@ -1,13 +1,19 @@
 package LHoH;
 
 import java.awt.Image;
+import java.io.File;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
 
 public class Hero_Imp extends Hero {
-	public Hero_Imp(String name, double power, double exp, double ttl,
-			String classH, int zoneId, Image inImage, double inDeltaExp,
-			double inDeltaPower) {
-		super(name, power, exp, ttl, classH, zoneId, inImage, inDeltaExp,
-				inDeltaPower);
+	public Hero_Imp() {
+		
+		super("»ÏÔ", 25, 1, 60, "", 1, null, 10,	4);
+		
+		
+		
+		
 		// TODO Auto-generated constructor stub
 	}
 

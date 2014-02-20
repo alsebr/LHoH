@@ -15,7 +15,9 @@ try {
 } catch (IOException e) {
 }
 
-setToolTipText("Вызывает ифрита");
+String tmptext="<html>";
+tmptext+="Старая лампа <br>Использовать:<br> говорят в таких лампах могут жить Джины";
+setToolTipText(tmptext);
 }
 
 void activateItem(){
