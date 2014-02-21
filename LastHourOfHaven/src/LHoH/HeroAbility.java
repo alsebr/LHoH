@@ -2,7 +2,7 @@ package LHoH;
 
 public class HeroAbility {
 String name;
-int heroId;
+int heroId; // if ==-1 all heroes
 
 HeroAbility(){
 	
@@ -24,5 +24,8 @@ void update(){
 
 void useAbility() {
 	}
+
+void useAbilityForHeroId(int id) {
+}
 
 }

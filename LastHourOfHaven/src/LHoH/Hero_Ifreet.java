@@ -5,8 +5,7 @@ import java.awt.Image;
 public class Hero_Ifreet extends Hero {
 	public Hero_Ifreet() {
 		super();
-		
-		
+				
 		String name="ָפנטע";
 		double deltaExp=5;
 		double strp=46;

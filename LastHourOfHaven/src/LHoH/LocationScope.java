@@ -208,6 +208,16 @@ location.update();
 }
 }
 
+Location getLocationByHeroId(int id){
+	for (Location location: allScope) {
+		if (location.hero1.getHeroId()==id) return location;
+	}
+	
+	
+	return null;
+}
+
+
 public void paintComponent(Graphics g) {
 	
 	System.out.println("repaint");

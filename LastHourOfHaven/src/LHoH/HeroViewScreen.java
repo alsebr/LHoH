@@ -107,7 +107,8 @@ public class HeroViewScreen extends JFrame {
 				String htmltext2;
 				
 				htmltext2 = "<html>Статус:";
-				htmltext2 += "<p><font size=-2>"+hero.getStatusTip()+"</font></p>";
+				htmltext2+=LHoH.gameScreen.heroAbilityStock.getAllAbilityTipByHero(hero.getId());
+				//htmltext2 += "<p><font size=-2>"+hero.getStatusTip()+"</font></p>";
 				
 				labelHeroStatusTip.setText(htmltext2);
 

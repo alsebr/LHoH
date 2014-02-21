@@ -23,16 +23,13 @@ public class Item extends JPanel implements MouseListener{
 	double charge_max=0;
 	private String name="ERROR";
 	double ttl=-1000;
+	int grade;
 	public Item() {
 		setSize(80	,105);
 		setPreferredSize(new Dimension(80,105));
 		setBorder(BorderFactory.createLineBorder(Color.black));
-		
-		//image = inImage;
-		
 		Random randomGenerator = new Random();
 	    id=randomGenerator.nextInt(32000);
-	    
 	    this.addMouseListener(this);
 	}
 	

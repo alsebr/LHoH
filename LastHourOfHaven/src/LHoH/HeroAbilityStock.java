@@ -5,29 +5,51 @@ import java.util.List;
 
 public class HeroAbilityStock {
 	List<HeroAbility> allScope = new ArrayList<HeroAbility>();
-	
-	HeroAbilityStock (){
-		
+
+	HeroAbilityStock() {
+
 	}
-	void update(){
-		for (HeroAbility	 heroAbility : allScope) {
+
+	void update() {
+		for (HeroAbility heroAbility : allScope) {
 			heroAbility.update();
 
-	}	
+		}
 	}
-	void addAbility(HeroAbility heroAbility){
+
+	void addAbility(HeroAbility heroAbility) {
 		allScope.add(heroAbility);
 	}
-	
-	String getAllAbilityTip(int heroId){
-		return "";
-	}
-	
-	void useAllAbilityByHero(int heroId){
-		for (HeroAbility	 heroAbility : allScope) {
-			if (heroAbility.heroId==heroId)	heroAbility.useAbility();
 
-	}	
+	String getAllAbilityTipByHero(int heroId) {
+		String tmptText = "";
+		for (HeroAbility heroAbility : allScope) {
+			if (heroAbility.heroId == heroId)
+				tmptText+=heroAbility.getAbilityTip()+" --- ";
+		}
+		
+		for (HeroAbility heroAbility : allScope) {
+			if (heroAbility.heroId == -1)
+				tmptText+=heroAbility.getAbilityTip()+" --- ";
+		}
+		
+		return tmptText;
 	}
-	
+
+	void useAllAbilityByHero(int heroId) {
+		for (HeroAbility heroAbility : allScope) {
+			if (heroAbility.heroId == heroId)
+				heroAbility.useAbility();
+
+		}
+		
+		for (HeroAbility heroAbility : allScope) {
+			if (heroAbility.heroId == -1)
+				heroAbility.useAbilityForHeroId(heroId);
+
+		}
+		
+		
+	}
+
 }

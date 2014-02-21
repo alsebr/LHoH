@@ -10,20 +10,29 @@ public class Hero_Imp extends Hero {
 	public Hero_Imp() {
 
 		super();
-		//init("Имп", 25, 1, 60, "", 1, null, 10, 4);
+		
+		String name="Имп";
+		double deltaExp=5;
+		double strp=34;
+		double vitp=33;
+		double intp=37;
+		double statPointPerLvl=15;
+		double strToPowerRatio=1;
+		double vitToTTLRatio=0.9;		
+		Image image=null;
+		
+		
+		HeroStat heroStatRatio=new HeroStat(0.33, 0.33, 0.34); // summ ==1
+		HeroStat heroStat=new HeroStat(strp, vitp, intp);
+		
+		//public void init(String name,  Image inImage, double inDeltaExp, double statPointPerLvl, HeroStat heroStat, HeroStat heroStatRatio,double strToPowerRatio,double vitToTTLRatio) {
+		init(name, image, deltaExp, statPointPerLvl,heroStat,heroStatRatio,strToPowerRatio,vitToTTLRatio);
+		
+		//LHoH.gameScreen.heroAbilityStock.useAllAbilityByHero(heroId);
+		LHoH.gameScreen.heroAbilityStock.addAbility(new HeroAbility_Imp(getId()));
+		
+		LHoH.gameScreen.heroAbilityStock.addAbility(new HeroAbility_PowerUpAll());
 
-	}
-
-	@Override
-	public double getBonusPower() {
-		// TODO Auto-generated method stub
-		double tmppower = 0;
-
-		if (LHoH.gameScreen.itemStock.checkItemCount("Огненный меч") > 0) {
-			tmppower += getHeroStat().intp;
-		}
-
-		return tmppower;
 	}
 
 	@Override

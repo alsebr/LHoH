@@ -94,26 +94,18 @@ double inDeltaPower;
 			inDeltaExp=10;
 			inDeltaPower=4;
 			
-			hero=new Hero_Ifreet();
+			//hero=new Hero_Ifreet();
 			
 			//hero.init(nname, npower, nexp, nttl, "2", 1, nimage, inDeltaExp, inDeltaPower);
-			
+			count=0;
 			switch (count) {
 			case 0:
-				nname="Имп";
-				npower=25;
-				nimage=null;
-				try {
-					nimage = ImageIO.read(new File("data/image/hero/demon9.gif"));
-				} catch (IOException e) {
-				}
-				nheroCostGold=10;
-				nheroCostSoul=1;//+random.nextInt(3);
+				
+				nheroCostGold=1;
+				nheroCostSoul=0;//+random.nextInt(3);
 				nheroCostTear=0;//+random.nextInt(1);
-				nttl=60;
-				inDeltaExp=10;
-				inDeltaPower=4;
-				//hero=new Hero_Imp();
+				
+				hero=new Hero_Imp();
 				break;
 			case 1:
 				nname="Малая тень";
