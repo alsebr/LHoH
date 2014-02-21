@@ -72,7 +72,8 @@ public class Hero extends JPanel implements DragGestureListener,
 
 		return htmltext;
 	}
-
+	private boolean flagDieThisTick=false;
+	private boolean flagLvlUpThisTick=false;
 	double exp, ttl;
 	protected String name, classH;
 	Image image;
@@ -164,8 +165,9 @@ public class Hero extends JPanel implements DragGestureListener,
 	}
 
 	void lvlUp() {
+		setFlagLvlUpThisTick(true);
 		lvl += 1;
-
+		
 		heroStat.intp += 3;
 		heroStat.strp += 4;
 		heroStat.vitp += 2;
@@ -189,28 +191,35 @@ public class Hero extends JPanel implements DragGestureListener,
 		return heroStat.vitp*vitToTTLRatio;
 	}
 	
-	void resetBonus(){
+	void resetTick(){
 		power_bonus=0;
 		heroStatBonus.strp=0;
 		heroStatBonus.vitp=0;
 		heroStatBonus.intp=0;
+		setFlagDieThisTick(false);
+		setFlagLvlUpThisTick(false);
 	}
 	
 	protected void Update() {
 		
+		resetTick();
 		if (status == 1) ttl += 0.017;
-		if (getLeftTime() <= 0)	status = 0;
+		if (getLeftTime() <= 0)	{
+			status = 0;
+			setFlagDieThisTick(true);
+		}
+			
 
 		expNeedExp = deltaExp * ((double) lvl + (double) lvl * lvl / 20);
 
-		resetBonus();
+
+		if (expNeedExp < exp) {
+			lvlUp();
+		}
+		
 		LHoH.gameScreen.heroAbilityStock.useAllAbilityByHero(id);
 		
-		if (expNeedExp < exp) {
-			power += deltaPower;
-			lvlUp();
 
-		}
 
 	}
 
@@ -376,6 +385,22 @@ public class Hero extends JPanel implements DragGestureListener,
 	
 	public void addPower_bonus(double power_bonus) {
 		this.power_bonus += power_bonus;
+	}
+
+	public boolean isFlagLvlUpThisTick() {
+		return flagLvlUpThisTick;
+	}
+
+	public void setFlagLvlUpThisTick(boolean flagLvlUpThisTick) {
+		this.flagLvlUpThisTick = flagLvlUpThisTick;
+	}
+
+	public boolean isFlagDieThisTick() {
+		return flagDieThisTick;
+	}
+
+	public void setFlagDieThisTick(boolean flagDieThisTick) {
+		this.flagDieThisTick = flagDieThisTick;
 	}
 
 }
