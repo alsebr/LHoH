@@ -133,6 +133,23 @@ public class HeroViewScreen extends JFrame implements ActionListener{
 		labelHeroName.setText(heroName);
 		labelHeroIco.setIcon(new ImageIcon(imageHero));
 
+		switch (hero.getHeroStatPlayerPref()) {
+		case 0:
+		    standartButton.setSelected(true);
+			break;
+		case 1:
+		    strButton.setSelected(true);
+			break;
+		case 2:
+		    vitButton.setSelected(true);
+			break;
+		case 3:
+		    intButton.setSelected(true);
+			break;
+
+		default:
+			break;
+		}
 
 	}
 

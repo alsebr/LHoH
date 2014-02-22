@@ -86,7 +86,7 @@ double inDeltaPower;
 			if (LHoH.gameScreen.player.getHeroNewTier()>60) count++;
 			if (LHoH.gameScreen.player.getHeroNewTier()>90) count++;
 			if (LHoH.gameScreen.player.getHeroNewTier()>10000) count++;
-			if (LHoH.gameScreen.player.getHeroNewTier()>10600) count++;
+			if (LHoH.gameScreen.player.getHeroNewTier()>10100) count++;
 			//if (LHoH.gameScreen.player.getHeroNewTier()>250) count++;
 			
 			

@@ -1,11 +1,11 @@
 package LHoH;
 
-public class HeroAbility_DemonicSignet extends HeroAbility {
+public class HeroAbility_HowlOfTheWolf extends HeroAbility {
 
-	HeroAbility_DemonicSignet(int heroId, int value) {
+	HeroAbility_HowlOfTheWolf(int heroId, int value) {
 		super();
 		setAbilityValue1(value);
-		init(heroId, "Нечистивая печать");
+		init(heroId, "Вой лютоволка");
 	}
 
 	@Override
@@ -15,7 +15,7 @@ public class HeroAbility_DemonicSignet extends HeroAbility {
 	void useAbility() {
 		
 		
-		setAbilityValue2((double)0.002/60*0.5*LHoH.gameScreen.heroStock.getHeroById(heroId).getHeroStat().intp);
+		
 		
 		Hero tmpHero = LHoH.gameScreen.heroStock.getHeroById(heroId);
 		tmpHero.addPower_bonus(getAbilityValue1());
@@ -29,7 +29,7 @@ public class HeroAbility_DemonicSignet extends HeroAbility {
 		String htmltext = "";
 		//double tmppower = abilitypower;
 
-		htmltext += "Нечистивая печать: +" + String.format("%.2g%n", getAbilityValue1());
+		htmltext += "Вой лютоволка: " + String.format("%.2g%n", getAbilityValue1());
 
 		return htmltext;
 

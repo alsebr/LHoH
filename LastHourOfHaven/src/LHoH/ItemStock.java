@@ -24,14 +24,10 @@ public class ItemStock extends JPanel{
 		
 
 		
-		allScope.add(new Item_lamp());
-		allScope.add(new Item_Casket());
-		allScope.add(new Item_Casket());
-		
-		allScope.add(new Item_chest());
-		allScope.add(new Item_chest());
-		allScope.add(new Item_chest());
-		allScope.add(new Item_PowerUp());
+		allScope.add(new Item_chest(0));
+		allScope.add(new Item_chest(1));
+
+		//allScope.add(new Item_PowerUp(0));
 
 				
 		

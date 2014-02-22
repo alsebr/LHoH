@@ -98,6 +98,14 @@ break;
 	
 }
 
+public int getNumberAliveLocation(){
+	int count=0;
+	for (Location location : allScope) {
+		if (location.status==1) count++;
+
+}
+	return count;
+}
 
 void addLocationSilence(){
 	

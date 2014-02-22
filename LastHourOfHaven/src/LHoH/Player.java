@@ -11,9 +11,9 @@ private double locationNewTier=1;
 
 int[] towerProgress;
 Player (){
-	gold=153;
-	soul=150;
-	tear=110;
+	gold=3;
+	soul=0;
+	tear=0;
 	ttl=15*60;
 	maxPortal=4;
 	locationAddCostGold=10;
@@ -43,7 +43,7 @@ void update (){
 	addLocationNewTier(0.017);
 	//gold+=0.01;
 	
-	locationAddCostGold=4*LHoH.gameScreen.locationScope.allScope.size();
+	locationAddCostGold=4*LHoH.gameScreen.locationScope.getNumberAliveLocation();
 	
 	locationActiveNumber=0;
 	for (Location location : LHoH.gameScreen.locationScope.allScope) {

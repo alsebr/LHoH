@@ -8,8 +8,9 @@ import java.util.Random;
 import javax.imageio.ImageIO;
 
 public class Item_chest extends Item {
-	public Item_chest() {
+	public Item_chest(int grade) {
 		super();
+		this.grade=grade;
 		try {
 			image = ImageIO.read(new File("data/image/item/item2.gif"));
 		} catch (IOException e) {
@@ -25,14 +26,12 @@ public class Item_chest extends Item {
 		int addGold, addSoul;
 
 		Random random = new Random();
-		addGold = 5 + random.nextInt(10);
-		addSoul = 1 + random.nextInt(2);
+		addGold = 5*(grade+1) + random.nextInt(4);
+		addSoul = 1*(grade+1) + random.nextInt(1);
 
 		if (random.nextInt(100) < 25) {
 			tmpText = "Вы попытались открыть сундук, но это оказался Мимик.";
-			
-			
-			
+
 			Hero hero=new Hero_Mimic();
 			LHoH.gameScreen.heroStock.addHero(hero);
 			

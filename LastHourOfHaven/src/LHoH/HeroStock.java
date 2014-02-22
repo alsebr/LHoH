@@ -89,6 +89,15 @@ Hero getRandomDeadHero(){
 	return null;
 }
 
+Hero getRandomAliveHero(){
+	for (Hero hero : allScope) {
+		if (hero.status==1) return hero;
+	}
+	
+	
+	return null;
+}
+
 void removeHeroById(int id){
 	for (Hero hero : allScope) {
 		if (hero.getId()==id) {

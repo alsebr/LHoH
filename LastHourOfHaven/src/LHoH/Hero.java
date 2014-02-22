@@ -230,8 +230,7 @@ public class Hero extends JPanel implements DragGestureListener,
 		heroStat.strp += getHeroStatPerLvlFinal().strp;
 		heroStat.vitp += getHeroStatPerLvlFinal().vitp;
 
-		LHoH.gameScreen.bottomInfo.chat.addTextChat(name + " достиг " + lvl
-				+ " уровня, его мощь теперь " + (int) power);
+		//LHoH.gameScreen.bottomInfo.chat.addTextChat(name + " достиг " + lvl	+ " уровня, его мощь теперь " + (int) power);
 	}
 
 	

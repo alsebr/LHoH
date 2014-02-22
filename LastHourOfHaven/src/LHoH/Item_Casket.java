@@ -14,10 +14,10 @@ public class Item_Casket extends Item {
 			image = ImageIO.read(new File("data/image/item/item14.gif"));
 		} catch (IOException e) {
 		}
-		
+
 		String tmptext;
-		tmptext="<html>";
-		tmptext+="Демоническая шкатулка. <br>Использовать:<br> в шкатулке может оказаться что-то полезное";
+		tmptext = "<html>";
+		tmptext += "Демоническая шкатулка. <br>Использовать:<br> в шкатулке может оказаться что-то полезное";
 		setToolTipText(tmptext);
 	}
 
@@ -25,9 +25,42 @@ public class Item_Casket extends Item {
 		String tmpText;
 		int addGold, addSoul;
 
-		LHoH.gameScreen.itemStock.allScope.add(new Item_Weapon1());
-		
-			tmpText = "Открыв шкатулку вы обнаружили Огненный Меч";
+		Random random = new Random();
+		int count = random.nextInt(5);
+		tmpText = "ERROR";
+		switch (count) {
+		case 0:
+			tmpText = "Открыв шкатулку вы обнаружили Демонический сундук";
+			LHoH.gameScreen.itemStock.allScope.add(new Item_chest(0));
+			break;
+		case 1:
+			tmpText = "Открыв шкатулку вы обнаружили Демонический сундук";
+			LHoH.gameScreen.itemStock.allScope.add(new Item_chest(1));
+			break;	
+
+		case 2:
+			tmpText = "Открыв шкатулку вы обнаружили Нечистивую печать";
+			LHoH.gameScreen.itemStock.allScope.add(new Item_PowerUp(0));
+			break;
+		case 3:
+			tmpText = "Открыв шкатулку вы обнаружили Нечистивую печать";
+			LHoH.gameScreen.itemStock.allScope.add(new Item_PowerUp(1));
+			break;
+			
+		case 4:
+			tmpText = "Открыв шкатулку вы обнаружили Склянку с чумой";
+			LHoH.gameScreen.itemStock.allScope.add(new Item_Plague(1));
+			break;
+		//case 5:
+			//tmpText = "Открыв шкатулку вы обнаружили Огненный Меч";
+			//LHoH.gameScreen.itemStock.allScope.add(new Item_Weapon1());
+			//break;
+		default:
+			break;
+		}
+
+
+
 		LHoH.gameScreen.bottomInfo.chat.addTextChat(tmpText);
 		SelfDestroy();
 

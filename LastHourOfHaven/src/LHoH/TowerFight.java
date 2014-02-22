@@ -66,7 +66,7 @@ JButton endTower;
 		if (status==1){
 					
 					if(lvl==2){
-						bossPower=bossPower+(double)10/60;
+						bossPower=bossPower+(double)20/60;
 					}
 					
 					powerH=0;
@@ -84,20 +84,27 @@ JButton endTower;
 				double delta=0;
 				delta=(double)powerH/power;
 				
-				if (lvl==1){
+				if (lvl==1){	Hero tmphero=LHoH.gameScreen.heroStock.getRandomAliveHero();
 							if ((winR<0.25)&&(winR+delta*speed>=0.25)){
 								LHoH.gameScreen.bottomInfo.chat.addTextChat("Вы получили награду за битву с "+bossName+" (25%)");
-								LHoH.gameScreen.itemStock.allScope.add(new Item_chest());
-								LHoH.gameScreen.itemStock.allScope.add(new Item_PowerUp());
+								LHoH.gameScreen.itemStock.allScope.add(new Item_Casket());
+								
+							
+								LHoH.gameScreen.heroAbilityStock.addAbility(new HeroAbility_HowlOfTheWolf(tmphero.getId(),-27));;
+								LHoH.gameScreen.bottomInfo.chat.addTextChat("Раздается чудовищный вой Лютоволка,"+tmphero.name+" замирает в ужасе");
 							}
 							if ((winR<0.50)&&(winR+delta*speed>=0.50)){
 								LHoH.gameScreen.bottomInfo.chat.addTextChat("Вы получили награду за битву с "+bossName+" (50%)");
-								LHoH.gameScreen.itemStock.allScope.add(new Item_chest());
+								LHoH.gameScreen.itemStock.allScope.add(new Item_chest(0));
 								LHoH.gameScreen.itemStock.allScope.add(new Item_Key1());
+								LHoH.gameScreen.heroAbilityStock.addAbility(new HeroAbility_HowlOfTheWolf(tmphero.getId(),-29));;
+								LHoH.gameScreen.bottomInfo.chat.addTextChat("Раздается чудовищный вой Лютоволка,"+tmphero.name+" замирает в ужасе");
 							}
 							if ((winR<0.75)&&(winR+delta*speed>=0.75)){
 								LHoH.gameScreen.bottomInfo.chat.addTextChat("Вы получили награду за битву с "+bossName+" (75%)");
-								LHoH.gameScreen.itemStock.allScope.add(new Item_Plague());
+								LHoH.gameScreen.itemStock.allScope.add(new Item_Plague(2));
+								LHoH.gameScreen.heroAbilityStock.addAbility(new HeroAbility_HowlOfTheWolf(tmphero.getId(),-32));;
+								LHoH.gameScreen.bottomInfo.chat.addTextChat("Раздается чудовищный вой Лютоволка,"+tmphero.name+" замирает в ужасе");
 							}
 							winR+=delta*speed;
 							if (winR>=1) {
@@ -115,15 +122,15 @@ JButton endTower;
 				if (lvl==0){
 					if ((winR<0.25)&&(winR+delta*speed>=0.25)){
 						LHoH.gameScreen.bottomInfo.chat.addTextChat("Вы получили награду за битву с "+bossName+" (25%)");
-						LHoH.gameScreen.itemStock.allScope.add(new Item_chest());
+						LHoH.gameScreen.itemStock.allScope.add(new Item_Casket());
 					}
 					if ((winR<0.50)&&(winR+delta*speed>=0.50)){
 						LHoH.gameScreen.bottomInfo.chat.addTextChat("Вы получили награду за битву с "+bossName+" (50%)");
 						LHoH.gameScreen.itemStock.allScope.add(new Item_Key1());
 					}
 					if ((winR<0.75)&&(winR+delta*speed>=0.75)){
-						LHoH.gameScreen.bottomInfo.chat.addTextChat("Вы получили награду за битву с "+bossName+" (75%)");
-						LHoH.gameScreen.itemStock.allScope.add(new Item_chest());
+						//LHoH.gameScreen.bottomInfo.chat.addTextChat("Вы получили награду за битву с "+bossName+" (75%)");
+						//LHoH.gameScreen.itemStock.allScope.add(new Item_Casket());
 					}
 					winR+=delta*speed;
 					if (winR>=1) {
@@ -133,7 +140,7 @@ JButton endTower;
 						//winR=0.7;
 						//bossPower=6666;
 						LHoH.gameScreen.bottomInfo.chat.addTextChat("Нами окончательно повержен "+bossName);
-						LHoH.gameScreen.itemStock.allScope.add(new Item_PowerUp());
+						LHoH.gameScreen.itemStock.allScope.add(new Item_PowerUp(1));
 						LHoH.gameScreen.player.addLocationNewTier(10000);
 						LHoH.gameScreen.player.addHeroNewTier(10000);
 					}
@@ -205,7 +212,7 @@ JButton endTower;
 		addComp();
 		bossName = "Лютоволк";
 		winR = 0.03;
-		bossPower = 150;
+		bossPower = 250;
 		status = 1;
 		ttl=1*59;
 		}
