@@ -34,7 +34,7 @@ void addLocation (){
 	//Location(String inName,int inPower, int inwinR, Image inEnemy,double inbonus50Gold,double inbonus50Soul, double inbonus50Tear, double inbonusALLexp){
 	
 	Random random = new Random();
-	int count=random.nextInt(3);
+	
 	
 	inName="ERROR";
 	inPower=65;
@@ -46,39 +46,45 @@ void addLocation (){
 		e.printStackTrace();
 	}
 	
-	inbonus50Gold=(double)0.5/60;
-	inbonus50Soul=(double)0.2/60;
-	inbonus50Tear=0;
-	inbonusALLexp=(double)1/60;
+
+	int count=2;
 	
+	if (LHoH.gameScreen.player.getLocationNewTier()>60) count++;
+	if (LHoH.gameScreen.player.getLocationNewTier()>120) count++;
+	
+	if (LHoH.gameScreen.player.getLocationNewTier()>10000) count++;
+	if (LHoH.gameScreen.player.getLocationNewTier()>10000) count++;
+	//if (LHoH.gameScreen.player.getHeroNewTier()>250) count++;
+	
+	
+	
+	count=random.nextInt(count);
 	switch (count) {
 	case 0:
 		addLocationCavenImp();
 		break;
 	case 1:
-addLocationForhottenForest();
-break;
+		addLocationForhottenForest();
+		break;
+
 	case 2:
 		addLocationSilence();
 break;
 	case 3:
-		inName="Ëþöèôåð";
-		inPower=176;
-		inwinR=0.5;
-		try {
-			inEnemy = ImageIO.read(new File("data/image/loc/loc4.gif"));
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		inbonus50Gold=(double)0/60;
-		inbonus50Soul=(double)0/220;
-		inbonus50Tear=(double)0.1/60;
-		inbonusALLexp=(double)3/60;
+		addLocationÑrystalPalace();
 		break;
-
+	case 4:
+		Location tmpL = new Location_WarriorOfTheLight();
+		allScope.add(tmpL);
 		
+		
+		break;
+	case 5:
+		tmpL = new Location_FalseProphet();
+		allScope.add(tmpL);
+		
+		
+		break;
 	default:
 		break;
 	}
@@ -94,78 +100,27 @@ break;
 
 
 void addLocationSilence(){
-	String inName;
-	int inPower;
-	double inwinR;
-	Image inEnemy=null;;
-	double inbonus50Gold,inbonus50Soul,inbonus50Tear,inbonusALLexp;
-	inName="Ïóñòûíÿ áåçìîëâèÿ";
-	inPower=46;
-	inwinR=0.35;
-	try {
-		inEnemy = ImageIO.read(new File("data/image/loc/loc7.gif"));
-	} catch (IOException e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
-	}
 	
-	inbonus50Gold=(double)0.0/60;
-	inbonus50Soul=(double)0.3/60;
-	inbonus50Tear=0;
-	inbonusALLexp=(double)1/60;
-	
-	Location tmpL = new Location(inName,inPower,inwinR,inEnemy,inbonus50Gold,inbonus50Soul,inbonus50Tear,inbonusALLexp);
+	Location tmpL = new Location_SilenceDesert();
 	allScope.add(tmpL);	
 }
 
 void addLocationForhottenForest(){
-	String inName;
-	int inPower;
-	double inwinR;
-	Image inEnemy=null;;
-	double inbonus50Gold,inbonus50Soul,inbonus50Tear,inbonusALLexp;
-	inName="Çàáûòûé ëåñ";
-	inPower=62;
-	inwinR=0.35;
-	try {
-		inEnemy = ImageIO.read(new File("data/image/loc/loc5.gif"));
-	} catch (IOException e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
-	}
-	
-	inbonus50Gold=(double)0.6/60;
-	inbonus50Soul=(double)0.06/60;
-	inbonus50Tear=0;
-	inbonusALLexp=(double)1.2/60;
-	
-	Location tmpL = new Location(inName,inPower,inwinR,inEnemy,inbonus50Gold,inbonus50Soul,inbonus50Tear,inbonusALLexp);
+
+	Location tmpL = new Location_ForgottenForest();
 	allScope.add(tmpL);	
 }
 
 
 void addLocationCavenImp(){
-	String inName;
-	int inPower;
-	double inwinR;
-	Image inEnemy=null;;
-	double inbonus50Gold,inbonus50Soul,inbonus50Tear,inbonusALLexp;
-	inName="Ïåùåðà áåñîâ";
-	inPower=32;
-	inwinR=0.35;
-	try {
-		inEnemy = ImageIO.read(new File("data/image/loc/loc2.gif"));
-	} catch (IOException e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
-	}
+		
+	Location tmpL = new Location_imp();
+	allScope.add(tmpL);
+}
+
+void addLocationÑrystalPalace(){
 	
-	inbonus50Gold=(double)0.2/60;
-	inbonus50Soul=(double)0.0/60;
-	inbonus50Tear=0;
-	inbonusALLexp=(double)1.5/60;
-	
-	Location tmpL = new Location_imp(inName,inPower,inwinR,inEnemy,inbonus50Gold,inbonus50Soul,inbonus50Tear,inbonusALLexp);
+	Location tmpL = new Location_CrystalPalace();
 	allScope.add(tmpL);
 }
 
@@ -197,6 +152,10 @@ void reDrow (Graphics g){
 	
 	for (Location location : allScope) {
 		if (location.status==2) add(location);
+
+}
+	for (Location location : allScope) {
+		if (location.status==3) add(location);
 
 }
 }

@@ -11,13 +11,16 @@ public class Hero_Ifreet extends Hero {
 		super();
 				
 		String name="Ифрит";
-		double deltaExp=5;
-		double strp=46;
-		double vitp=71;
-		double intp=21;
-		double statPointPerLvl=5;
+		double costGold=26;
+		double costSoul=4;
+		double costTear=0;
+		double deltaExp=18;
+		double strp=42;
+		double vitp=120;
+		double intp=31;
+		double statPointPerLvl=17;
 		double strToPowerRatio=1;
-		double vitToTTLRatio=0.9;		
+		double vitToTTLRatio=1;		
 		String htmlTextHeroTip = "Сердце огня.";
 		htmlTextHeroTip += "<br> Любой ваш огненный предмет увеличивает мощь Ифрита на <b>Int</b>";
 		Image image=null;
@@ -30,7 +33,7 @@ public class Hero_Ifreet extends Hero {
 		HeroStat heroStat=new HeroStat(strp, vitp, intp);
 		
 		//public void init(String name,  Image inImage, double inDeltaExp, double statPointPerLvl, HeroStat heroStat, HeroStat heroStatRatio,double strToPowerRatio,double vitToTTLRatio) {
-		init(name, image, deltaExp, statPointPerLvl,heroStat,heroStatRatio,strToPowerRatio,vitToTTLRatio,htmlTextHeroTip);
+		init(name, image, deltaExp, statPointPerLvl,heroStat,heroStatRatio,strToPowerRatio,vitToTTLRatio,htmlTextHeroTip,costGold,costSoul,costTear);
 		
 		//LHoH.gameScreen.heroAbilityStock.useAllAbilityByHero(heroId);
 		//LHoH.gameScreen.heroAbilityStock.addAbility(new HeroAbility_Ifreet(getId()));

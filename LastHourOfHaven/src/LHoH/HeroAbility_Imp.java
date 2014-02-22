@@ -13,8 +13,8 @@ public class HeroAbility_Imp extends HeroAbility {
 
 	void useAbility() {
 		
-		setAbilityValue1((double)0.001/60*  LHoH.gameScreen.heroStock.getHeroById(heroId).getHeroStat().intp);
-		setAbilityValue2((double)0.001/60*0.5*LHoH.gameScreen.heroStock.getHeroById(heroId).getHeroStat().intp);
+		setAbilityValue1((double)0.002/60*  LHoH.gameScreen.heroStock.getHeroById(heroId).getHeroStat().intp);
+		setAbilityValue2((double)0.002/60*0.5*LHoH.gameScreen.heroStock.getHeroById(heroId).getHeroStat().intp);
 		
 		Location tmpLoc = LHoH.gameScreen.locationScope
 				.getLocationByHeroId(heroId);

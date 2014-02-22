@@ -30,9 +30,11 @@ void activateItem(){
 		}
 	}
 	if (tmp!=null){
-		tmpText=tmp.name+ " Был отмечен печатью Великого! (+25 мощи)";
-		tmp.addPower(25);
 		
+		LHoH.gameScreen.heroAbilityStock.addAbility(new HeroAbility_Imp(getId()));
+		tmpText=tmp.name+ " Был отмечен печатью Великого! (+25 мощи)";
+		//tmp.addPower(25);
+		LHoH.gameScreen.heroAbilityStock.addAbility(new HeroAbility_DemonicSignet(tmp.getId()));
 		LHoH.gameScreen.bottomInfo.chat.addTextChat(tmpText);
 
 		

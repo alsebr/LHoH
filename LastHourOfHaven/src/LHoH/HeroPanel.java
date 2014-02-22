@@ -27,11 +27,11 @@ public class HeroPanel extends JPanel {
 		setLayout(new FlowLayout());
 		setBorder(BorderFactory.createLineBorder(Color.black));
 
-		updateTaverna.setText("Обновить (1 Монета)");
+		updateTaverna.setText("Обновить (4 монеты)");
 		updateTaverna.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (LHoH.gameScreen.player.takeResurs(1, 0, 0)) {
-					LHoH.gameScreen.taverna.updateHeroes();
+				if (LHoH.gameScreen.player.takeResurs(3, 0, 0)) {
+					LHoH.gameScreen.taverna.setFlagToUpdateHeroes(true);
 				}
 
 			}

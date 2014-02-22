@@ -11,13 +11,16 @@ public class Hero_Ghoul extends Hero {
 		super();
 				
 		String name="Гуль";
+		double costGold=14;
+		double costSoul=3;
+		double costTear=0;
 		double deltaExp=5;
-		double strp=46;
-		double vitp=71;
+		double strp=26;
+		double vitp=86;
 		double intp=21;
-		double statPointPerLvl=5;
+		double statPointPerLvl=11;
 		double strToPowerRatio=1;
-		double vitToTTLRatio=0.9;		
+		double vitToTTLRatio=1;		
 		String htmlTextHeroTip = "Пожирание трупов.";
 		htmlTextHeroTip += "<br> При повышении уровня Гуль поедает случайный труп, увеличивая свою мощь <b>~Int</b>";
 		Image image=null;
@@ -26,11 +29,11 @@ public class Hero_Ghoul extends Hero {
 		} catch (IOException e) {
 		}
 		
-		HeroStat heroStatRatio=new HeroStat(0.6, 0.2, 0.2); // summ ==1
+		HeroStat heroStatRatio=new HeroStat(0.2, 0.2, 0.6); // summ ==1
 		HeroStat heroStat=new HeroStat(strp, vitp, intp);
 		
 		//public void init(String name,  Image inImage, double inDeltaExp, double statPointPerLvl, HeroStat heroStat, HeroStat heroStatRatio,double strToPowerRatio,double vitToTTLRatio) {
-		init(name, image, deltaExp, statPointPerLvl,heroStat,heroStatRatio,strToPowerRatio,vitToTTLRatio,htmlTextHeroTip);
+		init(name, image, deltaExp, statPointPerLvl,heroStat,heroStatRatio,strToPowerRatio,vitToTTLRatio,htmlTextHeroTip,costGold,costSoul,costTear);
 	}
 
 

@@ -134,6 +134,8 @@ JButton endTower;
 						//bossPower=6666;
 						LHoH.gameScreen.bottomInfo.chat.addTextChat("Нами окончательно повержен "+bossName);
 						LHoH.gameScreen.itemStock.allScope.add(new Item_PowerUp());
+						LHoH.gameScreen.player.addLocationNewTier(10000);
+						LHoH.gameScreen.player.addHeroNewTier(10000);
 					}
 		}
 				

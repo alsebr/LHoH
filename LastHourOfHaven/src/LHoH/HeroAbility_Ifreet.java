@@ -18,7 +18,7 @@ public class HeroAbility_Ifreet extends HeroAbility {
 		if (LHoH.gameScreen.itemStock.checkItemCount("Огненный меч") > 0) {
 
 			Hero tmpHero = LHoH.gameScreen.heroStock.getHeroById(heroId);
-			tmpHero.addPower_bonus((tmpHero).getHeroStat().intp);
+			tmpHero.addPower_bonus((tmpHero).getHeroStat().intp*LHoH.gameScreen.itemStock.checkItemCount("Огненный меч"));
 
 		}
 	}
@@ -29,11 +29,11 @@ public class HeroAbility_Ifreet extends HeroAbility {
 		if (LHoH.gameScreen.itemStock.checkItemCount("Огненный меч") > 0) {
 
 			Hero tmpHero = LHoH.gameScreen.heroStock.getHeroById(heroId);
-			tmppower = (tmpHero).getHeroStat().intp;
+			tmppower = (tmpHero).getHeroStat().intp*LHoH.gameScreen.itemStock.checkItemCount("Огненный меч");
 
 		}
 
-		htmltext += "Сердце огня: +" + tmppower;
+		htmltext += "Сердце огня: +" + String.format("%.4g%n",tmppower);
 
 		return htmltext;
 

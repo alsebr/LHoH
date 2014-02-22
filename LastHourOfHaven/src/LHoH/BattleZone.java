@@ -72,6 +72,14 @@ public class BattleZone extends JPanel implements DropTargetListener{
     	}
 	}
 	
+	void removeHeroFromZoneToHome(){
+		for (Hero hero : HeroStock.allScope) {
+    		if ((hero.getZone()==zoneId))	{
+    			hero.setZone(1);
+    		}
+    	}
+	}
+	
 	public void paintComponent(Graphics g) {
 		
 		System.out.println("repaint BZ");

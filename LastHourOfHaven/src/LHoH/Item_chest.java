@@ -30,30 +30,11 @@ public class Item_chest extends Item {
 
 		if (random.nextInt(100) < 25) {
 			tmpText = "Вы попытались открыть сундук, но это оказался Мимик.";
-			double nexp=1;
-			int nlvl;
-			double npower,nttl;
-			Image nimage;
-			int nheroCostGold,nheroCostSoul,nheroCostTear;
-			String nname;
 			
-		double inDeltaExp;
-		double inDeltaPower;
 			
-			nname="Мимик";
-			npower=21;
-			nimage=null;
-			try {
-				nimage = ImageIO.read(new File("data/image/hero/demon20.gif"));
-			} catch (IOException e) {
-			}
-
-			nttl=87;
-			inDeltaExp=6;
-			inDeltaPower=5;
 			
-		//	Hero hero=new Hero(nname, npower, nexp, nttl, "2", 1, nimage, inDeltaExp, inDeltaPower);
-			//LHoH.gameScreen.heroStock.addHero(hero);
+			Hero hero=new Hero_Mimic();
+			LHoH.gameScreen.heroStock.addHero(hero);
 			
 			
 		} else {

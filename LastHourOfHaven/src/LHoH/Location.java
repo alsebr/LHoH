@@ -23,9 +23,10 @@ public class Location extends JPanel {
 
 	class EnemyIco extends JPanel {
 		Image image;
-		int power;
+		double power;
+		double pLocation;
 
-		public EnemyIco(Image image, int power) {
+		public EnemyIco(Image image, double power) {
 			this.power = power;
 			this.image = image;
 			setSize(80, 105);
@@ -39,17 +40,22 @@ public class Location extends JPanel {
 			g.drawImage(image, 1, 1, null);
 			g.setColor(Color.red);
 			g.setFont(new Font("Arial", Font.BOLD, 16));
-			g.drawString(Integer.toString(power), 10, 100);
+			g.drawString(Integer.toString((int)power), 10, 100);
+			
+			g.drawString(Integer.toString((int)pLocation)+"%", 10, 20);
 		}
 	}
 
 	BattleZone hero1;
 	BattleZone hero2;
 	EnemyIco enemyIco;
-	int power;
+	double power;
 	double winR;
-	int status; // 1- live 2 -strage
+	int status; // 1- live 3 -end
 
+	double pLocation_current=0;
+	double pLocation_max=4;
+	
 	double bonus50Gold = 0;
 	double bonus50Soul = 0;
 	double bonus50Tear = 0;
@@ -118,9 +124,19 @@ public class Location extends JPanel {
 
 	Image imageGold, imageSoul, imageTear;
 
-	Location(String inName, int inPower, double inwinR, Image inEnemy,
+	Location() {
+
+	}
+	
+	void decPower(double dPower){
+		power-=dPower;
+		if (power<1)power=1;
+	}
+	
+	
+	void init(String inName, int inPower, double inwinR, Image inEnemy,
 			double inbonus50Gold, double inbonus50Soul, double inbonus50Tear,
-			double inbonusALLexp) {
+			double inbonusALLexp,double pLocation_max){
 
 		try {
 			imageGold = ImageIO.read(new File("data/image/interface/1_30.gif"));
@@ -137,7 +153,7 @@ public class Location extends JPanel {
 		setLayout(null);
 		setBorder(BorderFactory.createLineBorder(Color.red));
 
-		status = 1;
+		status = 1; 
 
 		power = inPower;
 		winR = inwinR;
@@ -148,6 +164,8 @@ public class Location extends JPanel {
 		bonus50Tear = inbonus50Tear;
 		bonusALLexp = inbonusALLexp;
 
+		
+		this.pLocation_max=pLocation_max;
 		GridBagConstraints c = new GridBagConstraints();
 		c.fill = GridBagConstraints.HORIZONTAL;
 		c.gridx = 1;
@@ -225,14 +243,14 @@ public class Location extends JPanel {
 			}
 		}
 
-		if (status == 2) {
+		if (status == 3) {
 
 			g2.setColor(new Color(50, 50, 50, 188));
 			// g2.setColor(Color.LIGHT_GRAY);
 			g2.fillRect(1, 1, ((int) (d.getWidth())), (int) (d.getHeight()));
 			g2.setColor(Color.black);
 			g2.setFont(new Font("Arial", Font.BOLD, 15));
-			g2.drawString("ÇÀÕÂÀ×ÅÍÎ", 97, 60);
+			g2.drawString("ÎÏÓÑÒÎØÅÍÎ", 97, 60);
 		}
 
 		add(hero1);
@@ -314,12 +332,22 @@ public class Location extends JPanel {
 				LHoH.gameScreen.player.addGold(bonus50Gold_final);
 				LHoH.gameScreen.player.addSoul(bonus50Soul_final);
 				LHoH.gameScreen.player.addTear(bonus50Tear_final);
+				pLocation_current+=(double)1/60;
 			}
 
 			hero1.addExp(bonusALLexp_final);
 
 			hero1.removeHeroIfDead();
 
+			
+			enemyIco.power=power;
+			enemyIco.pLocation=100/(double)pLocation_max*((double)pLocation_max-(double)pLocation_current);
+			
+			if (pLocation_current>=pLocation_max) {
+				status=3;
+				doLocationDevastated();
+				LHoH.gameScreen.bottomInfo.chat.addTextChat("Ïîðòàë "+name+" îïóñòîøåí ");
+			}
 		}
 		if (status == 2) {
 			LHoH.gameScreen.player.addGold(bonus50Gold_final);
@@ -327,9 +355,21 @@ public class Location extends JPanel {
 			LHoH.gameScreen.player.addTear(bonus50Tear_final);
 		}
 		
+		if (status == 3) {
+			hero1.removeHeroFromZoneToHome();
+		}
+		
 		resetModifyIncome();
+		
+		
+		
+		
 	}
 
+	void doLocationDevastated(){
+		
+	}
+	
 	public void paintComponent(Graphics g) {
 
 		System.out.println("repaint");

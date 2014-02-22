@@ -88,6 +88,7 @@ public class Hero extends JPanel implements DragGestureListener,
 	private double power;
 	private double power_bonus;
 
+	private double costGold,costSoul,costTear;
 	
 	
 	double statPointForLvl;
@@ -137,7 +138,7 @@ public class Hero extends JPanel implements DragGestureListener,
 	
 	
 
-	public void init(String name,  Image inImage, double inDeltaExp, double statPointPerLvl, HeroStat heroStat, HeroStat heroStatRatio,double strToPowerRatio,double vitToTTLRatio,String htmlTextHeroTip) {
+	public void init(String name,  Image inImage, double inDeltaExp, double statPointPerLvl, HeroStat heroStat, HeroStat heroStatRatio,double strToPowerRatio,double vitToTTLRatio,String htmlTextHeroTip,double costGold,double costSoul,double costTear) {
 
 		Random randomGenerator = new Random();
 		id = randomGenerator.nextInt(32000);
@@ -159,6 +160,9 @@ public class Hero extends JPanel implements DragGestureListener,
 		this.strToPowerRatio= strToPowerRatio;
 		this.vitToTTLRatio=vitToTTLRatio;
 		this.htmlTextHeroTip=htmlTextHeroTip;
+		this.setCostGold(costGold);
+		this.costSoul=costSoul;
+		this.setCostTear(costTear);
 	}
 	boolean isDead()
 	{
@@ -484,6 +488,30 @@ public class Hero extends JPanel implements DragGestureListener,
 
 	public void setHeroStatPlayerPref(int heroStatPlayerPref) {
 		this.heroStatPlayerPref = heroStatPlayerPref;
+	}
+
+	public double getCostSoul() {
+		return costSoul;
+	}
+
+	public void setCostSoul(double costSoul) {
+		this.costSoul = costSoul;
+	}
+
+	public double getCostTear() {
+		return costTear;
+	}
+
+	public void setCostTear(double costTear) {
+		this.costTear = costTear;
+	}
+
+	public double getCostGold() {
+		return costGold;
+	}
+
+	public void setCostGold(double costGold) {
+		this.costGold = costGold;
 	}
 
 }

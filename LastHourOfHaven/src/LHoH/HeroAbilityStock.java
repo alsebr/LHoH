@@ -25,12 +25,12 @@ public class HeroAbilityStock {
 		String tmptText = "";
 		for (HeroAbility heroAbility : allScope) {
 			if (heroAbility.heroId == heroId)
-				tmptText+=heroAbility.getAbilityTip()+" --- ";
+				tmptText+=heroAbility.getAbilityTip()+"<br>";
 		}
 		
 		for (HeroAbility heroAbility : allScope) {
 			if (heroAbility.heroId == -1)
-				tmptText+=heroAbility.getAbilityTip()+" --- ";
+				tmptText+=heroAbility.getAbilityTip()+"<br>";
 		}
 		
 		return tmptText;

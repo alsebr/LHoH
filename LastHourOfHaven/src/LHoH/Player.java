@@ -5,11 +5,15 @@ double gold, soul,tear,ttl;
 int maxPortal;
 int locationAddCostGold;
 int locationActiveNumber;
+
+private double heroNewTier=1;
+private double locationNewTier=1;
+
 int[] towerProgress;
 Player (){
-	gold=53;
-	soul=50;
-	tear=0;
+	gold=153;
+	soul=150;
+	tear=110;
 	ttl=15*60;
 	maxPortal=4;
 	locationAddCostGold=10;
@@ -35,6 +39,8 @@ void setTowerProgress(int inLvl,double proc){
 
 void update (){
 	ttl-=0.017;
+	addHeroNewTier(0.017);
+	addLocationNewTier(0.017);
 	//gold+=0.01;
 	
 	locationAddCostGold=4*LHoH.gameScreen.locationScope.allScope.size();
@@ -73,5 +79,23 @@ boolean takeResurs(double dGold,double dSoul, double dTear){
 	
 	return false;
 }
+
+public double getHeroNewTier() {
+	return heroNewTier;
+}
+
+public void addHeroNewTier(double heroNewTier) {
+	this.heroNewTier += heroNewTier;
+}
+
+public double getLocationNewTier() {
+	return locationNewTier;
+}
+
+public void addLocationNewTier(double locationNewTier) {
+	this.locationNewTier += locationNewTier;
+}
+
+
 
 }

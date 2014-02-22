@@ -26,6 +26,7 @@ public class Taverna extends JPanel{
 	
 	double ttlUpdate_reload=60;
 	double ttlUpdate_now=ttlUpdate_reload;
+	private boolean flagToUpdateHeroes;
 	
 	class HeroForTrade extends JPanel{
 		Hero hero;
@@ -73,7 +74,24 @@ double inDeltaExp;
 double inDeltaPower;
 			
 			Random random = new Random();
-			int count=random.nextInt(2);
+			
+			
+			
+			LHoH.gameScreen.player.getHeroNewTier();
+			
+			
+			int count=2;
+			
+			if (LHoH.gameScreen.player.getHeroNewTier()>10) count++;
+			if (LHoH.gameScreen.player.getHeroNewTier()>60) count++;
+			if (LHoH.gameScreen.player.getHeroNewTier()>90) count++;
+			if (LHoH.gameScreen.player.getHeroNewTier()>10000) count++;
+			if (LHoH.gameScreen.player.getHeroNewTier()>10600) count++;
+			//if (LHoH.gameScreen.player.getHeroNewTier()>250) count++;
+			
+			
+			
+			count=random.nextInt(count);
 			
 			nexp=1;
 			nlvl=1;
@@ -108,72 +126,31 @@ double inDeltaPower;
 				hero=new Hero_Imp();
 				break;
 			case 1:
-				hero=new Hero_Ghoul();
+				hero=new Hero_SmallDemon();
 				break;
 				
 			case 2:
-				nname="Малый демон";
-				npower=5;
-				nimage=null;
-				try {
-					nimage = ImageIO.read(new File("data/image/hero/demon5.gif"));
-				} catch (IOException e) {
-				}
-				nheroCostGold=13;
-				nheroCostSoul=1;
-				nheroCostTear=0;//+random.nextInt(1);
-				nttl=120;
-				inDeltaExp=8;
-				inDeltaPower=7;
+				hero=new Hero_SmallShadow();
 				break;
 
+			
+
 			case 3:
-				nname="Порождение";
-				npower=15;
-				nimage=null;
-				try {
-					nimage = ImageIO.read(new File("data/image/hero/demon11.gif"));
-				} catch (IOException e) {
-				}
-				nheroCostGold=0;
-				nheroCostSoul=2;
-				nheroCostTear=0;//+random.nextInt(1);
-				nttl=70;
-				inDeltaExp=9;
-				inDeltaPower=6;
+				
+				hero=new Hero_Ghoul();
 				break;
 			case 4:
-				nname="Ифрит";
-				npower=50;
-				nimage=null;
-				try {
-					nimage = ImageIO.read(new File("data/image/hero/demon12.gif"));
-				} catch (IOException e) {
-				}
-				nheroCostGold=40;
-				nheroCostSoul=2;
-				nheroCostTear=0;//+random.nextInt(1);
-				nttl=300;
-				inDeltaExp=30;
-				inDeltaPower=17;
+				
+				hero=new Hero_Leech();
 				break;
 			case 5:
-				nname="Цербер";
-				npower=40;
-				nimage=null;
-				try {
-					nimage = ImageIO.read(new File("data/image/hero/demon13.gif"));
-				} catch (IOException e) {
-				}
-				nheroCostGold=25;
-				nheroCostSoul=4;
-				nheroCostTear=0;//+random.nextInt(1);
-				nttl=280;
-				inDeltaExp=30;
-				inDeltaPower=15;
+				hero=new Hero_Ifreet();
+				break;
+			case 6:
+				hero=new Hero_Pupetter();
 				break;
 				
-			case 6:
+			case 61:
 				nname="Крестоносец";
 				npower=90;
 				nimage=null;
@@ -232,10 +209,12 @@ double inDeltaPower;
 			
 			
 			
-			heroCostGold=nheroCostGold;
-			heroCostSoul=nheroCostSoul;
-			heroCostTear=nheroCostTear;
+			heroCostGold=(int)hero.getCostGold();
+			heroCostSoul=(int)hero.getCostSoul();
+			heroCostTear=(int)hero.getCostTear();
+			inDeltaExp= (int)hero.deltaExp;
 			
+			double heroTtl=(int)hero.getLeftTime();
 			
 			hero.setBounds(10, 10, hero.getWidth(), hero.getHeight());
 			add(hero);
@@ -246,15 +225,11 @@ double inDeltaPower;
 			String tmptext;
 			tmptext="<html> <p align=center>"+hero.name+"</p>";
 			tmptext+="<p><font color=black> Опыт на уровень " +inDeltaExp;
-			tmptext+="<br> Мощь за уровень "+String.format("%.2g%n", inDeltaPower);
-			//tmptext+="<p> Exp "+(int)hero.exp;
+
 			tmptext+="<br> Мощь "+(int)hero.getPower();
 			
-			int min,sec;
-			min=(int)(hero.ttl/60);
-			sec= (int)(hero.ttl-min*60);
-			
-			tmptext+="<br>Время жизни "+min +":"+sec;
+		
+			tmptext+="<br>Время жизни "+FrameWorkLHoH.ttlToTime(heroTtl);
 			
 			heroInf.setText(tmptext);
 			heroInf.setSize(new Dimension(440, 80));
@@ -288,7 +263,9 @@ double inDeltaPower;
 		    				  }
 		    			  }
 		    			  
-		    			  LHoH.gameScreen.taverna.checkEmptyHeroes();
+		    			  //LHoH.gameScreen.taverna.checkEmptyHeroes();
+		    			  //LHoH.gameScreen.taverna.updateHeroes();
+		    			 // LHoH.gameScreen.taverna.updateHeroes();
 		    		  }
 		    		  
 		    		  
@@ -374,6 +351,13 @@ double inDeltaPower;
 		repaint();
 	}
 	void update (){
+		
+		if (allScope.size()<3) setFlagToUpdateHeroes(true); 
+			if (isFlagToUpdateHeroes())  {
+				setFlagToUpdateHeroes(false);
+				updateHeroes();
+			}
+			
 		ttlUpdate_now-=(double)1/60;
 	}
 	
@@ -382,5 +366,11 @@ double inDeltaPower;
 		revalidate();
 		for (HeroForTrade heroForTrade : allScope) add(heroForTrade);
 
+	}
+	public boolean isFlagToUpdateHeroes() {
+		return flagToUpdateHeroes;
+	}
+	public void setFlagToUpdateHeroes(boolean flagToUpdateHeroes) {
+		this.flagToUpdateHeroes = flagToUpdateHeroes;
 	}
 }

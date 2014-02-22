@@ -12,13 +12,16 @@ public class Hero_Imp extends Hero {
 		super();
 		
 		String name="Имп";
-		double deltaExp=5;
+		double costGold=7;
+		double costSoul=0;
+		double costTear=0;
+		double deltaExp=12;
 		double strp=34;
-		double vitp=1;
-		double intp=37;
-		double statPointPerLvl=15;
+		double vitp=60;
+		double intp=25;
+		double statPointPerLvl=4;
 		double strToPowerRatio=1;
-		double vitToTTLRatio=0.9;		
+		double vitToTTLRatio=1;		
 		String htmlTextHeroTip = "Бесовская хитрость.";
 		htmlTextHeroTip += "<br> Импы захватывают пещеры более эффективно <b>~Int</b>";
 		
@@ -28,11 +31,11 @@ public class Hero_Imp extends Hero {
 		} catch (IOException e) {
 		}
 		
-		HeroStat heroStatRatio=new HeroStat(0.33, 0.33, 0.34); // summ ==1
+		HeroStat heroStatRatio=new HeroStat(0.6, 0.2, 0.2); // summ ==1
 		HeroStat heroStat=new HeroStat(strp, vitp, intp);
 		
 		//public void init(String name,  Image inImage, double inDeltaExp, double statPointPerLvl, HeroStat heroStat, HeroStat heroStatRatio,double strToPowerRatio,double vitToTTLRatio) {
-		init(name, image, deltaExp, statPointPerLvl,heroStat,heroStatRatio,strToPowerRatio,vitToTTLRatio,htmlTextHeroTip);
+		init(name, image, deltaExp, statPointPerLvl,heroStat,heroStatRatio,strToPowerRatio,vitToTTLRatio,htmlTextHeroTip,costGold,costSoul,costTear);
 		
 		//LHoH.gameScreen.heroAbilityStock.useAllAbilityByHero(heroId);
 		

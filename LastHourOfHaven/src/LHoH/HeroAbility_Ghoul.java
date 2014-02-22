@@ -33,7 +33,7 @@ public class HeroAbility_Ghoul extends HeroAbility {
 
 	String getAbilityTip() {
 		String htmltext = "";
-		htmltext += "Пожирание трупов: +" + String.format("%.5g%n", getAbilityValue2())+" ("+String.format("%.2g%n", getAbilityValue1()*100)+"% с пожирания)";
+		htmltext += "Пожирание трупов: +" + String.format("%.4g%n", getAbilityValue2())+" ("+String.format("%.2g%n", getAbilityValue1()*100)+"% с пожирания)";
 
 		return htmltext;
 	}

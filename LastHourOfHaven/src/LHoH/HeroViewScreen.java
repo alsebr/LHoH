@@ -21,7 +21,7 @@ import javax.swing.JRadioButton;
 
 public class HeroViewScreen extends JFrame implements ActionListener{
 	HeroViewScreen() {
-		setSize(350, 390);
+		setSize(350, 460);
 		// setPreferredSize(new Dimension(50, 104));
 		setLayout(null);
 		setAlwaysOnTop(true);
@@ -41,11 +41,13 @@ public class HeroViewScreen extends JFrame implements ActionListener{
 		add(labelHeroStat);
 		
 		labelHeroTip.setBorder(BorderFactory.createLineBorder(Color.black));
-		labelHeroTip.setBounds(10, 245, 200, 60);
+		labelHeroTip.setBounds(10, 245, 300, 60);
 		add(labelHeroTip);
 		
 		labelHeroStatusTip.setBorder(BorderFactory.createLineBorder(Color.black));
-		labelHeroStatusTip.setBounds(10, 315, 200, 50);
+		labelHeroStatusTip.setBounds(10, 315, 300, 150);
+		
+		labelHeroStatusTip.setVerticalAlignment(JLabel.TOP);
 		add(labelHeroStatusTip);
 
 		
@@ -178,10 +180,10 @@ public class HeroViewScreen extends JFrame implements ActionListener{
 				
 				String htmltext2;
 				
-				htmltext2 = "<html>Статус:";
+				htmltext2 = "<html>Статус:<p><font size=-2>";
 				htmltext2+=LHoH.gameScreen.heroAbilityStock.getAllAbilityTipByHero(hero.getId());
 				//htmltext2 += "<p><font size=-2>"+hero.getStatusTip()+"</font></p>";
-				
+				htmltext2 += "</font></p>";
 				labelHeroStatusTip.setText(htmltext2);
 
 			}
