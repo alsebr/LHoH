@@ -115,7 +115,7 @@ public class BattleZone extends JPanel implements DropTargetListener{
 	
 	void reDrow(Graphics g){
 	    
-	    	//removeAll();
+	    	removeAll();
 	    	
 	    	
 	    	for (Hero hero : HeroStock.allScope) {

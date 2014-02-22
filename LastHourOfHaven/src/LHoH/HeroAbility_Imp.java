@@ -4,39 +4,44 @@ public class HeroAbility_Imp extends HeroAbility {
 
 	HeroAbility_Imp(int heroId) {
 		super();
-
 		init(heroId, "Бесовская хитрость");
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override
 	void update() {
-
 	}
 
 	void useAbility() {
-		// Hero tmpHero = LHoH.gameScreen.heroStock.getHeroById(heroId);
-		// tmpHero.addPower_bonus((tmpHero).getHeroStat().intp);
+		
+		setAbilityValue1((double)0.001/60*  LHoH.gameScreen.heroStock.getHeroById(heroId).getHeroStat().intp);
+		setAbilityValue2((double)0.001/60*0.5*LHoH.gameScreen.heroStock.getHeroById(heroId).getHeroStat().intp);
+		
 		Location tmpLoc = LHoH.gameScreen.locationScope
 				.getLocationByHeroId(heroId);
 
 		if (tmpLoc != null) {
 			if (tmpLoc.name == "Пещера бесов") {
-				tmpLoc.addBonus50Gold_modify(50);
-				System.out.println("123+");
+				tmpLoc.addBonus50Gold_modify(getAbilityValue1());
+				tmpLoc.addBonus50Soul_modify(getAbilityValue2());
+				
 			}
 		}
+		
+		
 
 	}
 
 	String getAbilityTip() {
+		
 		String htmltext = "";
-		double tmppower = 0;
+		//double tmppower = abilitypower;
 
-		htmltext += "имп: +" + tmppower;
+		htmltext += "Бесовская хитрость: +" + String.format("%.2g%n", getAbilityValue1()*60)+" gold, "+String.format("%.2g%n", getAbilityValue2()*60)+" soul";
 
 		return htmltext;
 
 	}
+	
+
 
 }

@@ -73,7 +73,7 @@ double inDeltaExp;
 double inDeltaPower;
 			
 			Random random = new Random();
-			int count=random.nextInt(1);
+			int count=random.nextInt(2);
 			
 			nexp=1;
 			nlvl=1;
@@ -97,7 +97,7 @@ double inDeltaPower;
 			//hero=new Hero_Ifreet();
 			
 			//hero.init(nname, npower, nexp, nttl, "2", 1, nimage, inDeltaExp, inDeltaPower);
-			count=0;
+			//count=0;
 			switch (count) {
 			case 0:
 				
@@ -108,20 +108,9 @@ double inDeltaPower;
 				hero=new Hero_Imp();
 				break;
 			case 1:
-				nname="Малая тень";
-				npower=12;
-				nimage=null;
-				try {
-					nimage = ImageIO.read(new File("data/image/hero/demon4.gif"));
-				} catch (IOException e) {
-				}
-				nheroCostGold=10;
-				nheroCostSoul=1;
-				nheroCostTear=0;//+random.nextInt(1);
-				nttl=70;
-				inDeltaExp=8;
-				inDeltaPower=6;
+				hero=new Hero_Ghoul();
 				break;
+				
 			case 2:
 				nname="Малый демон";
 				npower=5;
@@ -286,6 +275,8 @@ double inDeltaPower;
 		    	  public void actionPerformed(ActionEvent e) {
 						
 		    		  if (LHoH.gameScreen.player.takeResurs(heroCostGold, heroCostSoul, heroCostTear)){
+		    			  
+		    			  hero.addHeroAbilities();
 		    			  LHoH.gameScreen.heroStock.addHero(hero);
 		    			  
 		    			  //LHoH.gameScreen.taverna.allScope.remove(this);

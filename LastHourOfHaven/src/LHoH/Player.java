@@ -7,8 +7,8 @@ int locationAddCostGold;
 int locationActiveNumber;
 int[] towerProgress;
 Player (){
-	gold=3;
-	soul=0;
+	gold=53;
+	soul=50;
 	tear=0;
 	ttl=15*60;
 	maxPortal=4;

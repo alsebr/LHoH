@@ -6,17 +6,22 @@ import java.awt.FlowLayout;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
 import java.beans.Visibility;
 
 import javax.swing.BorderFactory;
+import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JRadioButton;
 
-public class HeroViewScreen extends JFrame {
+public class HeroViewScreen extends JFrame implements ActionListener{
 	HeroViewScreen() {
-		setSize(250, 390);
+		setSize(350, 390);
 		// setPreferredSize(new Dimension(50, 104));
 		setLayout(null);
 		setAlwaysOnTop(true);
@@ -43,7 +48,72 @@ public class HeroViewScreen extends JFrame {
 		labelHeroStatusTip.setBounds(10, 315, 200, 50);
 		add(labelHeroStatusTip);
 
+		
+		
+		
+		
+		    standartButton = new JRadioButton("auto");
+		    standartButton.setMnemonic(KeyEvent.VK_C);
+		    standartButton.setActionCommand("auto");
+		    standartButton.setSelected(true);
+			add(standartButton);
+		  
+			strButton = new JRadioButton("str");  
+			strButton.setMnemonic(KeyEvent.VK_B);
+			strButton.setActionCommand("str");
+			add(strButton);
+		  
+		  
+		    vitButton = new JRadioButton("vit");
+		    vitButton.setMnemonic(KeyEvent.VK_D);
+		    vitButton.setActionCommand("vit");
+			add(vitButton);
+
+		    intButton = new JRadioButton("int");
+		    intButton.setMnemonic(KeyEvent.VK_E);
+		    intButton.setActionCommand("int");
+			add(intButton);
+			
+			standartButton.setBounds(250, 75-40, 200, 50);
+			strButton.setBounds(250, 105-40, 200, 50);  
+			vitButton.setBounds(250, 135-40, 200, 50);
+			intButton.setBounds(250, 165-40, 200, 50);
+
+		    //Group the radio buttons.
+		    ButtonGroup group = new ButtonGroup();
+		    group.add(standartButton);
+		    group.add(strButton);
+		    group.add(vitButton);
+		    group.add(intButton);
+		    
+		    
+
+		    //Register a listener for the radio buttons.
+		    strButton.addActionListener((ActionListener) this);
+		    vitButton.addActionListener((ActionListener) this);
+		    standartButton.addActionListener((ActionListener) this);
+		    intButton.addActionListener((ActionListener) this);
+		    
+		
+		
+		
 		revalidate();
+	}
+	JRadioButton strButton;
+	JRadioButton standartButton;
+	JRadioButton vitButton;
+	JRadioButton intButton;
+	
+	public void actionPerformed(ActionEvent e) {
+
+		int tmppref=0;
+		
+		if (e.getActionCommand()=="str") tmppref=1;
+		if (e.getActionCommand()=="vit") tmppref=2;
+		if (e.getActionCommand()=="int") tmppref=3;
+		
+		
+		hero.setHeroStatPlayerPref(tmppref);
 	}
 
 	void activate(int heroId) {
@@ -80,11 +150,13 @@ public class HeroViewScreen extends JFrame {
 				String htmltext;
 				HeroStat heroStat = hero.getHeroStat();
 
+				
+				
 				htmltext = "<html>";
 				htmltext += "<br>Lvl: " + hero.lvl;
-				htmltext += "<br>Str: " + heroStat.strp;
-				htmltext += "<br>Vit: " + heroStat.vitp;
-				htmltext += "<br>Int: " + heroStat.intp;
+				htmltext += "<br>Str: " + String.format("%.3g%n",heroStat.strp)+" ("+String.format("%.2g%n", hero.getHeroStatPerLvlFinal().strp)+" for lvl)";
+				htmltext += "<br>Vit: " + String.format("%.3g%n",heroStat.vitp)+" ("+String.format("%.2g%n", hero.getHeroStatPerLvlFinal().vitp)+" for lvl)";
+				htmltext += "<br>Int: " + String.format("%.3g%n",heroStat.intp)+" ("+String.format("%.2g%n", hero.getHeroStatPerLvlFinal().intp)+" for lvl)";
 				htmltext += "<br>";
 				htmltext += "<br>Power: " + (int) hero.getPurePower() +"+"+(int) hero.getBonusPower();
 				htmltext += "<br>Time: " + FrameWorkLHoH.ttlToTime(hero.getLeftTime())+"/"+FrameWorkLHoH.ttlToTime(hero.getLifeTimeTotal());

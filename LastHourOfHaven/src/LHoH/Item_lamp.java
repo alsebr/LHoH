@@ -40,6 +40,7 @@ double inDeltaExp;
 double inDeltaPower;
 	
 	Hero hero=new Hero_Ifreet();
+	hero.addHeroAbilities();
 	LHoH.gameScreen.heroStock.addHero(hero);
 	
 	SelfDestroy();

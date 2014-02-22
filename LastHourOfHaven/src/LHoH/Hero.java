@@ -52,6 +52,8 @@ public class Hero extends JPanel implements DragGestureListener,
 	public double getPurePower() {
 		return heroStat.strp*strToPowerRatio;
 	}
+	
+	
 
 	public double getBonusPower() {
 		return getPower_bonus();
@@ -68,25 +70,25 @@ public class Hero extends JPanel implements DragGestureListener,
 	}
 
 	public String getHeroTip() {
-		String htmltext = "";
-
-		return htmltext;
+		return htmlTextHeroTip;
 	}
 	private boolean flagDieThisTick=false;
 	private boolean flagLvlUpThisTick=false;
 	double exp, ttl;
 	protected String name, classH;
 	Image image;
-	int status; // 1 - live, 0 - dead, 2 - strage
+	int status; // 1 - live, 0 - dead, 2 - strage, 3-removed
 	int lvl;
 	private int zone;
 	private int id;
 	double expNeedExp;
 	private HeroStat heroStat;
 	private HeroStat heroStatBonus=new HeroStat(0, 0, 0);
-	
+	String htmlTextHeroTip="";
 	private double power;
 	private double power_bonus;
+
+	
 	
 	double statPointForLvl;
 	HeroStat statPointForLvlRatio;
@@ -99,7 +101,8 @@ public class Hero extends JPanel implements DragGestureListener,
 		this.id = id;
 	}
 
-	HeroStat statPointForLvlRatioPlayerModify;
+	private HeroStat statPointForLvlRatioPlayerModify;
+	private int heroStatPlayerPref=0;
 	HeroStat statPointForLvlRatioFinal;
 	double strToPowerRatio=2;
 	double vitToTTLRatio=2;
@@ -127,8 +130,14 @@ public class Hero extends JPanel implements DragGestureListener,
 	public void addTTL (){
 		
 	}
+	
+	public void  addHeroAbilities(){
+		
+	}
+	
+	
 
-	public void init(String name,  Image inImage, double inDeltaExp, double statPointPerLvl, HeroStat heroStat, HeroStat heroStatRatio,double strToPowerRatio,double vitToTTLRatio) {
+	public void init(String name,  Image inImage, double inDeltaExp, double statPointPerLvl, HeroStat heroStat, HeroStat heroStatRatio,double strToPowerRatio,double vitToTTLRatio,String htmlTextHeroTip) {
 
 		Random randomGenerator = new Random();
 		id = randomGenerator.nextInt(32000);
@@ -146,9 +155,15 @@ public class Hero extends JPanel implements DragGestureListener,
 		this.image = inImage;
 		this.setHeroStat(heroStat);
 		this.statPointForLvlRatio=heroStatRatio;
+		this.statPointForLvl=statPointPerLvl;
 		this.strToPowerRatio= strToPowerRatio;
 		this.vitToTTLRatio=vitToTTLRatio;
-		
+		this.htmlTextHeroTip=htmlTextHeroTip;
+	}
+	boolean isDead()
+	{
+		if (status==0)	return true;
+		return false;
 	}
 
 	String getHeroName() {
@@ -164,13 +179,52 @@ public class Hero extends JPanel implements DragGestureListener,
 		exp += addExp;
 	}
 
+	
+	HeroStat getHeroStatPerLvlFinal(){
+		HeroStat tmpherostat=new HeroStat(0, 0, 0);
+		
+		HeroStat playerModify=new HeroStat(0,0,0);
+		
+		if (heroStatPlayerPref==0){
+			playerModify=new HeroStat(1,1,1);
+		}
+		if (heroStatPlayerPref==1){
+			playerModify=new HeroStat(5,2,1);
+		}
+		if (heroStatPlayerPref==2){
+			playerModify=new HeroStat(1,5,2);
+		}
+		if (heroStatPlayerPref==3){
+			playerModify=new HeroStat(2,1,5);
+		}
+		
+		tmpherostat.intp=statPointForLvlRatio.intp*playerModify.intp;
+		tmpherostat.vitp=statPointForLvlRatio.vitp*playerModify.vitp;
+		tmpherostat.strp=statPointForLvlRatio.strp*playerModify.strp;
+		
+		double  stabilze=tmpherostat.intp+tmpherostat.vitp+tmpherostat.strp;
+		
+		tmpherostat.intp=tmpherostat.intp/stabilze*statPointForLvl;
+		tmpherostat.vitp=tmpherostat.vitp/stabilze*statPointForLvl;
+		tmpherostat.strp=tmpherostat.strp/stabilze*statPointForLvl;
+		
+		
+
+		
+		return tmpherostat;
+	}
+	
 	void lvlUp() {
 		setFlagLvlUpThisTick(true);
 		lvl += 1;
 		
-		heroStat.intp += 3;
-		heroStat.strp += 4;
-		heroStat.vitp += 2;
+		
+		
+		
+		
+		heroStat.intp += getHeroStatPerLvlFinal().intp;
+		heroStat.strp += getHeroStatPerLvlFinal().strp;
+		heroStat.vitp += getHeroStatPerLvlFinal().vitp;
 
 		LHoH.gameScreen.bottomInfo.chat.addTextChat(name + " достиг " + lvl
 				+ " уровня, его мощь теперь " + (int) power);
@@ -401,6 +455,35 @@ public class Hero extends JPanel implements DragGestureListener,
 
 	public void setFlagDieThisTick(boolean flagDieThisTick) {
 		this.flagDieThisTick = flagDieThisTick;
+	}
+	
+	public boolean isRemoved(){
+		if (status==3){
+			return true;
+		}
+		return false;
+	}
+	
+	public void  setRemoved(){
+		status=3;
+		zone=-1;
+	}
+
+	public HeroStat getStatPointForLvlRatioPlayerModify() {
+		return statPointForLvlRatioPlayerModify;
+	}
+
+	public void setStatPointForLvlRatioPlayerModify(
+			HeroStat statPointForLvlRatioPlayerModify) {
+		this.statPointForLvlRatioPlayerModify = statPointForLvlRatioPlayerModify;
+	}
+
+	public int getHeroStatPlayerPref() {
+		return heroStatPlayerPref;
+	}
+
+	public void setHeroStatPlayerPref(int heroStatPlayerPref) {
+		this.heroStatPlayerPref = heroStatPlayerPref;
 	}
 
 }

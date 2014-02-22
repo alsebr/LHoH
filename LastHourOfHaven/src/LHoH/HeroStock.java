@@ -80,9 +80,38 @@ Hero getHeroById(int id){
 	return null;
 }
 
-void update (){
+Hero getRandomDeadHero(){
 	for (Hero hero : allScope) {
-		hero.Update();
+		if (hero.isDead()) return hero;
+	}
+	
+	
+	return null;
+}
+
+void removeHeroById(int id){
+	for (Hero hero : allScope) {
+		if (hero.getId()==id) {
+			//allScope.remove(hero);
+			hero.setRemoved();
+		}
+	}
+}
+
+void update (){
+	Hero tmphero=null;
+	for (Hero hero : allScope) {
+		if (hero.isRemoved()) {
+			
+			tmphero=hero;
+			
+		}
+	}
+	
+	if (tmphero!=null) allScope.remove(tmphero);
+	
+	for (Hero hero : allScope) {
+		if (!hero.isRemoved())hero.Update();
 		//hero.addPower(1);
 //		add(hero);
 //		hero.reDrow(g);
