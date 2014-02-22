@@ -22,8 +22,8 @@ import javax.swing.JPanel;
 public class Item extends JPanel implements MouseListener{
 	int id;
 	protected Image image;
-	double charge_now=0;
-	double charge_max=0;
+	protected double charge_now=0;
+	protected double charge_max=0;
 	private String name="ERROR";
 	double ttl=-1000;
 	protected int grade=0;
@@ -36,8 +36,8 @@ public class Item extends JPanel implements MouseListener{
 	    this.addMouseListener(this);
 	}
 	
-	void activateItem (){
-		
+	public void activateItem (){
+		//ttl-=(double)1/60;
 	}
 	
 	void checkCharge (){
@@ -104,7 +104,7 @@ public class Item extends JPanel implements MouseListener{
 		
 	}
 	
-	int getId(){
+	protected int getId(){
 		return id;
 	}
 	

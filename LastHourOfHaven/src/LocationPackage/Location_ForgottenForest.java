@@ -1,4 +1,4 @@
-package LHoH;
+package LocationPackage;
 
 import java.awt.Image;
 import java.io.File;
@@ -7,9 +7,11 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 
 import ItemPackage.Item_Casket;
+import LHoH.LHoH;
+import LHoH.Location;
 
 public class Location_ForgottenForest extends Location {
-	Location_ForgottenForest() {
+	public Location_ForgottenForest() {
 
 		super();
 		String inName = "Забытый лес";
@@ -36,6 +38,7 @@ public class Location_ForgottenForest extends Location {
 	}
 
 	@Override
+	protected
 	void doLocationDevastated() {
 		LHoH.gameScreen.itemStock.allScope.add(new Item_Casket());
 		LHoH.gameScreen.bottomInfo.chat.addTextChat("В глубине леса вы нашли странную шкатулку");

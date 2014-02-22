@@ -20,7 +20,7 @@ public class HeroAbility_Leech extends HeroAbility {
 
 	}
 
-	void useAbility() {
+	public void useAbility() {
 		Hero tmpHero = LHoH.gameScreen.heroStock.getHeroById(heroId);
 		
 		setAbilityValue1((double)(tmpHero).getHeroStat().intp/4000);
@@ -41,7 +41,7 @@ public class HeroAbility_Leech extends HeroAbility {
 
 	}
 
-	String getAbilityTip() {
+	public String getAbilityTip() {
 		String htmltext = "";
 		htmltext += "Вытягивание сил: +" + String.format("%.4g%n", getAbilityValue2())+" ("+String.format("%.2g%n", getAbilityValue1()*60)+" мощи за секунду)";
 

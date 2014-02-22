@@ -24,7 +24,7 @@ tmptext+="Склянка с чумой Tier "+grade+"<br>Использовать:<br> Ослабляет врагов в
 setToolTipText(tmptext);
 }
 
-void activateItem(){
+public void activateItem(){
 	int td;
 	td=(int)(LHoH.gameScreen.towerPanel.towerFight.bossPower*0.1*(grade+1));
 	LHoH.gameScreen.towerPanel.towerFight.bossPower=LHoH.gameScreen.towerPanel.towerFight.bossPower-td;

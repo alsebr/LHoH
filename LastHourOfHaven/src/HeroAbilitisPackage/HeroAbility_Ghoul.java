@@ -19,7 +19,7 @@ public class HeroAbility_Ghoul extends HeroAbility {
 
 	}
 
-	void useAbility() {
+	public void useAbility() {
 		Hero tmpHero = LHoH.gameScreen.heroStock.getHeroById(heroId);
 		
 		setAbilityValue1((tmpHero).getHeroStat().intp/100);
@@ -36,7 +36,7 @@ public class HeroAbility_Ghoul extends HeroAbility {
 
 	}
 
-	String getAbilityTip() {
+	public String getAbilityTip() {
 		String htmltext = "";
 		htmltext += "Пожирание трупов: +" + String.format("%.4g%n", getAbilityValue2())+" ("+String.format("%.2g%n", getAbilityValue1()*100)+"% с пожирания)";
 

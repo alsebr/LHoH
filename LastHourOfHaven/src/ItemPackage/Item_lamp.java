@@ -25,7 +25,7 @@ tmptext+="Старая лампа <br>Использовать:<br> говорят в таких лампах могут жить Д
 setToolTipText(tmptext);
 }
 
-void activateItem(){
+public void activateItem(){
 	String tmpText;
 	int addGold,addSoul;
 	tmpText="Из лампы вырвался ифрит. -Я повинуюсь Вам, мой Лорд!";

@@ -1,4 +1,4 @@
-package LHoH;
+package LocationPackage;
 
 import java.awt.Image;
 import java.io.File;
@@ -6,19 +6,21 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
-public class Location_WarriorOfTheLight extends Location {
-	Location_WarriorOfTheLight() {
+import LHoH.Location;
+
+public class Location_imp extends Location {
+	public Location_imp() {
 
 		super();
-		String inName = "Воин света";
-		int inPower = 146;
+		String inName = "Пещера бесов";
+		int inPower = 36;
 		double inwinR = 0.2;
 		double pLocation_max = 100;
-		String imagePath = "loc6";
-		double inbonus50Gold = (double) 0.9 / 60;
-		double inbonus50Soul = (double) 0.7 / 60;
+		String imagePath = "loc2";
+		double inbonus50Gold = (double) 0.2 / 60;
+		double inbonus50Soul = (double) 0.0 / 60;
 		double inbonus50Tear = 0;
-		double inbonusALLexp = (double) 1.8 / 60;
+		double inbonusALLexp = (double) 1.5 / 60;
 		
 		
 		Image inEnemy=null;
@@ -34,6 +36,7 @@ public class Location_WarriorOfTheLight extends Location {
 	}
 
 	@Override
+	protected
 	void doLocationDevastated() {
 
 	}

@@ -17,7 +17,7 @@ public class HeroAbility_DemonicSignet extends HeroAbility {
 	void update() {
 	}
 
-	void useAbility() {
+	public void useAbility() {
 		
 		
 		setAbilityValue2((double)0.002/60*0.5*LHoH.gameScreen.heroStock.getHeroById(heroId).getHeroStat().intp);
@@ -29,7 +29,7 @@ public class HeroAbility_DemonicSignet extends HeroAbility {
 
 	}
 
-	String getAbilityTip() {
+	public String getAbilityTip() {
 		
 		String htmltext = "";
 		//double tmppower = abilitypower;

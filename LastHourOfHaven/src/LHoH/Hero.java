@@ -74,10 +74,12 @@ public class Hero extends JPanel implements DragGestureListener,
 	}
 	private boolean flagDieThisTick=false;
 	private boolean flagLvlUpThisTick=false;
-	double exp, ttl;
-	protected String name, classH;
-	Image image;
-	int status; // 1 - live, 0 - dead, 2 - strage, 3-removed
+	double exp;
+	protected double ttl;
+	public String name;
+	protected String classH;
+	protected Image image;
+	public int status; // 1 - live, 0 - dead, 2 - strage, 3-removed
 	int lvl;
 	private int zone;
 	private int id;
@@ -174,7 +176,7 @@ public class Hero extends JPanel implements DragGestureListener,
 		return name;
 	}
 
-	void addPower(double addP) {
+	public void addPower(double addP) {
 		power += addP;
 
 	}

@@ -17,7 +17,7 @@ public class HeroAbility_HowlOfTheWolf extends HeroAbility {
 	void update() {
 	}
 
-	void useAbility() {
+	public void useAbility() {
 		
 		
 		
@@ -29,7 +29,7 @@ public class HeroAbility_HowlOfTheWolf extends HeroAbility {
 
 	}
 
-	String getAbilityTip() {
+	public String getAbilityTip() {
 		
 		String htmltext = "";
 		//double tmppower = abilitypower;

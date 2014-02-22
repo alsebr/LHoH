@@ -19,7 +19,7 @@ public class HeroAbility_Ifreet extends HeroAbility {
 
 	}
 
-	void useAbility() {
+	public void useAbility() {
 		if (LHoH.gameScreen.itemStock.checkItemCount("Огненный меч") > 0) {
 
 			Hero tmpHero = LHoH.gameScreen.heroStock.getHeroById(heroId);
@@ -28,7 +28,7 @@ public class HeroAbility_Ifreet extends HeroAbility {
 		}
 	}
 
-	String getAbilityTip() {
+	public String getAbilityTip() {
 		String htmltext = "";
 		double tmppower = 0;
 		if (LHoH.gameScreen.itemStock.checkItemCount("Огненный меч") > 0) {

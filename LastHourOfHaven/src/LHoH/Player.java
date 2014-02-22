@@ -11,9 +11,9 @@ private double locationNewTier=1;
 
 int[] towerProgress;
 Player (){
-	gold=3;
-	soul=0;
-	tear=0;
+	gold=1113;
+	soul=1110;
+	tear=1110;
 	ttl=15*60;
 	maxPortal=4;
 	locationAddCostGold=10;

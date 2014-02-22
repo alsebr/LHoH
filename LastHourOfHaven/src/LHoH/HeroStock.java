@@ -18,7 +18,7 @@ import javax.swing.text.StyledEditorKit.ForegroundAction;
 
 
 public class HeroStock extends JPanel{
-	static List<Hero> allScope = new ArrayList<Hero>();
+	public static List<Hero> allScope = new ArrayList<Hero>();
 	BattleZone heroZone;
 	HeroStock(){
 	

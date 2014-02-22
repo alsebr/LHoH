@@ -19,7 +19,7 @@ public class Hero_Ghoul extends Hero {
 		double costGold=14;
 		double costSoul=3;
 		double costTear=0;
-		double deltaExp=5;
+		double deltaExp=19;
 		double strp=26;
 		double vitp=86;
 		double intp=21;

@@ -1,4 +1,4 @@
-package LHoH;
+package ItemPackage;
 
 import java.awt.Image;
 import java.io.File;
@@ -9,6 +9,10 @@ import javax.imageio.ImageIO;
 
 import HeroAbilitisPackage.HeroAbility_DemonicSignet;
 import HeroAbilitisPackage.HeroAbility_Imp;
+import LHoH.Hero;
+import LHoH.HeroStock;
+import LHoH.Item;
+import LHoH.LHoH;
 
 public class Item_PowerUp extends Item {
 	public Item_PowerUp(int grade) {
@@ -23,7 +27,7 @@ public class Item_PowerUp extends Item {
 		setToolTipText(tmptext);
 	}
 
-	void activateItem() {
+	public void activateItem() {
 		String tmpText;
 		int addGold, addSoul;
 

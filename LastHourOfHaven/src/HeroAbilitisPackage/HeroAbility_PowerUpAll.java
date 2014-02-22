@@ -19,13 +19,13 @@ public class HeroAbility_PowerUpAll extends HeroAbility {
 
 	}
 
-	void useAbilityForHeroId(int id) {
+	public void useAbilityForHeroId(int id) {
 		Hero tmpHero = LHoH.gameScreen.heroStock.getHeroById(id);
 		tmpHero.addPower_bonus(-25);
 
 	}
 
-	String getAbilityTip() {
+	public String getAbilityTip() {
 		String htmltext = "";
 		double tmppower = -25;
 

@@ -1,4 +1,4 @@
-package LHoH;
+package LocationPackage;
 
 import java.awt.Image;
 import java.io.File;
@@ -6,14 +6,16 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
+import LHoH.Location;
+
 public class Location_CrystalPalace extends Location {
-	Location_CrystalPalace() {
+	public Location_CrystalPalace() {
 
 		super();
 		String inName = "Хрустальный дворец";
 		int inPower =72;
 		double inwinR = 0.2;
-		double pLocation_max = 33;
+		double pLocation_max = 22;
 		String imagePath = "loc8";
 		double inbonus50Gold = (double) 0.9 / 60;
 		double inbonus50Soul = (double) 0.14 / 60;
@@ -34,6 +36,7 @@ public class Location_CrystalPalace extends Location {
 	}
 
 	@Override
+	protected
 	void doLocationDevastated() {
 
 	}

@@ -22,7 +22,10 @@ import HeroAbilitisPackage.HeroAbility_HowlOfTheWolf;
 import ItemPackage.Item_Casket;
 import ItemPackage.Item_Key1;
 import ItemPackage.Item_Key2;
+import ItemPackage.Item_LegionGorn;
 import ItemPackage.Item_Plague;
+import ItemPackage.Item_PowerUp;
+import ItemPackage.Item_Soul;
 import ItemPackage.Item_chest;
 import ItemPackage.Item_lamp;
 

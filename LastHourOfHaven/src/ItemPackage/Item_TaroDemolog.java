@@ -1,10 +1,15 @@
-package LHoH;
+package ItemPackage;
 
 import java.awt.Image;
 import java.io.File;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
+
+import Hero.HeroDemolog;
+import LHoH.Hero;
+import LHoH.Item;
+import LHoH.LHoH;
 
 public class Item_TaroDemolog extends Item{
 	
@@ -16,7 +21,7 @@ public class Item_TaroDemolog extends Item{
 	}
 	}
 	
-	void activateItem(){
+	public void activateItem(){
 		String tmpText;
 		int addGold,addSoul;
 		tmpText="С помощью карты таро Маг вы призываете Ловца Снов";

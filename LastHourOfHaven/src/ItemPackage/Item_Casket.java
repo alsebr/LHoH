@@ -8,7 +8,6 @@ import java.util.Random;
 import javax.imageio.ImageIO;
 
 import LHoH.Item;
-import LHoH.Item_PowerUp;
 import LHoH.LHoH;
 
 public class Item_Casket extends Item {
@@ -25,7 +24,7 @@ public class Item_Casket extends Item {
 		setToolTipText(tmptext);
 	}
 
-	void activateItem() {
+	public void activateItem() {
 		String tmpText;
 		int addGold, addSoul;
 

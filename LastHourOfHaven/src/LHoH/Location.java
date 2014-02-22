@@ -124,7 +124,7 @@ public class Location extends JPanel {
 
 	Image imageGold, imageSoul, imageTear;
 
-	Location() {
+	protected Location() {
 
 	}
 	
@@ -134,7 +134,7 @@ public class Location extends JPanel {
 	}
 	
 	
-	void init(String inName, int inPower, double inwinR, Image inEnemy,
+	protected void init(String inName, int inPower, double inwinR, Image inEnemy,
 			double inbonus50Gold, double inbonus50Soul, double inbonus50Tear,
 			double inbonusALLexp,double pLocation_max){
 
@@ -366,7 +366,7 @@ public class Location extends JPanel {
 		
 	}
 
-	void doLocationDevastated(){
+	protected void doLocationDevastated(){
 		
 	}
 	

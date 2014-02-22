@@ -1,4 +1,4 @@
-package LHoH;
+package LocationPackage;
 
 import java.awt.Image;
 import java.io.File;
@@ -6,19 +6,21 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
-public class Location_SilenceDesert extends Location {
-	Location_SilenceDesert() {
+import LHoH.Location;
+
+public class Location_WarriorOfTheLight extends Location {
+	public Location_WarriorOfTheLight() {
 
 		super();
-		String inName = "Пустыня безмолвия";
-		int inPower = 42;
-		double inwinR = 0.4;
+		String inName = "Воин света";
+		int inPower = 146;
+		double inwinR = 0.2;
 		double pLocation_max = 100;
-		String imagePath = "loc7";
-		double inbonus50Gold = (double) 0.2 / 60;
-		double inbonus50Soul = (double) 0.12 / 60;
+		String imagePath = "loc6";
+		double inbonus50Gold = (double) 0.9 / 60;
+		double inbonus50Soul = (double) 0.7 / 60;
 		double inbonus50Tear = 0;
-		double inbonusALLexp = (double) 1.7 / 60;
+		double inbonusALLexp = (double) 1.8 / 60;
 		
 		
 		Image inEnemy=null;
@@ -34,6 +36,7 @@ public class Location_SilenceDesert extends Location {
 	}
 
 	@Override
+	protected
 	void doLocationDevastated() {
 
 	}

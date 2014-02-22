@@ -1,12 +1,16 @@
-package LHoH;
+package ItemPackage;
 
 import java.io.File;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
+import LHoH.Hero;
+import LHoH.Item;
+import LHoH.LHoH;
+
 public class Item_LegionGorn extends Item{
-	Item_LegionGorn(){
+	public Item_LegionGorn(){
 	super();
 	try {
 		image = ImageIO.read(new File("data/image/item/item3.gif"));

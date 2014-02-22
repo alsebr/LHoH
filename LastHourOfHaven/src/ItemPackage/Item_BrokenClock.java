@@ -12,16 +12,18 @@ import LHoH.Hero;
 import LHoH.Item;
 import LHoH.LHoH;
 
-public class Item_chest extends Item {
-	public Item_chest(int grade) {
+public class Item_BrokenClock extends Item {
+	public Item_BrokenClock(int grade) {
 		super();
 		this.grade=grade;
 		try {
-			image = ImageIO.read(new File("data/image/item/item2.gif"));
+			image = ImageIO.read(new File("data/image/item/item16.gif"));
 		} catch (IOException e) {
 		}
 		
-		setToolTipText("Содержит великие сокровища");
+		String tmptext="<html>";
+		tmptext+="Сломанные часы Tier "+grade+"<br>Использовать:<br> Ваши существа перестают тратить время";
+		setToolTipText(tmptext);
 		
 		//ttl=6;
 	}

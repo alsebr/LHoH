@@ -1,4 +1,4 @@
-package LHoH;
+package LocationPackage;
 
 import java.awt.Image;
 import java.io.File;
@@ -6,19 +6,21 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
-public class Location_imp extends Location {
-	Location_imp() {
+import LHoH.Location;
+
+public class Location_FalseProphet extends Location {
+	public Location_FalseProphet() {
 
 		super();
-		String inName = "Пещера бесов";
-		int inPower = 36;
-		double inwinR = 0.2;
+		String inName = "Проповедь лжепророка";
+		int inPower = 122;
+		double inwinR = 0.4;
 		double pLocation_max = 100;
-		String imagePath = "loc2";
-		double inbonus50Gold = (double) 0.2 / 60;
-		double inbonus50Soul = (double) 0.0 / 60;
+		String imagePath = "loc1";
+		double inbonus50Gold = (double) 0 / 60;
+		double inbonus50Soul = (double) 0.12 / 60;
 		double inbonus50Tear = 0;
-		double inbonusALLexp = (double) 1.5 / 60;
+		double inbonusALLexp = (double) 2.7 / 60;
 		
 		
 		Image inEnemy=null;
@@ -34,6 +36,7 @@ public class Location_imp extends Location {
 	}
 
 	@Override
+	protected
 	void doLocationDevastated() {
 
 	}

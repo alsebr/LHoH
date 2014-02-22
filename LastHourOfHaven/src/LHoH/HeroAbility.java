@@ -14,7 +14,7 @@ protected void init(int heroId,String name){
 	this.name=name;
 }
 
-String getAbilityTip(){
+public String getAbilityTip(){
 	return name;
 	
 }
@@ -23,10 +23,10 @@ protected void update(){
 	
 }
 
-void useAbility() {
+public void useAbility() {
 	}
 
-void useAbilityForHeroId(int id) {
+public void useAbilityForHeroId(int id) {
 }
 
 public double getAbilityValue1() {

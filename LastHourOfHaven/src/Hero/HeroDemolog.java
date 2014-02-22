@@ -1,4 +1,4 @@
-package LHoH;
+package Hero;
 
 import java.awt.Image;
 import java.io.File;
@@ -6,6 +6,10 @@ import java.io.IOException;
 import java.util.Random;
 
 import javax.imageio.ImageIO;
+
+import ItemPackage.Item_Soul;
+import LHoH.Hero;
+import LHoH.LHoH;
 
 public class HeroDemolog extends Hero{
 public HeroDemolog(String name, double power,double exp,double ttl, String  classH, int zoneId, Image inImage, double inDeltaExp, double inDeltaPower) {

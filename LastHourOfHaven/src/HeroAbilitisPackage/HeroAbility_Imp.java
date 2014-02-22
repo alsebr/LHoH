@@ -16,7 +16,7 @@ public class HeroAbility_Imp extends HeroAbility {
 	void update() {
 	}
 
-	void useAbility() {
+	public void useAbility() {
 		
 		setAbilityValue1((double)0.002/60*  LHoH.gameScreen.heroStock.getHeroById(heroId).getHeroStat().intp);
 		setAbilityValue2((double)0.002/60*0.5*LHoH.gameScreen.heroStock.getHeroById(heroId).getHeroStat().intp);
@@ -36,7 +36,7 @@ public class HeroAbility_Imp extends HeroAbility {
 
 	}
 
-	String getAbilityTip() {
+	public String getAbilityTip() {
 		
 		String htmltext = "";
 		//double tmppower = abilitypower;

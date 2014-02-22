@@ -18,6 +18,13 @@ import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
+import LocationPackage.Location_CrystalPalace;
+import LocationPackage.Location_FalseProphet;
+import LocationPackage.Location_ForgottenForest;
+import LocationPackage.Location_SilenceDesert;
+import LocationPackage.Location_WarriorOfTheLight;
+import LocationPackage.Location_imp;
+
 public class LocationScope extends JPanel{
 	
 	static List<Location> allScope = new ArrayList<Location>();
