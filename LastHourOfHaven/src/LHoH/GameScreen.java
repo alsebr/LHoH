@@ -36,7 +36,7 @@ public class GameScreen extends JFrame {
 	HeroStock heroStock = new HeroStock();
 	JScrollPane heroStockScroll;
 	
-	HeroAbilityStock heroAbilityStock=new HeroAbilityStock();
+	public HeroAbilityStock heroAbilityStock=new HeroAbilityStock();
 
 	LocationScope locationScope;
 	ItemStock itemStock;

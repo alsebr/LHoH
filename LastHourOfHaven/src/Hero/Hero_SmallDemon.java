@@ -1,10 +1,13 @@
-package LHoH;
+package Hero;
 
 import java.awt.Image;
 import java.io.File;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
+
+import LHoH.Hero;
+import LHoH.HeroStat;
 
 public class Hero_SmallDemon extends Hero {
 	public Hero_SmallDemon() {

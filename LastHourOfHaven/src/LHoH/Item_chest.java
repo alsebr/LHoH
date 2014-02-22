@@ -7,6 +7,8 @@ import java.util.Random;
 
 import javax.imageio.ImageIO;
 
+import Hero.Hero_Mimic;
+
 public class Item_chest extends Item {
 	public Item_chest(int grade) {
 		super();

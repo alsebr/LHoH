@@ -2,7 +2,7 @@ package LHoH;
 
 public class HeroAbility_Imp extends HeroAbility {
 
-	HeroAbility_Imp(int heroId) {
+	public HeroAbility_Imp(int heroId) {
 		super();
 		init(heroId, "Бесовская хитрость");
 	}

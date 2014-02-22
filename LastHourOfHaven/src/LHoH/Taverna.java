@@ -21,6 +21,14 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import Hero.Hero_Ghoul;
+import Hero.Hero_Ifreet;
+import Hero.Hero_Imp;
+import Hero.Hero_Leech;
+import Hero.Hero_Pupetter;
+import Hero.Hero_SmallDemon;
+import Hero.Hero_SmallShadow;
+
 public class Taverna extends JPanel{
 	
 	

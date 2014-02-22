@@ -2,7 +2,7 @@ package LHoH;
 
 public class HeroAbility_Ghoul extends HeroAbility {
 
-	HeroAbility_Ghoul(int heroId) {
+	public HeroAbility_Ghoul(int heroId) {
 		super();
 		init(heroId, "Пожирание трупов");
 		setAbilityValue1(0); //% паура с пожирания

@@ -2,7 +2,7 @@ package LHoH;
 
 public class HeroAbility_Leech extends HeroAbility {
 
-	HeroAbility_Leech(int heroId) {
+	public HeroAbility_Leech(int heroId) {
 		super();
 		init(heroId, "Вытягивание сил");
 		setAbilityValue1(0); //% паура с пожирания

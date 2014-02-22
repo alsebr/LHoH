@@ -2,7 +2,7 @@ package LHoH;
 
 public class HeroAbility_Ifreet extends HeroAbility {
 
-	HeroAbility_Ifreet(int heroId) {
+	public HeroAbility_Ifreet(int heroId) {
 		super();
 
 		init(heroId, "Сердце огня");

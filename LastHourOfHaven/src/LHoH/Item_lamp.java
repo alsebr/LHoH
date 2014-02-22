@@ -7,6 +7,8 @@ import java.util.Random;
 
 import javax.imageio.ImageIO;
 
+import Hero.Hero_Ifreet;
+
 public class Item_lamp extends Item{
 public Item_lamp() {
 super();

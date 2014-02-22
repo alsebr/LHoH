@@ -4,7 +4,7 @@ import javax.swing.text.GapContent;
 
 public class LHoH {
 	static MainMenu mainMenu;
-	protected static GameScreen gameScreen;
+	public static GameScreen gameScreen;
 
 	LHoH() {
 		mainMenu = new MainMenu();

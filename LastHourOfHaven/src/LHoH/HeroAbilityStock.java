@@ -17,7 +17,7 @@ public class HeroAbilityStock {
 		}
 	}
 
-	void addAbility(HeroAbility heroAbility) {
+	public void addAbility(HeroAbility heroAbility) {
 		allScope.add(heroAbility);
 	}
 
