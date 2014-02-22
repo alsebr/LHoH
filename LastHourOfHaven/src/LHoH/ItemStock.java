@@ -12,8 +12,10 @@ import java.util.List;
 import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 
+import ItemPackage.Item_chest;
+
 public class ItemStock extends JPanel{
-	static List<Item> allScope = new ArrayList<Item>();
+	public static List<Item> allScope = new ArrayList<Item>();
 	
 	public ItemStock() {
 		setPreferredSize(new Dimension(700, 450));
@@ -80,7 +82,7 @@ public class ItemStock extends JPanel{
 		return false;
 	}
 	
-	int checkItemCount(String nameItem){
+	public int checkItemCount(String nameItem){
 		int count=0;
 		for (Item	 item : allScope) {
 			if (item.getName()==nameItem){

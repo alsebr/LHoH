@@ -6,8 +6,8 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
+import HeroAbilitisPackage.HeroAbility_Ifreet;
 import LHoH.Hero;
-import LHoH.HeroAbility_Ifreet;
 import LHoH.HeroStat;
 import LHoH.LHoH;
 

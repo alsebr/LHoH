@@ -68,7 +68,7 @@ public class BottomInfo extends JPanel{
 		    
 		}
 	}
-	class Chat extends JTextArea{
+	public class Chat extends JTextArea{
 		Chat(){
 			setSize(500,122);
 			setPreferredSize(new Dimension(550,122));
@@ -84,7 +84,7 @@ public class BottomInfo extends JPanel{
 //			setWrapStyleWord(true);
 		}
 		
-		void addTextChat (String text){
+		public void addTextChat (String text){
 		//	getTi
 			
 			int min,sec;
@@ -98,7 +98,7 @@ public class BottomInfo extends JPanel{
 		}
 	}
 	ResInfo resInfo= new ResInfo();
-	Chat chat= new Chat();
+	public Chat chat= new Chat();
 	Image bckground;
 	BottomInfo(){
 		

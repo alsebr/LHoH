@@ -175,7 +175,7 @@ location.update();
 }
 }
 
-Location getLocationByHeroId(int id){
+public Location getLocationByHeroId(int id){
 	for (Location location: allScope) {
 		if (location.hero1.getHeroId()==id) return location;
 	}

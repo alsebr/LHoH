@@ -18,11 +18,19 @@ import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
+import HeroAbilitisPackage.HeroAbility_HowlOfTheWolf;
+import ItemPackage.Item_Casket;
+import ItemPackage.Item_Key1;
+import ItemPackage.Item_Key2;
+import ItemPackage.Item_Plague;
+import ItemPackage.Item_chest;
+import ItemPackage.Item_lamp;
+
 public class TowerFight extends JPanel {
 	Image bckground = null;
 	int lvl;
 
-	double bossPower;
+	public double bossPower;
 	String bossName;
 	double winR;
 	double powerH = 0;

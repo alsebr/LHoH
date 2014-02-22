@@ -1,9 +1,11 @@
-package LHoH;
+package ItemPackage;
 
 import java.io.File;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
+
+import LHoH.Item;
 
 public class Item_Key1 extends Item{
 	public Item_Key1() {

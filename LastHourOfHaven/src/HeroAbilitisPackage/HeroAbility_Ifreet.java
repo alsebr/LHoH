@@ -1,4 +1,8 @@
-package LHoH;
+package HeroAbilitisPackage;
+
+import LHoH.Hero;
+import LHoH.HeroAbility;
+import LHoH.LHoH;
 
 public class HeroAbility_Ifreet extends HeroAbility {
 
@@ -10,6 +14,7 @@ public class HeroAbility_Ifreet extends HeroAbility {
 	}
 
 	@Override
+	protected
 	void update() {
 
 	}

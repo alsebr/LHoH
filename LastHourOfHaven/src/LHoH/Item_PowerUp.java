@@ -7,6 +7,9 @@ import java.util.Random;
 
 import javax.imageio.ImageIO;
 
+import HeroAbilitisPackage.HeroAbility_DemonicSignet;
+import HeroAbilitisPackage.HeroAbility_Imp;
+
 public class Item_PowerUp extends Item {
 	public Item_PowerUp(int grade) {
 		super();

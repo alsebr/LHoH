@@ -33,22 +33,22 @@ public class GameScreen extends JFrame {
 	TownPanel townPanel = new TownPanel();
 	Timer timer = new Timer();
 	JButton optionsButton = new JButton();
-	HeroStock heroStock = new HeroStock();
+	public HeroStock heroStock = new HeroStock();
 	JScrollPane heroStockScroll;
 	
 	public HeroAbilityStock heroAbilityStock=new HeroAbilityStock();
 
-	LocationScope locationScope;
-	ItemStock itemStock;
+	public LocationScope locationScope;
+	public ItemStock itemStock;
 	ScreenChoizer screenChoizer = new ScreenChoizer();
-	BottomInfo bottomInfo = new BottomInfo();
+	public BottomInfo bottomInfo = new BottomInfo();
 	LocationPanel locationPanel;
 	BossPanel bossPanel;
 	HeroPanel heroPanel;
 	ItemPanel itemPanel;
-	TowerPanel towerPanel;
+	public TowerPanel towerPanel;
 	JPanel actionPart = new JPanel();
-	Player player = new Player();
+	public Player player = new Player();
 	Taverna taverna;
 	HeroViewScreen heroViewScreen;
 

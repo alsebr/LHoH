@@ -1,4 +1,8 @@
-package LHoH;
+package HeroAbilitisPackage;
+
+import LHoH.HeroAbility;
+import LHoH.LHoH;
+import LHoH.Location;
 
 public class HeroAbility_Imp extends HeroAbility {
 
@@ -8,6 +12,7 @@ public class HeroAbility_Imp extends HeroAbility {
 	}
 
 	@Override
+	protected
 	void update() {
 	}
 

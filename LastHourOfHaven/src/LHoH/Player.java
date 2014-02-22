@@ -58,14 +58,14 @@ int getTowerLvlProgress(int lvlTower){
 
 
 
-void addGold(double dGold){
+public void addGold(double dGold){
 	gold+=dGold;
 }
 
-void addSoul(double dSoul){
+public void addSoul(double dSoul){
 	soul+=dSoul;
 }
-void addTear(double dTear){
+public void addTear(double dTear){
 	tear+=dTear;
 }
 

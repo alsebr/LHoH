@@ -1,4 +1,4 @@
-package LHoH;
+package ItemPackage;
 
 import java.awt.Image;
 import java.io.File;
@@ -6,6 +6,9 @@ import java.io.IOException;
 import java.util.Random;
 
 import javax.imageio.ImageIO;
+
+import LHoH.Item;
+import LHoH.LHoH;
 
 public class Item_Plague extends Item{
 public Item_Plague(int grade) {

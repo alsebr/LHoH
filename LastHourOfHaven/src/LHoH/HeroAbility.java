@@ -2,14 +2,14 @@ package LHoH;
 
 public class HeroAbility {
 String name;
-int heroId; // if ==-1 all heroes
+protected int heroId; // if ==-1 all heroes
 private double abilityValue1;
 private double abilityValue2;
-HeroAbility(){
+protected HeroAbility(){
 	
 }
 
-void init(int heroId,String name){
+protected void init(int heroId,String name){
 	this.heroId=heroId;	
 	this.name=name;
 }
@@ -19,7 +19,7 @@ String getAbilityTip(){
 	
 }
 
-void update(){
+protected void update(){
 	
 }
 

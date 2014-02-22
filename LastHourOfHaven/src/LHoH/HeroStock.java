@@ -67,11 +67,11 @@ public void paintComponent(Graphics g) {
     //reDrow(g);
 }
 
-void addHero(Hero hero){
+public void addHero(Hero hero){
 	allScope.add(hero);
 }
 
-Hero getHeroById(int id){
+public Hero getHeroById(int id){
 	for (Hero hero : allScope) {
 		if (hero.getId()==id) return hero;
 	}
@@ -80,7 +80,7 @@ Hero getHeroById(int id){
 	return null;
 }
 
-Hero getRandomDeadHero(){
+public Hero getRandomDeadHero(){
 	for (Hero hero : allScope) {
 		if (hero.isDead()) return hero;
 	}
@@ -98,7 +98,7 @@ Hero getRandomAliveHero(){
 	return null;
 }
 
-void removeHeroById(int id){
+public void removeHeroById(int id){
 	for (Hero hero : allScope) {
 		if (hero.getId()==id) {
 			//allScope.remove(hero);

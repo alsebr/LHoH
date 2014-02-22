@@ -21,12 +21,12 @@ import javax.swing.JPanel;
 
 public class Item extends JPanel implements MouseListener{
 	int id;
-	Image image;
+	protected Image image;
 	double charge_now=0;
 	double charge_max=0;
 	private String name="ERROR";
 	double ttl=-1000;
-	int grade=0;
+	protected int grade=0;
 	public Item() {
 		setSize(80	,105);
 		setPreferredSize(new Dimension(80,105));
@@ -108,7 +108,7 @@ public class Item extends JPanel implements MouseListener{
 		return id;
 	}
 	
-	void SelfDestroy (){
+	protected void SelfDestroy (){
 		for (Item item : LHoH.gameScreen.itemStock.allScope) {
     		if (item.getId()==getId())	{
     			LHoH.gameScreen.itemStock.allScope.remove(item);

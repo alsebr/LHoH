@@ -1,14 +1,19 @@
-package LHoH;
+package HeroAbilitisPackage;
+
+import LHoH.Hero;
+import LHoH.HeroAbility;
+import LHoH.LHoH;
 
 public class HeroAbility_HowlOfTheWolf extends HeroAbility {
 
-	HeroAbility_HowlOfTheWolf(int heroId, int value) {
+	public HeroAbility_HowlOfTheWolf(int heroId, int value) {
 		super();
 		setAbilityValue1(value);
 		init(heroId, "Вой лютоволка");
 	}
 
 	@Override
+	protected
 	void update() {
 	}
 

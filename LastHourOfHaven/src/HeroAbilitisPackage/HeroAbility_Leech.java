@@ -1,4 +1,9 @@
-package LHoH;
+package HeroAbilitisPackage;
+
+import LHoH.Hero;
+import LHoH.HeroAbility;
+import LHoH.LHoH;
+import LHoH.Location;
 
 public class HeroAbility_Leech extends HeroAbility {
 
@@ -10,6 +15,7 @@ public class HeroAbility_Leech extends HeroAbility {
 	}
 
 	@Override
+	protected
 	void update() {
 
 	}

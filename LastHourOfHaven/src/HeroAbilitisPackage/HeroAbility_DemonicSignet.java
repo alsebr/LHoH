@@ -1,14 +1,19 @@
-package LHoH;
+package HeroAbilitisPackage;
+
+import LHoH.Hero;
+import LHoH.HeroAbility;
+import LHoH.LHoH;
 
 public class HeroAbility_DemonicSignet extends HeroAbility {
 
-	HeroAbility_DemonicSignet(int heroId, int value) {
+	public HeroAbility_DemonicSignet(int heroId, int value) {
 		super();
 		setAbilityValue1(value);
 		init(heroId, "Нечистивая печать");
 	}
 
 	@Override
+	protected
 	void update() {
 	}
 

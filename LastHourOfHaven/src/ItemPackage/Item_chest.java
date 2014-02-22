@@ -1,4 +1,4 @@
-package LHoH;
+package ItemPackage;
 
 import java.awt.Image;
 import java.io.File;
@@ -8,6 +8,9 @@ import java.util.Random;
 import javax.imageio.ImageIO;
 
 import Hero.Hero_Mimic;
+import LHoH.Hero;
+import LHoH.Item;
+import LHoH.LHoH;
 
 public class Item_chest extends Item {
 	public Item_chest(int grade) {

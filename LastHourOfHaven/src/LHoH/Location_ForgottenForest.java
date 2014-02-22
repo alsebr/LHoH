@@ -6,6 +6,8 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
+import ItemPackage.Item_Casket;
+
 public class Location_ForgottenForest extends Location {
 	Location_ForgottenForest() {
 

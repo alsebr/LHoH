@@ -13,7 +13,7 @@ public class TowerPanel extends JPanel {
 
 	
 	TowerChoize towerChoize;
-	TowerFight towerFight;
+	public TowerFight towerFight;
 	
 
 	

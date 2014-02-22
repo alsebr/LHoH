@@ -120,7 +120,7 @@ public class Location extends JPanel {
 	double bonus50Tear_final = 0;
 	double bonusALLexp_final = 0;
 
-	String name;
+	public String name;
 
 	Image imageGold, imageSoul, imageTear;
 
@@ -128,7 +128,7 @@ public class Location extends JPanel {
 
 	}
 	
-	void decPower(double dPower){
+	public void decPower(double dPower){
 		power-=dPower;
 		if (power<1)power=1;
 	}
