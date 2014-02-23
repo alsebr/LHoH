@@ -8,6 +8,8 @@ import java.util.Random;
 import javax.imageio.ImageIO;
 
 import Hero.Hero_Mimic;
+import HeroAbilitisPackage.HeroAbility_BrokenClock;
+import HeroAbilitisPackage.HeroAbility_DemonicSignet;
 import LHoH.Hero;
 import LHoH.Item;
 import LHoH.LHoH;
@@ -15,45 +17,49 @@ import LHoH.LHoH;
 public class Item_BrokenClock extends Item {
 	public Item_BrokenClock(int grade) {
 		super();
-		this.grade=grade;
+		this.grade = grade;
 		try {
 			image = ImageIO.read(new File("data/image/item/item16.gif"));
 		} catch (IOException e) {
 		}
-		
-		String tmptext="<html>";
-		tmptext+="Сломанные часы Tier "+grade+"<br>Использовать:<br> Ваши существа перестают тратить время";
+		setTtl((grade+1) * 70);
+		String tmptext = "<html>";
+		tmptext += "Сломанные часы Tier " + grade
+				+ "<br>Использовать:<br> Ваши существа перестают тратить время";
 		setToolTipText(tmptext);
+
+		// ttl=6;
+	}
+
+	protected void checkTimerAction(){
+		setTtl(getTtl()+(double)1/60);
+	
 		
-		//ttl=6;
+		HeroAbility_BrokenClock tmpab;
+		tmpab=(HeroAbility_BrokenClock)LHoH.gameScreen.heroAbilityStock.getHeroAbilityByItemId(getId());
+		if (tmpab!=null){
+			
+			setTtl(tmpab.getTimeLeft());
+		}
+		else{
+			if (isFlagItemWasActivated()){
+				setFlagRemoveThisTick(true);
+			}
+		}
+		
 	}
 
 	public void activateItem() {
-		String tmpText;
-		int addGold, addSoul;
 
-		Random random = new Random();
-		addGold = 5*(grade+1) + random.nextInt(4);
-		addSoul = 1*(grade+1) + random.nextInt(1);
+		if (!isFlagItemWasActivated()) {
+			setFlagItemWasActivated(true);
+			String tmpText = " Стрелка сломанных часов задвигалась в обратно направлении. Ваши герои больше не тратят время жизни";
 
-		if (random.nextInt(100) < 25) {
-			tmpText = "Вы попытались открыть сундук, но это оказался Мимик.";
+			LHoH.gameScreen.heroAbilityStock
+					.addAbility(new HeroAbility_BrokenClock(getId(), (int)getTtl()));
+			LHoH.gameScreen.bottomInfo.chat.addTextChat(tmpText);
 
-			Hero hero=new Hero_Mimic();
-			LHoH.gameScreen.heroStock.addHero(hero);
-			
-			
-		} else {
-			tmpText = "Открыв сундук вы обнаружили: ";
-			tmpText += "золота " + addGold;
-			tmpText += ", душ " + addSoul;
-			LHoH.gameScreen.player.addGold(addGold);
-			LHoH.gameScreen.player.addSoul(addSoul);
 		}
-
-		LHoH.gameScreen.bottomInfo.chat.addTextChat(tmpText);
-		SelfDestroy();
-
 	}
 
 }

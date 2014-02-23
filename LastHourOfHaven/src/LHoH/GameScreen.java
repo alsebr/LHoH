@@ -110,6 +110,7 @@ public class GameScreen extends JFrame {
 		itemStock.update();
 		towerPanel.update();
 		heroViewScreen.update();
+		heroAbilityStock.update();
 	}
 
 	void reDrow() {

@@ -75,7 +75,16 @@ public class Hero extends JPanel implements DragGestureListener,
 	private boolean flagDieThisTick=false;
 	private boolean flagLvlUpThisTick=false;
 	double exp;
+	
 	protected double ttl;
+	public double getTtl() {
+		return ttl;
+	}
+
+	public void addTtl(double ttl) {
+		this.ttl += ttl;
+	}
+	
 	public String name;
 	protected String classH;
 	protected Image image;

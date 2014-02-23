@@ -25,7 +25,21 @@ public class Item extends JPanel implements MouseListener{
 	protected double charge_now=0;
 	protected double charge_max=0;
 	private String name="ERROR";
-	double ttl=-1000;
+	private double ttl=-1000;
+	
+	private boolean flagRemoveThisTick=false;
+	private boolean flagItemWasActivated=false;
+	
+	public double getTtl() {
+		return ttl;
+	}
+
+	
+
+	public void setTtl(double ttl) {
+		this.ttl = ttl;
+	}
+
 	protected int grade=0;
 	public Item() {
 		setSize(80	,105);
@@ -54,7 +68,7 @@ public class Item extends JPanel implements MouseListener{
 			
 			if (ttl<=0){
 				doActionBeforeTtlDead();
-				SelfDestroy();
+				setFlagRemoveThisTick(true);
 			}
 		}
 	}
@@ -62,9 +76,15 @@ public class Item extends JPanel implements MouseListener{
 	void update (){
 		checkCharge();
 		checkTTL();
+		checkTimerAction();
 		
 	}
 	
+	protected void checkTimerAction() {
+		// TODO Auto-generated method stub
+		
+	}
+
 	public String getName(){
 		return name;
 	}
@@ -86,7 +106,7 @@ public class Item extends JPanel implements MouseListener{
 		if(ttl!=-1000){
 			g2.setColor(Color.red);
 			g2.setFont(new Font("Arial", Font.BOLD, 14)); 
-			g2.drawString(FrameWorkLHoH.ttlToTime(ttl), 20, 95);
+			g2.drawString(FrameWorkLHoH.ttlToTime(ttl), 40, 95);
 		}
 		
 		if(grade>0){
@@ -158,6 +178,30 @@ public class Item extends JPanel implements MouseListener{
 		activateItem();
 		}
 		
+	}
+
+
+
+	public boolean isFlagRemoveThisTick() {
+		return flagRemoveThisTick;
+	}
+
+
+
+	public void setFlagRemoveThisTick(boolean flagRemoveThisTick) {
+		this.flagRemoveThisTick = flagRemoveThisTick;
+	}
+
+
+
+	public boolean isFlagItemWasActivated() {
+		return flagItemWasActivated;
+	}
+
+
+
+	public void setFlagItemWasActivated(boolean flagItemWasActivated) {
+		this.flagItemWasActivated = flagItemWasActivated;
 	}
 
 }
