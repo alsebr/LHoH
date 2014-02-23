@@ -20,13 +20,13 @@ public class Hero_LurkingEvil extends Hero {
 		double costGold=26;
 		double costSoul=4;
 		double costTear=0;
-		double deltaExp=18;
+		double deltaExp=13;
 		double strp=42;
 		double vitp=120;
-		double intp=1521;
+		double intp=69;
 		double statPointPerLvl=17;
 		double strToPowerRatio=1;
-		double vitToTTLRatio=1;		
+		double vitToTTLRatio=3;		
 		String htmlTextHeroTip = "Затаившееся зло.";
 		htmlTextHeroTip += "<br> Зло ждет своего часа <b>~Int</b>";
 		Image image=null;
@@ -52,6 +52,14 @@ public class Hero_LurkingEvil extends Hero {
 			image = ImageIO.read(new File("data/image/hero/demon24.gif"));
 		} catch (IOException e) {
 		}
+		
+		name="Вырвавшееся зло";
+	setHeroStat(new HeroStat(getHeroStat().strp+150,getHeroStat().vitp+150,getHeroStat().intp+150));
+		
+		
+
+		
+		
 	}
 	
 	public void addHeroAbilities(){

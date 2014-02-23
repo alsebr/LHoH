@@ -24,7 +24,7 @@ public class Hero_Mimic extends Hero {
 		double intp=9;
 		double statPointPerLvl=9;
 		double strToPowerRatio=1;
-		double vitToTTLRatio=1;		
+		double vitToTTLRatio=3;		
 		String htmlTextHeroTip = "Мимикрия";
 		htmlTextHeroTip += "<br> Мимик может принимать облик других предметов";
 		

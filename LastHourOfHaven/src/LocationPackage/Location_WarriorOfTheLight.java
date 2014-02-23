@@ -13,14 +13,14 @@ public class Location_WarriorOfTheLight extends Location {
 
 		super();
 		String inName = "Воин света";
-		int inPower = 146;
+		int inPower = 300;
 		double inwinR = 0.2;
 		double pLocation_max = 100;
 		String imagePath = "loc6";
 		double inbonus50Gold = (double) 0.9 / 60;
 		double inbonus50Soul = (double) 0.7 / 60;
-		double inbonus50Tear = 0;
-		double inbonusALLexp = (double) 1.8 / 60;
+		double inbonus50Tear = (double) 0.05 / 60;;
+		double inbonusALLexp = (double) 2.8 / 60;
 		
 		
 		Image inEnemy=null;

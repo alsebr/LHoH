@@ -72,7 +72,7 @@ public class LocationPanel extends JPanel{
 	
 Image bckground=null;
 JScrollPane scrollFrame;
-LocationControl locationControl=new LocationControl();
+	LocationControl locationControl =new LocationControl();
 	public LocationPanel() {
 	
 		

@@ -8,6 +8,8 @@ String name;
 protected int heroId; // if ==-1 all heroes
 private double abilityValue1;
 private double abilityValue2;
+private double abilityValue3;
+private double abilityValue4;
 private int heroAbilityId;
 protected int itemId=0;
 private boolean flagRemoveThisTick=false;
@@ -83,6 +85,22 @@ public boolean isFlagRemoveThisTick() {
 
 public void setFlagRemoveThisTick(boolean flagRemoveThisTick) {
 	this.flagRemoveThisTick = flagRemoveThisTick;
+}
+
+public double getAbilityValue3() {
+	return abilityValue3;
+}
+
+public void setAbilityValue3(double abilityValue3) {
+	this.abilityValue3 = abilityValue3;
+}
+
+public double getAbilityValue4() {
+	return abilityValue4;
+}
+
+public void setAbilityValue4(double abilityValue4) {
+	this.abilityValue4 = abilityValue4;
 }
 
 }

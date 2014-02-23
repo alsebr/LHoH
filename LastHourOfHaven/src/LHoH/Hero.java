@@ -271,7 +271,10 @@ public class Hero extends JPanel implements DragGestureListener,
 	protected void Update() {
 		
 		resetTick();
-		if (status == 1) ttl += 0.017;
+		if (status == 1) {
+			ttl += 0.017;
+			
+		}
 		if (getLeftTime() <= 0)	{
 			status = 0;
 			setFlagDieThisTick(true);
@@ -284,8 +287,9 @@ public class Hero extends JPanel implements DragGestureListener,
 		if (expNeedExp < exp) {
 			lvlUp();
 		}
-		
+		if (status == 1) {
 		LHoH.gameScreen.heroAbilityStock.useAllAbilityByHero(id);
+	}
 		
 
 

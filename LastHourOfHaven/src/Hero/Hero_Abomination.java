@@ -11,26 +11,26 @@ import LHoH.Hero;
 import LHoH.HeroStat;
 import LHoH.LHoH;
 
-public class Hero_Leech extends Hero {
-	public Hero_Leech() {
+public class Hero_Abomination extends Hero {
+	public Hero_Abomination() {
 		super();
 				
-		String name="Пиявка";
-		double costGold=8;
-		double costSoul=10;
+		String name="Абоминация";
+		double costGold=12;
+		double costSoul=2;
 		double costTear=0;
 		double deltaExp=19;
-		double strp=42;
-		double vitp=120;
-		double intp=31;
-		double statPointPerLvl=11;
+		double strp=137;
+		double vitp=5;
+		double intp=29;
+		double statPointPerLvl=14;
 		double strToPowerRatio=1;
 		double vitToTTLRatio=3;		
-		String htmlTextHeroTip = "Вытягивание силы.";
-		htmlTextHeroTip += "<br> Каждую секунду пиявка вытягивает силы из атакуемого Портала <b>Int</b>";
+		String htmlTextHeroTip = "Нестабильносьт";
+		htmlTextHeroTip += "<br> Слишком мощная чтобы жить долго";
 		Image image=null;
 		try {
-			image = ImageIO.read(new File("data/image/hero/demon22.gif"));
+			image = ImageIO.read(new File("data/image/hero/demon25.gif"));
 		} catch (IOException e) {
 		}
 		
@@ -48,7 +48,7 @@ public class Hero_Leech extends Hero {
 
 	
 	public void addHeroAbilities(){
-		LHoH.gameScreen.heroAbilityStock.addAbility(new HeroAbility_Leech(getId()));
+		
 	}
 
 

@@ -24,9 +24,9 @@ public class Hero_Imp extends Hero {
 		double strp=34;
 		double vitp=60;
 		double intp=25;
-		double statPointPerLvl=4;
+		double statPointPerLvl=2;
 		double strToPowerRatio=1;
-		double vitToTTLRatio=1;		
+		double vitToTTLRatio=3;		
 		String htmlTextHeroTip = "Бесовская хитрость.";
 		htmlTextHeroTip += "<br> Импы захватывают пещеры более эффективно <b>~Int</b>";
 		

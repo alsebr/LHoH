@@ -13,13 +13,9 @@ public class HeroAbility_Ghoul extends HeroAbility {
 		setAbilityValue2(0); // текущий бонус
 	}
 
-	@Override
-	protected
-	void update() {
 
-	}
 
-	public void useAbility() {
+public void useAbility() {
 		Hero tmpHero = LHoH.gameScreen.heroStock.getHeroById(heroId);
 		
 		setAbilityValue1((tmpHero).getHeroStat().intp/100);

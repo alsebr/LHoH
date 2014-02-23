@@ -6,7 +6,7 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
-import Hero.HeroDemolog;
+
 import LHoH.Hero;
 import LHoH.Item;
 import LHoH.LHoH;
@@ -54,8 +54,8 @@ public class Item_TaroDemolog extends Item{
 		inDeltaExp=30;
 		inDeltaPower=17;
 		
-		Hero heroT=new HeroDemolog(nname, npower, nexp, nttl, "2", 1, nimage, inDeltaExp, inDeltaPower);
-		LHoH.gameScreen.heroStock.addHero(heroT);
+		//Hero heroT=new HeroDemolog(nname, npower, nexp, nttl, "2", 1, nimage, inDeltaExp, inDeltaPower);
+		//LHoH.gameScreen.heroStock.addHero(heroT);
 		
 		
 		

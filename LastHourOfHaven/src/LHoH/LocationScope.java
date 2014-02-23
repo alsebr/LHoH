@@ -59,8 +59,8 @@ void addLocation (){
 	if (LHoH.gameScreen.player.getLocationNewTier()>60) count++;
 	if (LHoH.gameScreen.player.getLocationNewTier()>120) count++;
 	
-	if (LHoH.gameScreen.player.getLocationNewTier()>10000) count++;
-	if (LHoH.gameScreen.player.getLocationNewTier()>10000) count++;
+	if (LHoH.gameScreen.player.getLocationNewTier()>400) count++;
+	if (LHoH.gameScreen.player.getLocationNewTier()>400) count++;
 	//if (LHoH.gameScreen.player.getHeroNewTier()>250) count++;
 	
 	

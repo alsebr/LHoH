@@ -29,7 +29,8 @@ public class Item_Casket extends Item {
 		int addGold, addSoul;
 
 		Random random = new Random();
-		int count = random.nextInt(5);
+		int count = random.nextInt(4);
+		count++;
 		tmpText = "ERROR";
 		switch (count) {
 		case 0:
@@ -37,8 +38,8 @@ public class Item_Casket extends Item {
 			LHoH.gameScreen.itemStock.allScope.add(new Item_chest(0));
 			break;
 		case 1:
-			tmpText = "Открыв шкатулку вы обнаружили Демонический сундук";
-			LHoH.gameScreen.itemStock.allScope.add(new Item_chest(1));
+			tmpText = "Открыв шкатулку вы обнаружили Сломанные часы";
+			LHoH.gameScreen.itemStock.allScope.add(new Item_BrokenClock(1));
 			break;	
 
 		case 2:

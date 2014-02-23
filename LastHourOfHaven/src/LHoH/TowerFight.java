@@ -77,7 +77,7 @@ JButton endTower;
 		if (status==1){
 					
 					if(lvl==2){
-						bossPower=bossPower+(double)20/60;
+						bossPower=bossPower+(double)30/60;
 					}
 					
 					powerH=0;
@@ -152,8 +152,8 @@ JButton endTower;
 						//bossPower=6666;
 						LHoH.gameScreen.bottomInfo.chat.addTextChat("Нами окончательно повержен "+bossName);
 						LHoH.gameScreen.itemStock.allScope.add(new Item_PowerUp(1));
-						LHoH.gameScreen.player.addLocationNewTier(10000);
-						LHoH.gameScreen.player.addHeroNewTier(10000);
+						LHoH.gameScreen.player.addLocationNewTier(400);
+						LHoH.gameScreen.player.addHeroNewTier(400);
 					}
 		}
 				
@@ -179,6 +179,8 @@ JButton endTower;
 						//bossPower=6666;
 						LHoH.gameScreen.bottomInfo.chat.addTextChat("Нами окончательно повержен "+bossName);
 						LHoH.gameScreen.itemStock.allScope.add(new Item_LegionGorn());
+						LHoH.gameScreen.player.addLocationNewTier(100);
+						LHoH.gameScreen.player.addHeroNewTier(100);
 					}
 		}
 				

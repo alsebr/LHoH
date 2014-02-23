@@ -26,7 +26,7 @@ public class Hero_SmallShadow extends Hero {
 		double intp=21;
 		double statPointPerLvl=12;
 		double strToPowerRatio=1;
-		double vitToTTLRatio=1;		
+		double vitToTTLRatio=3;		
 		String htmlTextHeroTip = "Тьма.";
 		htmlTextHeroTip += "<br> Мощь тени растет очень быстро";
 		

@@ -19,13 +19,13 @@ public class Hero_Pupetter extends Hero {
 		double costGold=46;
 		double costSoul=24;
 		double costTear=1;
-		double deltaExp=43;
+		double deltaExp=10;
 		double strp=189;
 		double vitp=230;
 		double intp=61;
 		double statPointPerLvl=32;
 		double strToPowerRatio=1;
-		double vitToTTLRatio=1;		
+		double vitToTTLRatio=3;		
 		String htmlTextHeroTip = "Вытягивание силы.";
 		htmlTextHeroTip += "<br> Каждую секунду пиявка вытягивает силы из атакуемого Портала <b>Int</b>";
 		Image image=null;

@@ -25,7 +25,7 @@ public class Hero_Ifreet extends Hero {
 		double intp=31;
 		double statPointPerLvl=17;
 		double strToPowerRatio=1;
-		double vitToTTLRatio=1;		
+		double vitToTTLRatio=3;		
 		String htmlTextHeroTip = "Сердце огня.";
 		htmlTextHeroTip += "<br> Любой ваш огненный предмет увеличивает мощь Ифрита на <b>Int</b>";
 		Image image=null;

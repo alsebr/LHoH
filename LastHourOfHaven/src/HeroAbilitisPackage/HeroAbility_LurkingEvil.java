@@ -18,6 +18,7 @@ public class HeroAbility_LurkingEvil extends HeroAbility {
 		init(heroId, "«атаившеес€ зло");
 		setAbilityValue1(0); //% паура с пожирани€
 		setAbilityValue2(0); // текущий бонус
+		setAbilityValue3(0);
 	}
 
 	@Override
@@ -27,9 +28,11 @@ public class HeroAbility_LurkingEvil extends HeroAbility {
 	}
 
 	public void useAbility() {
+		
+		if (getAbilityValue3()==0){
+			
+		
 		Hero_LurkingEvil tmpHero = (Hero_LurkingEvil)LHoH.gameScreen.heroStock.getHeroById(heroId);
-		
-		
 		setAbilityValue1((tmpHero).getHeroStat().intp/10000);
 		setAbilityValue2(getAbilityValue2()+getAbilityValue1());
 		if (getAbilityValue2()>100) setAbilityValue2(100);
@@ -37,10 +40,11 @@ public class HeroAbility_LurkingEvil extends HeroAbility {
 		if (getAbilityValue2()>=100){
 
 			tmpHero.transform();
+			setAbilityValue3(1);
 		}
 		
 		//tmpHero.addPower_bonus(getAbilityValue2());
-		
+		}
 
 	}
 
