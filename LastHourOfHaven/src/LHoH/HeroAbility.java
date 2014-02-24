@@ -4,7 +4,7 @@ import java.io.ObjectInputStream.GetField;
 import java.util.Random;
 
 public class HeroAbility implements Comparable{
-String name;
+private String name;
 protected int heroId; // if ==-1 all heroes
 private double abilityValue1;
 private double abilityValue2;
@@ -33,11 +33,11 @@ protected HeroAbility(){
 
 protected void init(int heroId,String name){
 	this.heroId=heroId;	
-	this.name=name;
+	this.setName(name);
 }
 
 public String getAbilityTip(){
-	return name;
+	return getName();
 	
 }
 
@@ -128,6 +128,14 @@ public int compareTo(Object arg0) {
 	if (sequenceNumber>((HeroAbility)arg0).getSequenceNumber()) return 1;
 	if (sequenceNumber<((HeroAbility)arg0).getSequenceNumber()) return -1;
 	return 0;
+}
+
+public String getName() {
+	return name;
+}
+
+public void setName(String name) {
+	this.name = name;
 }
 
 }

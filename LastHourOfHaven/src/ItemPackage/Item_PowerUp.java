@@ -31,18 +31,13 @@ public class Item_PowerUp extends Item {
 		String tmpText;
 		int addGold, addSoul;
 
-		Hero tmp = null;
+		Hero tmp = LHoH.gameScreen.heroStock.getRandomAliveHero();
 
-		for (Hero hero : HeroStock.allScope) {
-			if (hero.status == 1) {
-				tmp = hero;
-			}
-		}
+
 		if (tmp != null) {
 
-			LHoH.gameScreen.heroAbilityStock.addAbility(new HeroAbility_Imp(
-					getId()));
-			tmpText = tmp.name + " Был отмечен печатью Великого! (+25 мощи)";
+
+			tmpText = tmp.name + " Был отмечен печатью Великого! ";
 
 			LHoH.gameScreen.heroAbilityStock.addAbility(new HeroAbility_DemonicSignet(tmp.getId(),(grade+1)*14));
 			LHoH.gameScreen.bottomInfo.chat.addTextChat(tmpText);

@@ -44,7 +44,9 @@ public class Item_BrokenClock extends Item {
 		}
 		else{
 			if (isFlagItemWasActivated()){
-				setFlagRemoveThisTick(true);
+				SelfDestroy();
+				
+				
 			}
 		}
 		

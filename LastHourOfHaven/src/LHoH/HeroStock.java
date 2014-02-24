@@ -9,122 +9,164 @@ import java.awt.GridBagLayout;
 import java.awt.RenderingHints;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 import javax.swing.WindowConstants;
 import javax.swing.text.StyledEditorKit.ForegroundAction;
 
-
-
-public class HeroStock extends JPanel{
+public class HeroStock extends JPanel {
 	public static List<Hero> allScope = new ArrayList<Hero>();
 	BattleZone heroZone;
-	HeroStock(){
-	
-	//setBounds(5, 5, 25, 25);
-	setSize(260,870);
-	setPreferredSize(new Dimension(260, 870));
-	setLayout(new GridBagLayout());
-	setBorder(BorderFactory.createLineBorder(Color.red));
-	
-	//Hero tmpH = new Hero("Нечистивый", 10, 1, 60, "воин",1);
-	//allScope.add(tmpH);
-	
 
-	
-	//add(tmpH);
-	heroZone = new BattleZone();
-	heroZone.setLayout(new FlowLayout(FlowLayout.CENTER,1,1));
-	add(heroZone);
-	heroZone.zoneId=1;
-	heroZone.setPreferredSize(new Dimension(250, 860));
-	
-	
-	
-	
-	
-	
-	
-}
+	HeroStock() {
 
-void reDrow (Graphics g){
+		// setBounds(5, 5, 25, 25);
+		setSize(260, 870);
+		setPreferredSize(new Dimension(260, 870));
+		setLayout(new GridBagLayout());
+		setBorder(BorderFactory.createLineBorder(Color.red));
 
-	removeAll();
-	for (Hero hero : allScope) {
-		if (hero.getZone()==1)	add(hero);
-//		hero.reDrow(g);
+		// Hero tmpH = new Hero("Нечистивый", 10, 1, 60, "воин",1);
+		// allScope.add(tmpH);
+
+		// add(tmpH);
+		heroZone = new BattleZone();
+		heroZone.setLayout(new FlowLayout(FlowLayout.CENTER, 1, 1));
+		add(heroZone);
+		heroZone.zoneId = 1;
+		heroZone.setPreferredSize(new Dimension(250, 860));
+
 	}
-}
 
-public void paintComponent(Graphics g) {
-	
-	System.out.println("repaint");
- 
-	//removeAll();
-	Graphics2D g2 = (Graphics2D) g;
-    g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-    //reDrow(g);
-}
+	void reDrow(Graphics g) {
 
-public void addHero(Hero hero){
-	allScope.add(hero);
-}
-
-public Hero getHeroById(int id){
-	for (Hero hero : allScope) {
-		if (hero.getId()==id) return hero;
-	}
-	
-	
-	return null;
-}
-
-public Hero getRandomDeadHero(){
-	for (Hero hero : allScope) {
-		if (hero.isDead()) return hero;
-	}
-	
-	
-	return null;
-}
-
-Hero getRandomAliveHero(){
-	for (Hero hero : allScope) {
-		if (hero.status==1) return hero;
-	}
-	
-	
-	return null;
-}
-
-public void removeHeroById(int id){
-	for (Hero hero : allScope) {
-		if (hero.getId()==id) {
-			//allScope.remove(hero);
-			hero.setRemoved();
+		removeAll();
+		for (Hero hero : allScope) {
+			if (hero.getZone() == 1)
+				add(hero);
+			// hero.reDrow(g);
 		}
 	}
-}
 
-void update (){
-	Hero tmphero=null;
-	for (Hero hero : allScope) {
-		if (hero.isRemoved()) {
-			
-			tmphero=hero;
-			
+	public void paintComponent(Graphics g) {
+
+		System.out.println("repaint");
+
+		// removeAll();
+		Graphics2D g2 = (Graphics2D) g;
+		g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
+				RenderingHints.VALUE_ANTIALIAS_ON);
+		// reDrow(g);
+	}
+
+	public void addHero(Hero hero) {
+		allScope.add(hero);
+	}
+
+	public Hero getHeroById(int id) {
+		for (Hero hero : allScope) {
+			if (hero.getId() == id)
+				return hero;
+		}
+
+		return null;
+	}
+
+	public Hero getRandomDeadHero() {
+		for (Hero hero : allScope) {
+			if (hero.isDead())
+				return hero;
+		}
+
+		return null;
+	}
+
+	public Hero getRandomAliveHero() {
+
+		Random randomGenerator = new Random();
+		
+		Location tmploc;
+
+		for (Hero hero : allScope) {
+			if ((tmploc=LHoH.gameScreen.locationScope.getLocationByHeroId(hero.getId()))!=null) {
+				if (tmploc.getName()=="Могила Избранного"){
+					return hero;
+				}
+			}
+		}
+
+		return getTrueRandomAliveHero();
+	}
+	
+	
+	public Hero getTrueRandomAliveHero() {
+
+		Random randomGenerator = new Random();
+		Hero tmphero;
+
+		for (int i = 0; i < 500; i++) {
+			int tmpid = randomGenerator.nextInt(allScope.size());
+			tmphero = allScope.get(tmpid);
+
+			if (tmphero.status == 1)
+				return tmphero;
+
+		}
+
+		return null;
+	}
+	
+	
+	
+
+	Hero getRandomAliveHeroNotId(int id) {
+
+		Random randomGenerator = new Random();
+		Hero tmphero;
+
+		for (int i = 0; i < 500; i++) {
+			int tmpid = randomGenerator.nextInt(allScope.size());
+			tmphero = allScope.get(tmpid);
+			if (tmphero.getId() != id) {
+				if (tmphero.status == 1)
+					return tmphero;
+			}
+		}
+
+		return null;
+	}
+
+	public void removeHeroById(int id) {
+		for (Hero hero : allScope) {
+			if (hero.getId() == id) {
+				// allScope.remove(hero);
+				hero.setRemoved();
+			}
 		}
 	}
-	
-	if (tmphero!=null) allScope.remove(tmphero);
-	
-	for (Hero hero : allScope) {
-		if (!hero.isRemoved())hero.Update();
-		//hero.addPower(1);
-//		add(hero);
-//		hero.reDrow(g);
-		//hero.addPower(5);
+
+	void update() {
+		Hero tmphero = null;
+		for (Hero hero : allScope) {
+			if (hero.isRemoved()) {
+
+				tmphero = hero;
+
+			}
+		}
+
+		if (tmphero != null)
+			allScope.remove(tmphero);
+
+		for (Hero hero : allScope) {
+			if (!hero.isRemoved())
+				hero.Update();
+			// hero.addPower(1);
+			// add(hero);
+			// hero.reDrow(g);
+			// hero.addPower(5);
+		}
 	}
-}
 }

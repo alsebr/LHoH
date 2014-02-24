@@ -129,11 +129,7 @@ public class Item extends JPanel implements MouseListener{
 	}
 	
 	protected void SelfDestroy (){
-		for (Item item : LHoH.gameScreen.itemStock.allScope) {
-    		if (item.getId()==getId())	{
-    			LHoH.gameScreen.itemStock.allScope.remove(item);
-    		}
-    	}
+		setFlagRemoveThisTick(true);
 	}
 
 	public void paintComponent(Graphics g) {
