@@ -167,15 +167,16 @@ public class HeroViewScreen extends JFrame implements ActionListener{
 
 			if (hero != null) {
 				String htmltext;
-				HeroStat heroStat = hero.getHeroStat();
+				HeroStat heroPureStat = hero.getPureHeroStat();
+				HeroStat heroBonusStat = hero.getHeroStat_bonus();
 
 				
 				
 				htmltext = "<html>";
 				htmltext += "<br>Lvl: " + hero.lvl;
-				htmltext += "<br>Str: " + String.format("%.3g%n",heroStat.strp)+" ("+String.format("%.2g%n", hero.getHeroStatPerLvlFinal().strp)+" for lvl)";
-				htmltext += "<br>Vit: " + String.format("%.3g%n",heroStat.vitp)+" ("+String.format("%.2g%n", hero.getHeroStatPerLvlFinal().vitp)+" for lvl)";
-				htmltext += "<br>Int: " + String.format("%.3g%n",heroStat.intp)+" ("+String.format("%.2g%n", hero.getHeroStatPerLvlFinal().intp)+" for lvl)";
+				htmltext += "<br>Str: " + String.format("%.3g%n",heroPureStat.strp)+"+"+heroBonusStat.strp+" ("+String.format("%.2g%n", hero.getHeroStatPerLvlFinal().strp)+" for lvl)";
+				htmltext += "<br>Vit: " + String.format("%.3g%n",heroPureStat.vitp)+"+"+heroBonusStat.vitp+" ("+String.format("%.2g%n", hero.getHeroStatPerLvlFinal().vitp)+" for lvl)";
+				htmltext += "<br>Int: " + String.format("%.3g%n",heroPureStat.intp)+"+"+heroBonusStat.intp+" ("+String.format("%.2g%n", hero.getHeroStatPerLvlFinal().intp)+" for lvl)";
 				htmltext += "<br>";
 				htmltext += "<br>Power: " + (int) hero.getPurePower() +"+"+(int) hero.getBonusPower();
 				htmltext += "<br>Time: " + FrameWorkLHoH.ttlToTime(hero.getLeftTime())+"/"+FrameWorkLHoH.ttlToTime(hero.getLifeTimeTotal());

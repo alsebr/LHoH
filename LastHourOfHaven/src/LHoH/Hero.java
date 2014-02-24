@@ -41,25 +41,23 @@ public class Hero extends JPanel implements DragGestureListener,
 		DragSourceListener, MouseListener {
 	DragSource dragSource;
 
-
-
 	public double getPower() {
-		double tmpPower=heroStat.strp*strToPowerRatio;
-		
-		return tmpPower + getBonusPower();
+		double tmpPower = getPurePower()+ getBonusPower();
+
+	
+		//System.out.println(tmpPower);
+		return tmpPower ;
 	}
 
 	public double getPurePower() {
-		return heroStat.strp*strToPowerRatio;
+		return getHeroStat().strp * strToPowerRatio;
 	}
-	
-	
 
 	public double getBonusPower() {
 		return getPower_bonus();
 	}
 
-	public void setPower (double power) {
+	public void setPower(double power) {
 		this.power = power;
 	}
 
@@ -72,11 +70,13 @@ public class Hero extends JPanel implements DragGestureListener,
 	public String getHeroTip() {
 		return htmlTextHeroTip;
 	}
-	private boolean flagDieThisTick=false;
-	private boolean flagLvlUpThisTick=false;
+
+	private boolean flagDieThisTick = false;
+	private boolean flagLvlUpThisTick = false;
 	double exp;
-	
+
 	protected double ttl;
+
 	public double getTtl() {
 		return ttl;
 	}
@@ -84,7 +84,7 @@ public class Hero extends JPanel implements DragGestureListener,
 	public void addTtl(double ttl) {
 		this.ttl += ttl;
 	}
-	
+
 	public String name;
 	protected String classH;
 	protected Image image;
@@ -94,17 +94,17 @@ public class Hero extends JPanel implements DragGestureListener,
 	private int id;
 	double expNeedExp;
 	private HeroStat heroStat;
-	private HeroStat heroStatBonus=new HeroStat(0, 0, 0);
-	String htmlTextHeroTip="";
+	
+	private HeroStat heroStat_bonus= new HeroStat(0,0,0);
+	String htmlTextHeroTip = "";
 	private double power;
 	private double power_bonus;
 
-	private double costGold,costSoul,costTear;
-	
-	
+	private double costGold, costSoul, costTear;
+
 	double statPointForLvl;
 	HeroStat statPointForLvlRatio;
-	
+
 	public int getId() {
 		return id;
 	}
@@ -114,12 +114,11 @@ public class Hero extends JPanel implements DragGestureListener,
 	}
 
 	private HeroStat statPointForLvlRatioPlayerModify;
-	private int heroStatPlayerPref=0;
+	private int heroStatPlayerPref = 0;
 	HeroStat statPointForLvlRatioFinal;
-	double strToPowerRatio=2;
-	double vitToTTLRatio=2;
-	
-	
+	double strToPowerRatio = 2;
+	double vitToTTLRatio = 2;
+
 	double deltaExp;
 	double deltaPower;
 
@@ -138,26 +137,28 @@ public class Hero extends JPanel implements DragGestureListener,
 		this.addMouseListener(this);
 
 	}
-	
-	public void addTTL (){
-		
-	}
-	
-	public void  addHeroAbilities(){
-		
-	}
-	
-	
 
-	public void init(String name,  Image inImage, double inDeltaExp, double statPointPerLvl, HeroStat heroStat, HeroStat heroStatRatio,double strToPowerRatio,double vitToTTLRatio,String htmlTextHeroTip,double costGold,double costSoul,double costTear) {
+	public void addTTL() {
+
+	}
+
+	public void addHeroAbilities() {
+
+	}
+
+	public void init(String name, Image inImage, double inDeltaExp,
+			double statPointPerLvl, HeroStat heroStat, HeroStat heroStatRatio,
+			double strToPowerRatio, double vitToTTLRatio,
+			String htmlTextHeroTip, double costGold, double costSoul,
+			double costTear) {
 
 		Random randomGenerator = new Random();
 		id = randomGenerator.nextInt(32000);
 
 		this.name = name;
-		//this.power = power;
+		// this.power = power;
 		this.exp = 1;
-		
+
 		this.ttl = 0;
 
 		this.status = 1;
@@ -166,18 +167,19 @@ public class Hero extends JPanel implements DragGestureListener,
 		this.deltaExp = inDeltaExp;
 		this.image = inImage;
 		this.setHeroStat(heroStat);
-		this.statPointForLvlRatio=heroStatRatio;
-		this.statPointForLvl=statPointPerLvl;
-		this.strToPowerRatio= strToPowerRatio;
-		this.vitToTTLRatio=vitToTTLRatio;
-		this.htmlTextHeroTip=htmlTextHeroTip;
+		this.statPointForLvlRatio = heroStatRatio;
+		this.statPointForLvl = statPointPerLvl;
+		this.strToPowerRatio = strToPowerRatio;
+		this.vitToTTLRatio = vitToTTLRatio;
+		this.htmlTextHeroTip = htmlTextHeroTip;
 		this.setCostGold(costGold);
-		this.costSoul=costSoul;
+		this.costSoul = costSoul;
 		this.setCostTear(costTear);
 	}
-	boolean isDead()
-	{
-		if (status==0)	return true;
+
+	boolean isDead() {
+		if (status == 0)
+			return true;
 		return false;
 	}
 
@@ -194,105 +196,95 @@ public class Hero extends JPanel implements DragGestureListener,
 		exp += addExp;
 	}
 
-	
-	HeroStat getHeroStatPerLvlFinal(){
-		HeroStat tmpherostat=new HeroStat(0, 0, 0);
-		
-		HeroStat playerModify=new HeroStat(0,0,0);
-		
-		if (heroStatPlayerPref==0){
-			playerModify=new HeroStat(1,1,1);
-		}
-		if (heroStatPlayerPref==1){
-			playerModify=new HeroStat(5,2,1);
-		}
-		if (heroStatPlayerPref==2){
-			playerModify=new HeroStat(1,5,2);
-		}
-		if (heroStatPlayerPref==3){
-			playerModify=new HeroStat(2,1,5);
-		}
-		
-		tmpherostat.intp=statPointForLvlRatio.intp*playerModify.intp;
-		tmpherostat.vitp=statPointForLvlRatio.vitp*playerModify.vitp;
-		tmpherostat.strp=statPointForLvlRatio.strp*playerModify.strp;
-		
-		double  stabilze=tmpherostat.intp+tmpherostat.vitp+tmpherostat.strp;
-		
-		tmpherostat.intp=tmpherostat.intp/stabilze*statPointForLvl;
-		tmpherostat.vitp=tmpherostat.vitp/stabilze*statPointForLvl;
-		tmpherostat.strp=tmpherostat.strp/stabilze*statPointForLvl;
-		
-		
+	HeroStat getHeroStatPerLvlFinal() {
+		HeroStat tmpherostat = new HeroStat(0, 0, 0);
 
-		
+		HeroStat playerModify = new HeroStat(0, 0, 0);
+
+		if (heroStatPlayerPref == 0) {
+			playerModify = new HeroStat(1, 1, 1);
+		}
+		if (heroStatPlayerPref == 1) {
+			playerModify = new HeroStat(5, 2, 1);
+		}
+		if (heroStatPlayerPref == 2) {
+			playerModify = new HeroStat(1, 5, 2);
+		}
+		if (heroStatPlayerPref == 3) {
+			playerModify = new HeroStat(2, 1, 5);
+		}
+
+		tmpherostat.intp = statPointForLvlRatio.intp * playerModify.intp;
+		tmpherostat.vitp = statPointForLvlRatio.vitp * playerModify.vitp;
+		tmpherostat.strp = statPointForLvlRatio.strp * playerModify.strp;
+
+		double stabilze = tmpherostat.intp + tmpherostat.vitp
+				+ tmpherostat.strp;
+
+		tmpherostat.intp = tmpherostat.intp / stabilze * statPointForLvl;
+		tmpherostat.vitp = tmpherostat.vitp / stabilze * statPointForLvl;
+		tmpherostat.strp = tmpherostat.strp / stabilze * statPointForLvl;
+
 		return tmpherostat;
 	}
-	
+
 	void lvlUp() {
 		setFlagLvlUpThisTick(true);
 		lvl += 1;
-		
-		
-		
-		
-		
+
 		heroStat.intp += getHeroStatPerLvlFinal().intp;
 		heroStat.strp += getHeroStatPerLvlFinal().strp;
 		heroStat.vitp += getHeroStatPerLvlFinal().vitp;
 
-		//LHoH.gameScreen.bottomInfo.chat.addTextChat(name + " достиг " + lvl	+ " уровня, его мощь теперь " + (int) power);
+		// LHoH.gameScreen.bottomInfo.chat.addTextChat(name + " достиг " + lvl +
+		// " уровня, его мощь теперь " + (int) power);
 	}
 
-	
-	double getLeftTime(){
-		
-		
-		
-		return heroStat.vitp*vitToTTLRatio-ttl;
+	double getLeftTime() {
+
+		return heroStat.vitp * vitToTTLRatio - ttl;
 	}
-	
-	double getLifeTimeTotal(){
-		
-		
-		
-		return heroStat.vitp*vitToTTLRatio;
+
+	double getLifeTimeTotal() {
+
+		return heroStat.vitp * vitToTTLRatio;
 	}
-	
-	void resetTick(){
-		power_bonus=0;
-		heroStatBonus.strp=0;
-		heroStatBonus.vitp=0;
-		heroStatBonus.intp=0;
+
+	void resetTick() {
+		power_bonus = 0;
+
+		heroStat_bonus.strp=0;
+		heroStat_bonus.vitp=0;
+		heroStat_bonus.intp=0;
 		setFlagDieThisTick(false);
 		setFlagLvlUpThisTick(false);
 	}
-	
+
 	protected void Update() {
-		
+		System.out.println("hero update start");
 		resetTick();
 		if (status == 1) {
 			ttl += 0.017;
-			
+
 		}
-		if (getLeftTime() <= 0)	{
-			status = 0;
-			setFlagDieThisTick(true);
-		}
-			
 
 		expNeedExp = deltaExp * ((double) lvl + (double) lvl * lvl / 20);
-
 
 		if (expNeedExp < exp) {
 			lvlUp();
 		}
+
 		if (status == 1) {
-		LHoH.gameScreen.heroAbilityStock.useAllAbilityByHero(id);
-	}
+			LHoH.gameScreen.heroAbilityStock.useAllAbilityByHero(id);
+		}
+
+		if (getLeftTime() <= 0) {
+			status = 0;
+			setFlagDieThisTick(true);
+		}
+
 		
-
-
+		System.out.println("hero update end");
 	}
 
 	void setStatus(int inStatus) {
@@ -327,7 +319,6 @@ public class Hero extends JPanel implements DragGestureListener,
 			break;
 		case 1:
 
-			
 			g2.drawString(min + ":" + sec, 5, 15);
 
 			break;
@@ -440,6 +431,13 @@ public class Hero extends JPanel implements DragGestureListener,
 	}
 
 	public HeroStat getHeroStat() {
+		System.out.println("1     "+heroStat.strp);
+		System.out.println("2     "+this.heroStat_bonus.strp);
+		//System.out.println(tmpPower);
+		return HeroStat.summ(heroStat, heroStat_bonus);
+	}
+	
+	public HeroStat getPureHeroStat() {
 		return heroStat;
 	}
 
@@ -454,7 +452,7 @@ public class Hero extends JPanel implements DragGestureListener,
 	public void setPower_bonus(double power_bonus) {
 		this.power_bonus = power_bonus;
 	}
-	
+
 	public void addPower_bonus(double power_bonus) {
 		this.power_bonus += power_bonus;
 	}
@@ -474,17 +472,17 @@ public class Hero extends JPanel implements DragGestureListener,
 	public void setFlagDieThisTick(boolean flagDieThisTick) {
 		this.flagDieThisTick = flagDieThisTick;
 	}
-	
-	public boolean isRemoved(){
-		if (status==3){
+
+	public boolean isRemoved() {
+		if (status == 3) {
 			return true;
 		}
 		return false;
 	}
-	
-	public void  setRemoved(){
-		status=3;
-		zone=-1;
+
+	public void setRemoved() {
+		status = 3;
+		zone = -1;
 	}
 
 	public HeroStat getStatPointForLvlRatioPlayerModify() {
@@ -526,6 +524,22 @@ public class Hero extends JPanel implements DragGestureListener,
 
 	public void setCostGold(double costGold) {
 		this.costGold = costGold;
+	}
+
+	public HeroStat getHeroStat_bonus() {
+		return heroStat_bonus;
+	}
+
+	public void addHeroStat_bonus(HeroStat heroStat_bonus) {
+		
+		
+		this.heroStat_bonus.strp = heroStat_bonus.strp;
+		this.heroStat_bonus.vitp = heroStat_bonus.vitp;
+		this.heroStat_bonus.intp = heroStat_bonus.intp;
+
+
+		System.out.println(this.heroStat_bonus.strp);
+		
 	}
 
 }

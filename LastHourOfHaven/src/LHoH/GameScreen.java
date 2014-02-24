@@ -96,8 +96,10 @@ public class GameScreen extends JFrame {
 	}
 
 	private void gameTick() {
-		reDrow();
+		System.out.println("---Tick");
 		update();
+		reDrow();
+
 	}
 
 	void update() {
@@ -109,9 +111,11 @@ public class GameScreen extends JFrame {
 		locationPanel.update();
 		itemStock.update();
 		towerPanel.update();
-		heroViewScreen.update();
+
 		heroAbilityStock.update();
 		heroPanel.update();
+		
+		heroViewScreen.update();
 	}
 
 	void reDrow() {

@@ -9,6 +9,7 @@ public class HeroAbility_Imp extends HeroAbility {
 	public HeroAbility_Imp(int heroId) {
 		super();
 		init(heroId, "Бесовская хитрость");
+		setSequenceNumberDefault();
 	}
 
 	@Override

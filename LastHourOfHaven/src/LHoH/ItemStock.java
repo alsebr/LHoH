@@ -26,10 +26,10 @@ public class ItemStock extends JPanel {
 		setSize(700, 450);
 		// setBorder(BorderFactory.createLineBorder(Color.red));
 
-		allScope.add(new Item_chest(0));
-//		allScope.add(new Item_BrokenClock(1));
+		//allScope.add(new Item_chest(0));
+allScope.add(new Item_BrokenClock(1));
 
-		allScope.add(new Item_PowerUp(0));
+		//allScope.add(new Item_PowerUp(0));
 
 		//allScope.add(new Item_Plague(0));
 

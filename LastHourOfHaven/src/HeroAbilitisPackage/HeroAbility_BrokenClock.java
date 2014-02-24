@@ -26,7 +26,7 @@ public class HeroAbility_BrokenClock extends HeroAbility {
 		Hero tmpHero = LHoH.gameScreen.heroStock.getHeroById(id);
 		tmpHero.addTtl(-getAbilityValue2());
 		if (getAbilityValue1() <= 0) {
-			setFlagRemoveThisTick(true);
+			selfDestroy();
 		}
 	}
 

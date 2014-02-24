@@ -9,6 +9,7 @@ import javax.imageio.ImageIO;
 
 import Hero.Hero_Mimic;
 import HeroAbilitisPackage.HeroAbility_BrokenClock;
+import HeroAbilitisPackage.HeroAbility_CircletOfWisdom;
 import HeroAbilitisPackage.HeroAbility_DemonicSignet;
 import LHoH.Hero;
 import LHoH.Item;
@@ -57,6 +58,10 @@ public class Item_BrokenClock extends Item {
 
 			LHoH.gameScreen.heroAbilityStock
 					.addAbility(new HeroAbility_BrokenClock(getId(), (int)getTtl()));
+			
+			LHoH.gameScreen.heroAbilityStock.addAbility(new HeroAbility_CircletOfWisdom(13));
+			
+			
 			LHoH.gameScreen.bottomInfo.chat.addTextChat(tmpText);
 
 		}

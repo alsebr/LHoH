@@ -2,9 +2,11 @@ package LHoH;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.PriorityQueue;
 
 public class HeroAbilityStock {
-	List<HeroAbility> allScope = new ArrayList<HeroAbility>();
+	//private List<HeroAbility> allScope = new ArrayList<HeroAbility>();
+	private PriorityQueue<HeroAbility> allScope = new PriorityQueue<HeroAbility>();
 
 	HeroAbilityStock() {
 
@@ -14,6 +16,8 @@ public class HeroAbilityStock {
 
 		List<HeroAbility> tmpScope = new ArrayList<HeroAbility>();
 
+
+		
 		for (HeroAbility heroAbility : allScope) {
 			if (heroAbility.isFlagRemoveThisTick()) {
 				tmpScope.add(heroAbility);
@@ -28,9 +32,14 @@ public class HeroAbilityStock {
 			heroAbility.update();
 
 		}
+		
 	}
 
 	public void addAbility(HeroAbility heroAbility) {
+		//private List<HeroAbility> allScope = new ArrayList<HeroAbility>();
+		
+		
+		
 		allScope.add(heroAbility);
 	}
 
@@ -45,15 +54,14 @@ public class HeroAbilityStock {
 
 	String getAllAbilityTipByHero(int heroId) {
 		String tmptText = "";
+		
+		
 		for (HeroAbility heroAbility : allScope) {
-			if (heroAbility.heroId == heroId)
+			if ((heroAbility.heroId == heroId)||(heroAbility.heroId == -1))
 				tmptText += heroAbility.getAbilityTip() + "<br>";
 		}
 
-		for (HeroAbility heroAbility : allScope) {
-			if (heroAbility.heroId == -1)
-				tmptText += heroAbility.getAbilityTip() + "<br>";
-		}
+
 
 		return tmptText;
 	}
@@ -62,14 +70,12 @@ public class HeroAbilityStock {
 		for (HeroAbility heroAbility : allScope) {
 			if (heroAbility.heroId == heroId)
 				heroAbility.useAbility();
-
-		}
-
-		for (HeroAbility heroAbility : allScope) {
 			if (heroAbility.heroId == -1)
 				heroAbility.useAbilityForHeroId(heroId);
 
 		}
+
+		
 
 	}
 
