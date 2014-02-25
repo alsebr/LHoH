@@ -72,9 +72,16 @@ public class HeroAbilityStock {
 				heroAbility.useAbility();
 			if (heroAbility.heroId == -1)
 				heroAbility.useAbilityForHeroId(heroId);
+		}
 
 		}
 
+		void useAllAbilityBoss() {
+			for (HeroAbility heroAbility : allScope) {
+				if (heroAbility.heroId == -2)
+					heroAbility.bossUse();
+
+			}
 		
 
 	}

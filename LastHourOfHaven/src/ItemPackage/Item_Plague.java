@@ -7,6 +7,7 @@ import java.util.Random;
 
 import javax.imageio.ImageIO;
 
+import LHoH.Boss;
 import LHoH.Item;
 import LHoH.LHoH;
 
@@ -26,7 +27,9 @@ setToolTipText(tmptext);
 
 public void activateItem(){
 	int td;
-	td=(int)(LHoH.gameScreen.towerPanel.towerFight.bossPower*0.1*(grade+1));
+	Boss boss=LHoH.gameScreen.towerPanel.towerFight.getBoss(); 
+	td=(int)(boss.getPowerCurrent()*0.15*(grade+1));
+	boss.setPowerCurrent(boss.getPowerCurrent()-td);
 	LHoH.gameScreen.towerPanel.towerFight.bossPower=LHoH.gameScreen.towerPanel.towerFight.bossPower-td;
 	
 	String tmpText="Чума вырвалась на свободу. Мощь врага в Бесконечной башне уменьшена на "+td;

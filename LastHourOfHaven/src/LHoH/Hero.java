@@ -44,7 +44,7 @@ public class Hero extends JPanel implements DragGestureListener,
 	public double getPower() {
 		double tmpPower = getPurePower()+ getBonusPower();
 
-	
+	if (tmpPower<1)tmpPower=1;
 		//System.out.println(tmpPower);
 		return tmpPower ;
 	}
@@ -83,6 +83,7 @@ public class Hero extends JPanel implements DragGestureListener,
 
 	public void addTtl(double ttl) {
 		this.ttl += ttl;
+		if (this.ttl<0) this.ttl=0;
 	}
 
 	public String name;
@@ -103,6 +104,14 @@ public class Hero extends JPanel implements DragGestureListener,
 	private double costGold, costSoul, costTear;
 
 	double statPointForLvl;
+	public double getStatPointForLvl() {
+		return statPointForLvl;
+	}
+
+	public void setStatPointForLvl(double statPointForLvl) {
+		this.statPointForLvl = statPointForLvl;
+	}
+
 	HeroStat statPointForLvlRatio;
 
 	public int getId() {
@@ -183,7 +192,7 @@ public class Hero extends JPanel implements DragGestureListener,
 		return false;
 	}
 
-	String getHeroName() {
+	public String getHeroName() {
 		return name;
 	}
 

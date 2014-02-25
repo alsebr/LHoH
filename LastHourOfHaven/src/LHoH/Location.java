@@ -120,7 +120,7 @@ public class Location extends JPanel {
 	double bonus50Tear_final = 0;
 	double bonusALLexp_final = 0;
 
-	public String name;
+	private String locationName;
 
 	Image imageGold, imageSoul, imageTear;
 
@@ -134,6 +134,14 @@ public class Location extends JPanel {
 	}
 	
 	
+	public String getLocationName() {
+		return locationName;
+	}
+
+	public void setLocationName(String locationName) {
+		this.locationName = locationName;
+	}
+
 	protected void init(String inName, int inPower, double inwinR, Image inEnemy,
 			double inbonus50Gold, double inbonus50Soul, double inbonus50Tear,
 			double inbonusALLexp,double pLocation_max){
@@ -157,7 +165,7 @@ public class Location extends JPanel {
 
 		power = inPower;
 		winR = inwinR;
-		name = inName;
+		locationName = inName;
 
 		bonus50Gold = inbonus50Gold;
 		bonus50Soul = inbonus50Soul;
@@ -219,7 +227,7 @@ public class Location extends JPanel {
 		g2.draw(new Line2D.Double(x2, 19, x2, (int) (d.getHeight() - 19)));
 
 		g2.setFont(new Font("Arial", Font.BOLD, 14));
-		g2.drawString(name, 115, 15);
+		g2.drawString(locationName, 115, 15);
 
 		g2.setFont(new Font("Arial", Font.BOLD, 18));
 		g2.setColor(Color.black);
@@ -346,7 +354,7 @@ public class Location extends JPanel {
 			if (pLocation_current>=pLocation_max) {
 				status=3;
 				doLocationDevastated();
-				LHoH.gameScreen.bottomInfo.chat.addTextChat("Портал "+name+" опустошен ");
+				LHoH.gameScreen.bottomInfo.chat.addTextChat("Портал "+locationName+" опустошен ");
 			}
 		}
 		if (status == 2) {

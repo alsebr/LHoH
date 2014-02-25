@@ -21,6 +21,7 @@ import javax.swing.JScrollPane;
 import LocationPackage.Location_CrystalPalace;
 import LocationPackage.Location_FalseProphet;
 import LocationPackage.Location_ForgottenForest;
+import LocationPackage.Location_GraveOfTheChosenOne;
 import LocationPackage.Location_SilenceDesert;
 import LocationPackage.Location_WarriorOfTheLight;
 import LocationPackage.Location_imp;
@@ -62,7 +63,8 @@ void addLocation (){
 	if (LHoH.gameScreen.player.getLocationNewTier()>400) count++;
 	if (LHoH.gameScreen.player.getLocationNewTier()>400) count++;
 	//if (LHoH.gameScreen.player.getHeroNewTier()>250) count++;
-	
+	Location tmpL = new Location_GraveOfTheChosenOne();
+	allScope.add(tmpL);
 	
 	
 	count=random.nextInt(count);
@@ -81,7 +83,7 @@ break;
 		addLocation—rystalPalace();
 		break;
 	case 4:
-		Location tmpL = new Location_WarriorOfTheLight();
+		tmpL = new Location_WarriorOfTheLight();
 		allScope.add(tmpL);
 		
 		

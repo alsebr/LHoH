@@ -37,7 +37,7 @@ public class HeroViewScreen extends JFrame implements ActionListener{
 		add(labelHeroIco);
 
 		labelHeroStat.setBorder(BorderFactory.createLineBorder(Color.black));
-		labelHeroStat.setBounds(100, 30, 120, 200);
+		labelHeroStat.setBounds(100, 30, 180, 200);
 		add(labelHeroStat);
 		
 		labelHeroTip.setBorder(BorderFactory.createLineBorder(Color.black));
@@ -174,9 +174,10 @@ public class HeroViewScreen extends JFrame implements ActionListener{
 				
 				htmltext = "<html>";
 				htmltext += "<br>Lvl: " + hero.lvl;
-				htmltext += "<br>Str: " + String.format("%.3g%n",heroPureStat.strp)+"+"+heroBonusStat.strp+" ("+String.format("%.2g%n", hero.getHeroStatPerLvlFinal().strp)+" for lvl)";
-				htmltext += "<br>Vit: " + String.format("%.3g%n",heroPureStat.vitp)+"+"+heroBonusStat.vitp+" ("+String.format("%.2g%n", hero.getHeroStatPerLvlFinal().vitp)+" for lvl)";
-				htmltext += "<br>Int: " + String.format("%.3g%n",heroPureStat.intp)+"+"+heroBonusStat.intp+" ("+String.format("%.2g%n", hero.getHeroStatPerLvlFinal().intp)+" for lvl)";
+				htmltext += "<br>Str: " + String.format("%.3g%n",heroPureStat.strp)+"+"+String.format("%.3g%n",heroBonusStat.strp)+" ("+String.format("%.2g%n", hero.getHeroStatPerLvlFinal().strp)+" fLvl)";
+				htmltext += "<br>Vit: " + String.format("%.3g%n",heroPureStat.vitp)+"+"+String.format("%.3g%n",heroBonusStat.vitp)+" ("+String.format("%.2g%n", hero.getHeroStatPerLvlFinal().vitp)+" fLvl)";
+				htmltext += "<br>Int: " + String.format("%.3g%n",heroPureStat.intp)+"+"+String.format("%.3g%n",heroBonusStat.intp)+" ("+String.format("%.2g%n", hero.getHeroStatPerLvlFinal().intp)+" fLvl)";
+				htmltext += "<br>Stat for Lvl: " + String.format("%.3g%n",hero.getStatPointForLvl());
 				htmltext += "<br>";
 				htmltext += "<br>Power: " + (int) hero.getPurePower() +"+"+(int) hero.getBonusPower();
 				htmltext += "<br>Time: " + FrameWorkLHoH.ttlToTime(hero.getLeftTime())+"/"+FrameWorkLHoH.ttlToTime(hero.getLifeTimeTotal());
@@ -184,7 +185,7 @@ public class HeroViewScreen extends JFrame implements ActionListener{
 						+ (int) hero.expNeedExp;
 				htmltext += "<br>";
 				htmltext += "<br>ExpLvl: " + hero.deltaExp;
-				htmltext += "<br>Power for lvl: " + hero.deltaPower;
+				
 
 				labelHeroStat.setText(htmltext);
 

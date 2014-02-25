@@ -7,7 +7,10 @@ import java.util.Random;
 
 import javax.imageio.ImageIO;
 
+import HeroAbilitisPackage.HeroAbility_BrokenClock;
+import HeroAbilitisPackage.HeroAbility_FireSword;
 import LHoH.Item;
+import LHoH.LHoH;
 
 public class Item_Weapon1 extends Item{
 public Item_Weapon1() {
@@ -23,6 +26,9 @@ tmptext+="Огненный меч. <br>Пассивно:<br> +30 мощь при сражении в Бесконечной ба
 setToolTipText(tmptext);
 
 setName("Огненный меч");
+
+LHoH.gameScreen.heroAbilityStock.addAbility(new HeroAbility_FireSword(30));
+
 }
 
 

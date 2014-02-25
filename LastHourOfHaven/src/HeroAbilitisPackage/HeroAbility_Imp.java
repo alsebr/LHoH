@@ -26,7 +26,7 @@ public class HeroAbility_Imp extends HeroAbility {
 				.getLocationByHeroId(heroId);
 
 		if (tmpLoc != null) {
-			if (tmpLoc.name == "Пещера бесов") {
+			if (tmpLoc.getLocationName() == "Пещера бесов") {
 				tmpLoc.addBonus50Gold_modify(getAbilityValue1());
 				tmpLoc.addBonus50Soul_modify(getAbilityValue2());
 				

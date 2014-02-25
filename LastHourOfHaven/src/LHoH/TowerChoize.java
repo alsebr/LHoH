@@ -15,6 +15,10 @@ import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
+import BossPackage.Boss_SwampSpirit;
+import BossPackage.Boss_Tyrael;
+import BossPackage.Boss_Wolf;
+
 public class TowerChoize extends JPanel {
 	Image bckground = null;
 	Image imageKey1, imageKey2;
@@ -43,6 +47,28 @@ public class TowerChoize extends JPanel {
 		init();
 	}
 
+	void preferFightLvl( int lvlT){
+		Boss tmpBoss=null;
+		switch (lvlT) {
+		case 0:
+			tmpBoss=new Boss_SwampSpirit(0);
+			break;
+		case 1:
+			tmpBoss=new Boss_Wolf(1);
+			break;
+		case 2:
+			tmpBoss=new Boss_Tyrael(2);
+	break;
+
+		default:
+			break;
+		}
+		
+		LHoH.gameScreen.towerPanel.towerFight.init(tmpBoss);
+		LHoH.gameScreen.towerPanel.activateTowerFightScrenn();
+	}
+	
+	
 	void goFightTower(int inLvl) {
 		if (inLvl != 0) {
 
@@ -51,8 +77,8 @@ public class TowerChoize extends JPanel {
 						.addTextChat("Вы вступаете на "
 								+ inLvl
 								+ " этаж Бесконечной башни, использовав Демонический ключ");
-				LHoH.gameScreen.towerPanel.towerFight.init(inLvl);
-				LHoH.gameScreen.towerPanel.activateTowerFightScrenn();
+				preferFightLvl(inLvl);
+				
 			} else {
 				LHoH.gameScreen.bottomInfo.chat
 						.addTextChat("Для входа в Бесконечную башню вам нужен Демонический ключ");
@@ -60,8 +86,9 @@ public class TowerChoize extends JPanel {
 		} else {
 			LHoH.gameScreen.bottomInfo.chat.addTextChat("Вы вступаете на "
 					+ inLvl + " этаж Бесконечной башни");
-			LHoH.gameScreen.towerPanel.towerFight.init(inLvl);
-			LHoH.gameScreen.towerPanel.activateTowerFightScrenn();
+			preferFightLvl(inLvl);
+			
+			
 		}
 
 	}

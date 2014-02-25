@@ -13,8 +13,10 @@ import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 
 import ItemPackage.Item_BrokenClock;
+import ItemPackage.Item_Key1;
 import ItemPackage.Item_Plague;
 import ItemPackage.Item_PowerUp;
+import ItemPackage.Item_Weapon1;
 import ItemPackage.Item_chest;
 
 public class ItemStock extends JPanel {
@@ -33,6 +35,12 @@ public class ItemStock extends JPanel {
 		allScope.add(new Item_PowerUp(0));
 		allScope.add(new Item_PowerUp(0));
 
+		allScope.add(new Item_Key1());
+		allScope.add(new Item_Key1());
+		
+		allScope.add(new Item_Plague(3));
+		
+		allScope.add(new Item_Weapon1());
 		//allScope.add(new Item_Plague(0));
 
 		// allScope.add(new Item_LegionGorn());

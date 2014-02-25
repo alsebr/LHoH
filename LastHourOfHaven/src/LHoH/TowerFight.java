@@ -16,6 +16,7 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import HeroAbilitisPackage.HeroAbility_HowlOfTheWolf;
@@ -31,14 +32,15 @@ import ItemPackage.Item_lamp;
 
 public class TowerFight extends JPanel {
 	Image bckground = null;
-	int lvl;
-
+	private int lvlTower;
+	private Boss boss;
 	public double bossPower;
 	String bossName;
 	double winR;
 	double powerH = 0;
 	int status = 0; // 0 - nohere, 1 - battle, 2- win
 	double ttl;
+	JLabel bossTipJLabel;
 JButton endTower;
 	
 	public TowerFight() {
@@ -62,38 +64,32 @@ JButton endTower;
 	    	  }
 	    	});
 		
-		
+			bossTipJLabel=new JLabel();
+			bossTipJLabel.setBounds(330, 35, 250, 200);
+			bossTipJLabel.setOpaque(false);
+			
+			add(bossTipJLabel);
+			//revalidate();
+			
 	}
 
 	void endTowerBattle()
 	{
 		LHoH.gameScreen.bottomInfo.chat.addTextChat("Вы покидаете Бесконечную башню");
-		LHoH.gameScreen.player.setTowerProgress (lvl,winR);
+		LHoH.gameScreen.player.setTowerProgress (boss.getLvlTower(),boss.getwR());
 		status=0;
 		LHoH.gameScreen.towerPanel.activateTowerChoizeScreen();
 	}
 	
 	void update(){
-		if (status==1){
-					
-					if(lvl==2){
-						bossPower=bossPower+(double)30/60;
-					}
-					
-					powerH=0;
-					ttl-=(double)1/60;
-					if (ttl<=0)status=2;
-					for (Hero hero : LHoH.gameScreen.heroStock.allScope) {
-					if ((hero.getZone()==1)&&(hero.status==1))	{
-						powerH+=hero.getPower();
-					}
-					}
-				
+		
+		if (status==1){	
+			
+			boss.updateBoss();
+			
+			/*	
 				double winRT;
-				double power=bossPower;
-				double speed=0.0005;
-				double delta=0;
-				delta=(double)powerH/power;
+				
 				
 				if (lvl==1){	Hero tmphero=LHoH.gameScreen.heroStock.getRandomAliveHero();
 							if ((winR<0.25)&&(winR+delta*speed>=0.25)){
@@ -117,7 +113,7 @@ JButton endTower;
 								LHoH.gameScreen.heroAbilityStock.addAbility(new HeroAbility_HowlOfTheWolf(tmphero.getId(),-32));;
 								LHoH.gameScreen.bottomInfo.chat.addTextChat("Раздается чудовищный вой Лютоволка,"+tmphero.name+" замирает в ужасе");
 							}
-							winR+=delta*speed;
+							
 							if (winR>=1) {
 								winR=1;
 								status=2;
@@ -131,30 +127,7 @@ JButton endTower;
 				}
 				
 				if (lvl==0){
-					if ((winR<0.25)&&(winR+delta*speed>=0.25)){
-						LHoH.gameScreen.bottomInfo.chat.addTextChat("Вы получили награду за битву с "+bossName+" (25%)");
-						LHoH.gameScreen.itemStock.allScope.add(new Item_Casket());
-					}
-					if ((winR<0.50)&&(winR+delta*speed>=0.50)){
-						LHoH.gameScreen.bottomInfo.chat.addTextChat("Вы получили награду за битву с "+bossName+" (50%)");
-						LHoH.gameScreen.itemStock.allScope.add(new Item_Key1());
-					}
-					if ((winR<0.75)&&(winR+delta*speed>=0.75)){
-						//LHoH.gameScreen.bottomInfo.chat.addTextChat("Вы получили награду за битву с "+bossName+" (75%)");
-						//LHoH.gameScreen.itemStock.allScope.add(new Item_Casket());
-					}
-					winR+=delta*speed;
-					if (winR>=1) {
-						winR=1;
-						status=2;
-						//hero1.setStatus(2);
-						//winR=0.7;
-						//bossPower=6666;
-						LHoH.gameScreen.bottomInfo.chat.addTextChat("Нами окончательно повержен "+bossName);
-						LHoH.gameScreen.itemStock.allScope.add(new Item_PowerUp(1));
-						LHoH.gameScreen.player.addLocationNewTier(400);
-						LHoH.gameScreen.player.addHeroNewTier(400);
-					}
+					
 		}
 				
 				if (lvl==2){
@@ -183,34 +156,25 @@ JButton endTower;
 						LHoH.gameScreen.player.addHeroNewTier(100);
 					}
 		}
-				
+				*/
+		}
 		}
 		
 		
-	}
+	
 
-	void init(int inLvl) {
+	void init(Boss inBoss) {
 		
-		if (inLvl==0){
-			
-			
-			lvl = inLvl;
-			try {
-				bckground = ImageIO.read(new File("data/image/bos/bos3.gif"));
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-
-			addComp();
-			bossName = "Болотный дух";
-			winR = 0.03;
-			bossPower = 80;
-			status = 1;
-			ttl=1*120;
-			}
+		boss=inBoss;
+		addComp();
 		
+		String tmptext="<html><p><font color=red>";
+		tmptext+=boss.getTipBoss();
+		tmptext+="</font></p>";
+		bossTipJLabel.setText(tmptext);
 		
+		status=1;
+/*		
 		if (inLvl==1){
 			
 		
@@ -222,11 +186,11 @@ JButton endTower;
 			e.printStackTrace();
 		}
 
-		addComp();
+		
 		bossName = "Лютоволк";
 		winR = 0.03;
 		bossPower = 250;
-		status = 1;
+		
 		ttl=1*59;
 		}
 		if (inLvl==2){
@@ -246,12 +210,15 @@ JButton endTower;
 			status = 1;
 			ttl=1*30;			
 		}
+		
+		*/
 	}
 
 	void addComp() {
 		removeAll();
 		add(LHoH.gameScreen.heroStockScroll);
 		add(endTower);
+		add(bossTipJLabel);
 	}
 
 	public void paintComponent(Graphics g) {
@@ -261,27 +228,25 @@ JButton endTower;
 				RenderingHints.VALUE_ANTIALIAS_ON);
 
 		g.setColor(new Color(255, 1, 1, 77));
-		g.drawImage(bckground, 0, 0, null);
+		g.drawImage(boss.getImageBoss(), 0, 0, null);
 
-		g2.fillRect(0, (int) (450 * (1 - winR)), 700, (int) (450 * (winR)));
+		g2.fillRect(0, (int) (450 * (1 - boss.getwR())), 700, (int) (450 * (boss.getwR())));
 
 		g.setColor(Color.red);
 		g2.setFont(new Font("Arial", Font.BOLD, 22));
-		g2.drawString(bossName, 290, 30);
+		g2.drawString(boss.getNameBoss(), 290, 30);
 
 		g.setColor(Color.red);
 		g2.setFont(new Font("Arial", Font.BOLD, 30));
 
-		g2.drawString("Мощь: "+Integer.toString((int) bossPower), 470, 65);
+		g2.drawString("Мощь: "+Integer.toString((int) boss.getPowerCurrent()), 470, 65);
 
-		g2.drawString(Integer.toString((int) powerH), 110, 425);
+		g2.drawString(Integer.toString((int) boss.getHeroPower()), 110, 425);
 
 		
-		int min,sec;
-		min=(int)(ttl/60);
-		sec= (int)(ttl-min*60);
 		
-		g2.drawString("Время: "+min +":"+sec, 470, 95);
+		
+		g2.drawString("Время: "+FrameWorkLHoH.ttlToTime(boss.getTTL()), 470, 95);
 		
 		
 		g2.setColor(Color.red);
@@ -294,6 +259,22 @@ JButton endTower;
         
         
 		
+	}
+
+	public Boss getBoss() {
+		return boss;
+	}
+
+	public void setBoss(Boss boss) {
+		this.boss = boss;
+	}
+
+	public int getLvlTower() {
+		return lvlTower;
+	}
+
+	public void setLvlTower(int lvlTower) {
+		this.lvlTower = lvlTower;
 	}
 
 }

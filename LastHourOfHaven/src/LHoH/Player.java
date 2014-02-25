@@ -36,11 +36,17 @@ void setTowerProgress(int inLvl,double proc){
 	
 }
 
+public double getTowerProgress(int inLvl){
+	
+	return (towerProgress[inLvl]);
+	
+}
+
 
 void update (){
 	ttl-=0.017;
-	addHeroNewTier(0.017);
-	addLocationNewTier(0.017);
+	addHeroNewTier(0.005);
+	addLocationNewTier(0.005);
 	//gold+=0.01;
 	
 	locationAddCostGold=4*LHoH.gameScreen.locationScope.getNumberAliveLocation();

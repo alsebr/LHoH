@@ -91,7 +91,7 @@ public class HeroStock extends JPanel {
 
 		for (Hero hero : allScope) {
 			if ((tmploc=LHoH.gameScreen.locationScope.getLocationByHeroId(hero.getId()))!=null) {
-				if (tmploc.getName()=="Могила Избранного"){
+				if (tmploc.getLocationName()=="Могила Избранного"){
 					return hero;
 				}
 			}
