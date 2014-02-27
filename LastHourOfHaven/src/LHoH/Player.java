@@ -7,7 +7,7 @@ public double getSoul() {
 }
 
 int maxPortal;
-int locationAddCostGold;
+private int locationAddCostGold;
 int locationActiveNumber;
 
 private double heroNewTier=1;
@@ -15,16 +15,17 @@ private double locationNewTier=1;
 
 int[] towerProgress;
 Player (){
-	gold=111113;
-	soul=1110;
-	tear=11110;
+	gold=3;
+	soul=0;
+	tear=0;
 	ttl=15*60;
 	maxPortal=4;
-	locationAddCostGold=10;
+	setLocationAddCostGold(10);
 	locationActiveNumber=0;
 	
 	
-	towerProgress=new int[] {0,0,0,0,0,-1,-1,-1};
+	towerProgress=new int[] {0,0,0,0,0,0,-1,-1,-1,-1};
+	//towerProgress=new int[] {100,100,100,100,100,-1,-1,-1};
 }
 
 void setTowerProgress(int inLvl,double proc){
@@ -62,7 +63,7 @@ void update (){
 	addLocationNewTier(0.005);
 	//gold+=0.01;
 	
-	locationAddCostGold=4*LHoH.gameScreen.locationScope.getNumberAliveLocation();
+	setLocationAddCostGold(LHoH.gameScreen.locationScope.getNumberAliveLocation()*4);
 	
 	locationActiveNumber=0;
 	for (Location location : LHoH.gameScreen.locationScope.allScope) {
@@ -113,6 +114,14 @@ public double getLocationNewTier() {
 
 public void addLocationNewTier(double locationNewTier) {
 	this.locationNewTier += locationNewTier;
+}
+
+public int getLocationAddCostGold() {
+	return locationAddCostGold;
+}
+
+public void setLocationAddCostGold(int locationAddCostGold) {
+	this.locationAddCostGold = locationAddCostGold;
 }
 
 

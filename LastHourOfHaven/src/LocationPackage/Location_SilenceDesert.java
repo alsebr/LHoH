@@ -17,10 +17,10 @@ public class Location_SilenceDesert extends Location {
 		double inwinR = 0.4;
 		double pLocation_max = 100;
 		String imagePath = "loc7";
-		double inbonus50Gold = (double) 0.2 / 60;
-		double inbonus50Soul = (double) 0.32 / 60;
+		double inbonus50Gold = (double) 0.0 / 60;
+		double inbonus50Soul = (double) 0.15 / 60;
 		double inbonus50Tear = 0;
-		double inbonusALLexp = (double) 1.7 / 60;
+		double inbonusALLexp = (double) 1.1 / 60;
 		
 		
 		Image inEnemy=null;

@@ -7,21 +7,25 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 
 import LHoH.Boss;
+import LHoH.Hero;
 import LHoH.LHoH;
+import HeroAbilitisPackage.HeroAbility_HowlOfTheWolf;
 import ItemPackage.Item_Casket;
 import ItemPackage.Item_Key1;
 import ItemPackage.Item_PowerUp;
+import ItemPackage.Item_Weapon1;
+import ItemPackage.Item_Weapon3;
 
-public class Boss_SwampSpirit extends Boss {
-	public Boss_SwampSpirit(int lvlTower) {
+public class Boss_MirrorGallery extends Boss {
+	public Boss_MirrorGallery(int lvlTower) {
 		super();
 
-		String nameBoss = "Болотный дух";
-		double powerStart = 80;
+		String nameBoss = "Галерея кривых зеркал";
+		double powerStart = 1000;
 		double inWR = 0.03;
 		double inTTL = 90;
-		String imageBossString = "bos3";
-		String tipBoss = "Иногда он ловит глупых фей, которых приманивают болотные огоньки.";
+		String imageBossString = "bos8";
+		String tipBoss = "Миллионы отражений улыбаются, смотря на вас";
 		Image imageBoss = null;
 
 		try {
@@ -34,46 +38,61 @@ public class Boss_SwampSpirit extends Boss {
 
 		init(powerStart, imageBoss, nameBoss, tipBoss, inWR, inTTL, lvlTower);
 
+		
+		
+		
 		// TODO Auto-generated constructor stub
 	}
 
+	double mirrorPower=0;
+	
+	boolean flagMirrorActivated=false;
+	boolean flagMirrorGetMirror=false;
+	
+	public void useSpecialAbility_afterBonusHeroPower(){
+		if (!flagMirrorGetMirror){
+			mirrorPower=getHeroPower();
+			flagMirrorGetMirror=true;
+		}
+	}
+	
+	public void useSpecialAbility(){
+		if ((!flagMirrorActivated)&&flagMirrorGetMirror){
+			addPowerCurrent(mirrorPower);
+			flagMirrorActivated=true;
+		}
+	}
+	
 	public void get25PrizeFirst() {
-		LHoH.gameScreen.itemStock.allScope.add(new Item_Casket(0));
-		
-		//LHoH.gameScreen.itemStock.allScope.add(new Item_Casket(0));
+		LHoH.gameScreen.itemStock.allScope.add(new Item_Weapon1(0));
+
 	}
 
 	public void get25PrizeAlwayse() {
 
+
 	}	
 	
 	public void get50PrizeFirst() {
-
+		
 	}
 
 	public void get50PrizeAlwayse() {
-		LHoH.gameScreen.itemStock.allScope.add(new Item_Key1());
-		
 	}
 	
 	public void get75PrizeFirst() {
-
+		
 	}
 
 	public void get75PrizeAlwayse() {
-
 	}
 	
 	public void get100PrizeFirst() {
-		LHoH.gameScreen.itemStock.allScope.add(new Item_PowerUp(1));
-		LHoH.gameScreen.player.addLocationNewTier(100);
-		LHoH.gameScreen.player.addHeroNewTier(100);
 	}
 
 	public void get100PrizeAlwayse() {
-
 	}
 
-	
+
 	
 }

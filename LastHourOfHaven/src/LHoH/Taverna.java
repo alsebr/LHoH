@@ -22,6 +22,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import Hero.Hero_Abomination;
+import Hero.Hero_Belzebub;
 import Hero.Hero_CorpseEater;
 import Hero.Hero_Ghoul;
 import Hero.Hero_Ifreet;
@@ -29,6 +30,7 @@ import Hero.Hero_Imp;
 import Hero.Hero_Leech;
 import Hero.Hero_LurkingEvil;
 import Hero.Hero_Pupetter;
+import Hero.Hero_Shadow;
 import Hero.Hero_SmallDemon;
 import Hero.Hero_SmallShadow;
 
@@ -202,9 +204,9 @@ public class Taverna extends JPanel {
 
 	}
 
-	public double[] arrayHeroPlayerLvlNeed = { 0, 0, 40, 135, 210, 550,
-			850, 1050,1250 ,1500,30000};
-	public Hero[] arrayHeroPlayerNew =new Hero[11];
+	public double[] arrayHeroPlayerLvlNeed = { 0, 0, 40, 135, 190, 250,
+			310, 340,370 ,420,440,3000,3000};
+	public Hero[] arrayHeroPlayerNew =new Hero[13];
 
 	void updArrayHeroPlayerNew() {
 		arrayHeroPlayerNew[0] = new Hero_Imp();
@@ -215,9 +217,11 @@ public class Taverna extends JPanel {
 		arrayHeroPlayerNew[5] = new Hero_Ifreet();
 		arrayHeroPlayerNew[6] = new Hero_LurkingEvil();
 		arrayHeroPlayerNew[7] = new Hero_Abomination();
-		arrayHeroPlayerNew[8] = new Hero_CorpseEater();
-		arrayHeroPlayerNew[9] = new Hero_Pupetter();
-		arrayHeroPlayerNew[10] = new Hero_Imp();
+		arrayHeroPlayerNew[8] = new Hero_Shadow();
+		arrayHeroPlayerNew[9] = new Hero_CorpseEater();
+		arrayHeroPlayerNew[10] = new Hero_Belzebub();
+		arrayHeroPlayerNew[11] = new Hero_Pupetter();
+		arrayHeroPlayerNew[12] = new Hero_Imp();
 		
 	}
 	

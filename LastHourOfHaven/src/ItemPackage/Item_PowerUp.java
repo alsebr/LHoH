@@ -25,6 +25,7 @@ public class Item_PowerUp extends Item {
 		String tmptext="<html>";
 		tmptext+="Нечистивая печать Tier "+grade+"<br>Использовать:<br> Усиливает ваше существо";
 		setToolTipText(tmptext);
+		setName("Нечистивая печать");
 	}
 
 	public void activateItem() {

@@ -28,12 +28,12 @@ public class Item_LegionGorn extends Item{
 			charge_max=charge_max*1.2;
 			
 			charge_now=0;
-			
+		/*	
 			for (Hero hero : LHoH.gameScreen.heroStock.allScope) {
 	    		hero.addPower(30);
 	    		
 	    	}
-			
+			*/
 			
 			String tmpText="ƒуши ваших воинов воспламен€т звук боевого горна!";
 			LHoH.gameScreen.bottomInfo.chat.addTextChat(tmpText);

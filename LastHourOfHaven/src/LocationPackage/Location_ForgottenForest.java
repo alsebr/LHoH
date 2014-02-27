@@ -19,10 +19,10 @@ public class Location_ForgottenForest extends Location {
 		double inwinR = 0.4;
 		double pLocation_max = 80;
 		String imagePath = "loc5";
-		double inbonus50Gold = (double) 0.3 / 60;
-		double inbonus50Soul = (double) 0.07 / 60;
+		double inbonus50Gold = (double) 0.17 / 60;
+		double inbonus50Soul = (double) 0.06 / 60;
 		double inbonus50Tear = 0;
-		double inbonusALLexp = (double) 1.7 / 60;
+		double inbonusALLexp = (double) 1.2 / 60;
 		
 		
 		Image inEnemy=null;
@@ -40,7 +40,7 @@ public class Location_ForgottenForest extends Location {
 	@Override
 	protected
 	void doLocationDevastated() {
-		LHoH.gameScreen.itemStock.allScope.add(new Item_Casket());
+		LHoH.gameScreen.itemStock.allScope.add(new Item_Casket(0));
 		LHoH.gameScreen.bottomInfo.chat.addTextChat("¬ глубине леса вы нашли странную шкатулку");
 	}
 }

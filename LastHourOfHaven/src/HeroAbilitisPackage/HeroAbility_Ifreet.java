@@ -20,23 +20,26 @@ public class HeroAbility_Ifreet extends HeroAbility {
 	}
 
 	public void useAbility() {
-		if (LHoH.gameScreen.itemStock.checkItemCount("ѕылающий меч") > 0) {
-
-			Hero tmpHero = LHoH.gameScreen.heroStock.getHeroById(heroId);
-			tmpHero.addPower_bonus((tmpHero).getHeroStat().intp*LHoH.gameScreen.itemStock.checkItemCount("ѕылающий меч"));
-
-		}
+		
+		double tmpvalue=0;
+		tmpvalue+=LHoH.gameScreen.itemStock.checkItemCount("ѕылающий меч");
+		tmpvalue+=LHoH.gameScreen.itemStock.checkItemCount("√невное сердце");
+				Hero tmpHero = LHoH.gameScreen.heroStock.getHeroById(heroId);
+		tmpHero.addPower_bonus(tmpvalue*(tmpHero).getHeroStat().intp);
 	}
 
 	public String getAbilityTip() {
 		String htmltext = "";
 		double tmppower = 0;
-		if (LHoH.gameScreen.itemStock.checkItemCount("ѕылающий меч") > 0) {
-
+		
+		tmppower+=LHoH.gameScreen.itemStock.checkItemCount("ѕылающий меч");
+		tmppower+=LHoH.gameScreen.itemStock.checkItemCount("√невное сердце");
+		
+		
 			Hero tmpHero = LHoH.gameScreen.heroStock.getHeroById(heroId);
-			tmppower = (tmpHero).getHeroStat().intp*LHoH.gameScreen.itemStock.checkItemCount("ѕылающий меч");
+			tmppower = (tmpHero).getHeroStat().intp*tmppower;
 
-		}
+		
 
 		htmltext += "—ердце огн€: +" + String.format("%.4g%n",tmppower);
 

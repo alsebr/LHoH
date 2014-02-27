@@ -64,7 +64,7 @@ public class LocationPanel extends JPanel{
 			String tmptext;
 			tmptext="<html> <p align=center><Font color=white>";
 			tmptext+="Открыто порталов: "+locNumber+" из "+locNumberMax;
-			tmptext+="<br>Стоимость открытия: "+LHoH.gameScreen.player.locationAddCostGold+" золота";
+			tmptext+="<br>Стоимость открытия: "+LHoH.gameScreen.player.getLocationAddCostGold()+" золота";
 			addLocationInfo.setText(tmptext);
 		}
 	}
@@ -108,7 +108,7 @@ JScrollPane scrollFrame;
 
 	void addLocation (){
 		if (LHoH.gameScreen.player.locationActiveNumber<LHoH.gameScreen.player.maxPortal){
-				if (LHoH.gameScreen.player.takeResurs(LHoH.gameScreen.player.locationAddCostGold, 0, 0))
+				if (LHoH.gameScreen.player.takeResurs(LHoH.gameScreen.player.getLocationAddCostGold(), 0, 0))
 					LHoH.gameScreen.locationScope.addLocation();
 		}
 	}

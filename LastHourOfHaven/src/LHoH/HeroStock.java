@@ -17,7 +17,7 @@ import javax.swing.WindowConstants;
 import javax.swing.text.StyledEditorKit.ForegroundAction;
 
 public class HeroStock extends JPanel {
-	public static List<Hero> allScope = new ArrayList<Hero>();
+	 static List<Hero> allScope = new ArrayList<Hero>();
 	BattleZone heroZone;
 
 	HeroStock() {
@@ -50,6 +50,10 @@ public class HeroStock extends JPanel {
 		}
 	}
 
+	static List<Hero> allScopeTmp = new ArrayList<Hero>();
+	
+
+	
 	public void paintComponent(Graphics g) {
 
 		System.out.println("repaint");
@@ -62,7 +66,7 @@ public class HeroStock extends JPanel {
 	}
 
 	public void addHero(Hero hero) {
-		allScope.add(hero);
+		allScopeTmp.add(hero);
 	}
 
 	public Hero getHeroById(int id) {
@@ -189,10 +193,18 @@ public class HeroStock extends JPanel {
 		for (Hero hero : allScope) {
 			if (!hero.isRemoved())
 				hero.Update();
-			// hero.addPower(1);
-			// add(hero);
-			// hero.reDrow(g);
-			// hero.addPower(5);
+
 		}
+	
+		for (Hero hero : allScopeTmp) {
+			allScope.add(hero);
+		}
+			
+			allScopeTmp.removeAll(allScopeTmp);
+			
+		
 	}
+	
+	
+	
 }

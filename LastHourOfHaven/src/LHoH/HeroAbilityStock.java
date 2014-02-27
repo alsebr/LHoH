@@ -7,15 +7,22 @@ import java.util.PriorityQueue;
 public class HeroAbilityStock {
 	//private List<HeroAbility> allScope = new ArrayList<HeroAbility>();
 	private PriorityQueue<HeroAbility> allScope = new PriorityQueue<HeroAbility>();
-
+	private PriorityQueue<HeroAbility> allScopeTmp = new PriorityQueue<HeroAbility>();
+	
 	HeroAbilityStock() {
 
 	}
 
+	
+	
 	void update() {
 
 		List<HeroAbility> tmpScope = new ArrayList<HeroAbility>();
 
+		
+			allScope.addAll(allScopeTmp);
+			allScopeTmp.removeAll(allScopeTmp);
+		
 
 		
 		for (HeroAbility heroAbility : allScope) {
@@ -40,7 +47,7 @@ public class HeroAbilityStock {
 		
 		
 		
-		allScope.add(heroAbility);
+		allScopeTmp.add(heroAbility);
 	}
 
 	public HeroAbility getHeroAbilityByItemId(int itemId) {

@@ -25,11 +25,11 @@ public class Hero_SmallShadow extends Hero {
 		double costTear=0;
 		double deltaExp=9;
 		double strp=3;
-		double vitp=82;
-		double intp=21;
+		double vitp=50;
+		double intp=18;
 		double statPointPerLvl=12;
 		double strToPowerRatio=1;
-		double vitToTTLRatio=3;		
+		double vitToTTLRatio=2;		
 		String htmlTextHeroTip = "Страх темноты";
 		htmlTextHeroTip += "<br> Мощь тени увеличивается в % от ее int";
 		

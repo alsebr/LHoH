@@ -13,12 +13,18 @@ import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 
 import ItemPackage.Item_BrokenClock;
+import ItemPackage.Item_DemonHeart;
+import ItemPackage.Item_HeadOfTheDuke;
+import ItemPackage.Item_IronMaiden;
 import ItemPackage.Item_Key1;
+import ItemPackage.Item_Key2;
 import ItemPackage.Item_Plague;
 import ItemPackage.Item_PowerUp;
 import ItemPackage.Item_Weapon1;
 import ItemPackage.Item_Weapon2;
+import ItemPackage.Item_Weapon3;
 import ItemPackage.Item_chest;
+import ItemPackage.Item_lamp;
 
 public class ItemStock extends JPanel {
 	public static List<Item> allScope = new ArrayList<Item>();
@@ -29,26 +35,12 @@ public class ItemStock extends JPanel {
 		setSize(700, 450);
 		// setBorder(BorderFactory.createLineBorder(Color.red));
 
-		//allScope.add(new Item_chest(0));
-allScope.add(new Item_BrokenClock(1));
-
+		allScope.add(new Item_chest(0));
 		allScope.add(new Item_PowerUp(0));
-		allScope.add(new Item_PowerUp(0));
-		allScope.add(new Item_PowerUp(0));
+		allScope.add(new Item_Key2());
+//allScope.add(new Item_BrokenClock(1));
 
-		allScope.add(new Item_Key1());
-		allScope.add(new Item_Key1());
-		
-		allScope.add(new Item_Plague(3));
-		
-		allScope.add(new Item_Weapon1(3));
-		allScope.add(new Item_Weapon1(3));
-		allScope.add(new Item_Weapon1(3));
-		allScope.add(new Item_Weapon2(2));
-		//allScope.add(new Item_Plague(0));
-
-		// allScope.add(new Item_LegionGorn());
-		// allScope.add(new Item_TaroDemolog());
+		//allScope.add(new Item_Weapon3(2));
 
 		setOpaque(false);
 		

@@ -29,7 +29,7 @@ if (grade==1) tmpValue=70;
 if (grade==2) tmpValue=120;
 if (grade==3) tmpValue=180;
 
-setTtl(10);
+//setTtl(10);
 String tmptext;
 tmptext="<html>";
 tmptext+="Пылающий меч. <br>Пассивно:<br> +"+tmpValue+" мощь при сражении в Бесконечной башне";

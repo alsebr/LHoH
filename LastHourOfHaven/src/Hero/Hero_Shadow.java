@@ -29,13 +29,13 @@ public class Hero_Shadow extends Hero {
 		double intp=42;
 		double statPointPerLvl=24;
 		double strToPowerRatio=1;
-		double vitToTTLRatio=3;		
+		double vitToTTLRatio=5;		
 		String htmlTextHeroTip = "Страх темноты";
 		htmlTextHeroTip += "<br> Мощь тени увеличивается в % от ее int";
 		
 		Image image=null;
 		try {
-			image = ImageIO.read(new File("data/image/hero/demon4.gif"));
+			image = ImageIO.read(new File("data/image/hero/demon31.gif"));
 		} catch (IOException e) {
 		}
 		

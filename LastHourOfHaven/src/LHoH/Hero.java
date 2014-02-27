@@ -36,6 +36,8 @@ import java.util.Random;
 import javax.imageio.ImageIO;
 import javax.swing.BorderFactory;
 import javax.swing.JPanel;
+import javax.swing.Spring;
+import javax.swing.text.html.HTMLDocument.HTMLReader.IsindexAction;
 
 public class Hero extends JPanel implements DragGestureListener,
 		DragSourceListener, MouseListener {
@@ -44,7 +46,7 @@ public class Hero extends JPanel implements DragGestureListener,
 	public double getPower() {
 		double tmpPower = getPurePower()+ getBonusPower();
 
-	if (tmpPower<1)tmpPower=1;
+	//if (tmpPower<1)tmpPower=1;
 		//System.out.println(tmpPower);
 		return tmpPower ;
 	}
@@ -61,11 +63,7 @@ public class Hero extends JPanel implements DragGestureListener,
 		this.power = power;
 	}
 
-	public String getStatusTip() {
-		String htmltext = "";
 
-		return htmltext;
-	}
 
 	public String getHeroTip() {
 		return htmlTextHeroTip;
@@ -73,6 +71,7 @@ public class Hero extends JPanel implements DragGestureListener,
 
 	private boolean flagDieThisTick = false;
 	private boolean flagLvlUpThisTick = false;
+	private boolean flagIsSilenced = false;
 	double exp;
 
 	protected double ttl;
@@ -251,12 +250,12 @@ public class Hero extends JPanel implements DragGestureListener,
 
 	double getLeftTime() {
 
-		return heroStat.vitp * vitToTTLRatio - ttl;
+		return getHeroStat().vitp * vitToTTLRatio - ttl;
 	}
 
 	double getLifeTimeTotal() {
 
-		return heroStat.vitp * vitToTTLRatio;
+		return getHeroStat().vitp * vitToTTLRatio;
 	}
 
 	void resetTick() {
@@ -267,6 +266,7 @@ public class Hero extends JPanel implements DragGestureListener,
 		heroStat_bonus.intp=0;
 		setFlagDieThisTick(false);
 		setFlagLvlUpThisTick(false);
+		setFlagIsSilenced(false);
 	}
 
 	protected void Update() {
@@ -284,7 +284,14 @@ public class Hero extends JPanel implements DragGestureListener,
 		}
 
 		if (status == 1) {
-			LHoH.gameScreen.heroAbilityStock.useAllAbilityByHero(id);
+			
+			if (LHoH.gameScreen.locationScope.getLocationByHeroId(id)!=null)
+			{
+				if (LHoH.gameScreen.locationScope.getLocationByHeroId(id).getLocationName()=="Пустыня безмолвия")
+			setFlagIsSilenced(true);
+			}
+			
+			if (!isFlagIsSilenced())LHoH.gameScreen.heroAbilityStock.useAllAbilityByHero(id);
 		}
 
 		if (getLeftTime() <= 0) {
@@ -296,6 +303,14 @@ public class Hero extends JPanel implements DragGestureListener,
 		System.out.println("hero update end");
 	}
 
+	public String getStatusTip(){
+	
+		if (isFlagIsSilenced()) return "Молчание";
+		
+		return LHoH.gameScreen.heroAbilityStock.getAllAbilityTipByHero(getId());
+		
+	}
+	
 	void setStatus(int inStatus) {
 		status = inStatus;
 	}
@@ -542,13 +557,21 @@ public class Hero extends JPanel implements DragGestureListener,
 	public void addHeroStat_bonus(HeroStat heroStat_bonus) {
 		
 		
-		this.heroStat_bonus.strp = heroStat_bonus.strp;
-		this.heroStat_bonus.vitp = heroStat_bonus.vitp;
-		this.heroStat_bonus.intp = heroStat_bonus.intp;
+		this.heroStat_bonus.strp += heroStat_bonus.strp;
+		this.heroStat_bonus.vitp += heroStat_bonus.vitp;
+		this.heroStat_bonus.intp += heroStat_bonus.intp;
 
 
 		System.out.println(this.heroStat_bonus.strp);
 		
+	}
+
+	public boolean isFlagIsSilenced() {
+		return flagIsSilenced;
+	}
+
+	public void setFlagIsSilenced(boolean flagIsSilenced) {
+		this.flagIsSilenced = flagIsSilenced;
 	}
 
 }

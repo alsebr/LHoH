@@ -21,9 +21,9 @@ public class Boss_CrystalGolem extends Boss {
 		String nameBoss = "Хрустальный голем";
 		double powerStart = 2500;
 		double inWR = 0.03;
-		double inTTL = 30;
-		String imageBossString = "bos1";
-		String tipBoss = "Мой гнев растет с каждой секундой, когда я вижу эти демонические отродья";
+		double inTTL = 60;
+		String imageBossString = "bos6";
+		String tipBoss = "Слишком мощный чтобы жить долго";
 		Image imageBoss = null;
 
 		try {
@@ -40,29 +40,20 @@ public class Boss_CrystalGolem extends Boss {
 	}
 
 	public void get25PrizeFirst() {
-		LHoH.gameScreen.itemStock.allScope.add(new Item_Casket());
+		LHoH.gameScreen.itemStock.allScope.add(new Item_Casket(1));
 
 	}
 
 	public void get25PrizeAlwayse() {
-		Hero tmphero=LHoH.gameScreen.heroStock.getRandomAliveHero();
-		if (tmphero!=null){
-			LHoH.gameScreen.heroAbilityStock.addAbility(new HeroAbility_HowlOfTheWolf(tmphero.getId(),-12));;
-			LHoH.gameScreen.bottomInfo.chat.addTextChat("Раздается чудовищный вой Лютоволка,"+tmphero.getHeroName()+" замирает в ужасе");			
-		}
+
 
 	}	
 	
 	public void get50PrizeFirst() {
-
+		LHoH.gameScreen.itemStock.allScope.add(new Item_Casket(1));
 	}
 
 	public void get50PrizeAlwayse() {
-		Hero tmphero=LHoH.gameScreen.heroStock.getRandomAliveHero();
-		if (tmphero!=null){
-			LHoH.gameScreen.heroAbilityStock.addAbility(new HeroAbility_HowlOfTheWolf(tmphero.getId(),-24));;
-			LHoH.gameScreen.bottomInfo.chat.addTextChat("Раздается чудовищный вой Лютоволка,"+tmphero.getHeroName()+" замирает в ужасе");			
-		}
 	}
 	
 	public void get75PrizeFirst() {
@@ -70,29 +61,17 @@ public class Boss_CrystalGolem extends Boss {
 	}
 
 	public void get75PrizeAlwayse() {
-		Hero tmphero=LHoH.gameScreen.heroStock.getRandomAliveHero();
-		if (tmphero!=null){
-			LHoH.gameScreen.heroAbilityStock.addAbility(new HeroAbility_HowlOfTheWolf(tmphero.getId(),-36));;
-			LHoH.gameScreen.bottomInfo.chat.addTextChat("Раздается чудовищный вой Лютоволка,"+tmphero.getHeroName()+" замирает в ужасе");			
-		}
 	}
 	
 	public void get100PrizeFirst() {
-		LHoH.gameScreen.itemStock.allScope.add(new Item_PowerUp(1));
-		LHoH.gameScreen.player.addLocationNewTier(100);
-		LHoH.gameScreen.player.addHeroNewTier(100);
+		LHoH.gameScreen.itemStock.allScope.add(new Item_Casket(1));
 	}
 
 	public void get100PrizeAlwayse() {
-		Hero tmphero=LHoH.gameScreen.heroStock.getRandomAliveHero();
-		if (tmphero!=null){
-			LHoH.gameScreen.heroAbilityStock.addAbility(new HeroAbility_HowlOfTheWolf(tmphero.getId(),-70));;
-			LHoH.gameScreen.bottomInfo.chat.addTextChat("Раздается чудовищный вой Лютоволка,"+tmphero.getHeroName()+" замирает в ужасе");			
-		}
 	}
 
 	public void useSpecialAbility(){
-		addPowerCurrent((double)getPowerCurrent()*-0.001*getwR());
+		addPowerCurrent((double)getPowerCurrent()*-0.001*(getwR()*10)*(getwR()*10)+0.001);
 	}
 	
 }

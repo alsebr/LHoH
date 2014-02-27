@@ -25,7 +25,7 @@ public class Hero_Ghoul extends Hero {
 		double intp=21;
 		double statPointPerLvl=11;
 		double strToPowerRatio=1;
-		double vitToTTLRatio=3;		
+		double vitToTTLRatio=2;		
 		String htmlTextHeroTip = "Пожирание трупов.";
 		htmlTextHeroTip += "<br> При повышении уровня Гуль поедает случайный труп, увеличивая свою мощь <b>~Int</b>";
 		Image image=null;

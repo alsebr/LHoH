@@ -25,7 +25,7 @@ public class Hero_Abomination extends Hero {
 		double intp=29;
 		double statPointPerLvl=14;
 		double strToPowerRatio=1;
-		double vitToTTLRatio=3;		
+		double vitToTTLRatio=2;		
 		String htmlTextHeroTip = "Нестабильносьт";
 		htmlTextHeroTip += "<br> Слишком мощная чтобы жить долго";
 		Image image=null;

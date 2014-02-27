@@ -20,7 +20,7 @@ public Item_Weapon3(int grade) {
 	
 	this.grade=grade;
 try {
-	image = ImageIO.read(new File("data/image/item/item13.gif"));
+	image = ImageIO.read(new File("data/image/item/item17.gif"));
 } catch (IOException e) {
 }
 
@@ -30,7 +30,7 @@ if (grade==1) tmpValue=17;
 if (grade==2) tmpValue=27;
 if (grade==3) tmpValue=37;
 
-setTtl(10);
+//setTtl(10);
 String tmptext;
 tmptext="<html>";
 tmptext+="Коса Рипера. <br>Пассивно:<br> +"+tmpValue+" мощь за каждый труп героя при сражении в Бесконечной башне";

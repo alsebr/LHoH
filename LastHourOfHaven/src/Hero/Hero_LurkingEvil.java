@@ -26,7 +26,7 @@ public class Hero_LurkingEvil extends Hero {
 		double intp=69;
 		double statPointPerLvl=17;
 		double strToPowerRatio=1;
-		double vitToTTLRatio=3;		
+		double vitToTTLRatio=2;		
 		String htmlTextHeroTip = "Затаившееся зло.";
 		htmlTextHeroTip += "<br> Зло ждет своего часа <b>~Int</b>";
 		Image image=null;

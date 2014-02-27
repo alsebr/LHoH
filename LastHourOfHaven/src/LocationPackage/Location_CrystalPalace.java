@@ -13,14 +13,14 @@ public class Location_CrystalPalace extends Location {
 
 		super();
 		String inName = "Хрустальный дворец";
-		int inPower =72;
+		int inPower =120;
 		double inwinR = 0.2;
 		double pLocation_max = 22;
 		String imagePath = "loc8";
-		double inbonus50Gold = (double) 0.9 / 60;
-		double inbonus50Soul = (double) 0.14 / 60;
+		double inbonus50Gold = (double) 0.5 / 60;
+		double inbonus50Soul = (double) 0.3 / 60;
 		double inbonus50Tear = 0;
-		double inbonusALLexp = (double) 1.5 / 60;
+		double inbonusALLexp = (double) 1 / 60;
 		
 		
 		Image inEnemy=null;

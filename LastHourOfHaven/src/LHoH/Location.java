@@ -303,8 +303,12 @@ public class Location extends JPanel {
 
 			double speed = 0.0005;
 
+			
+			if (powerH<1)powerH=1;
+			
 			if (powerH > power) {
-				winRT = 0.5+(double)power/powerH;
+				winRT = 0.5+(double)(powerH-power)/power/4;
+				if (winRT>0.75)winRT = 0.75+(double)(powerH-power)/power/12;
 				if (winRT>1) winRT=1;
 				delta = (double) powerH / power;
 				
@@ -357,16 +361,21 @@ public class Location extends JPanel {
 			if (winR>=0.75) tmpModif=1.5;
 			if (winR==1) tmpModif=2;
 			
-			
+			bonusALLexp_final=bonusALLexp_final*tmpModif;
+			bonus50Gold_final=bonus50Gold_final*tmpModif;
+			bonus50Soul_final=bonus50Soul_final*tmpModif;
+			bonus50Tear_final=bonus50Tear_final*tmpModif;
 			if (winR > 0.5) {
 				//System.out.println("1+"+bonus50Gold_final);
+
 				LHoH.gameScreen.player.addGold(bonus50Gold_final*tmpModif);
 				LHoH.gameScreen.player.addSoul(bonus50Soul_final*tmpModif);
 				LHoH.gameScreen.player.addTear(bonus50Tear_final*tmpModif);
 				pLocation_current+=(double)1/60*tmpModif;
 			}
 
-			hero1.addExp(bonusALLexp_final*tmpModif);
+			//hero1.addExp(bonusALLexp_final*tmpModif);
+			hero1.addExp(bonusALLexp_final);
 
 			hero1.removeHeroIfDead();
 

@@ -17,10 +17,10 @@ public class Location_imp extends Location {
 		double inwinR = 0.2;
 		double pLocation_max = 100;
 		String imagePath = "loc2";
-		double inbonus50Gold = (double) 0.2 / 60;
+		double inbonus50Gold = (double) 0.12 / 60;
 		double inbonus50Soul = (double) 0.0 / 60;
 		double inbonus50Tear = 0;
-		double inbonusALLexp = (double) 1.5 / 60;
+		double inbonusALLexp = (double) 1.1 / 60;
 		
 		
 		Image inEnemy=null;

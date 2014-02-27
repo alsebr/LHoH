@@ -11,8 +11,9 @@ import LHoH.Item;
 import LHoH.LHoH;
 
 public class Item_Casket extends Item {
-	public Item_Casket() {
+	public Item_Casket(int grade) {
 		super();
+		this.grade=grade;
 		try {
 			image = ImageIO.read(new File("data/image/item/item14.gif"));
 		} catch (IOException e) {
@@ -29,31 +30,40 @@ public class Item_Casket extends Item {
 		int addGold, addSoul;
 
 		Random random = new Random();
-		int count = random.nextInt(4);
+		int count = random.nextInt(5);
 		count++;
 		tmpText = "ERROR";
+		
+		Item tmpi=null;
+		if (grade==0){
+			
+		
 		switch (count) {
 		case 0:
-			tmpText = "Открыв шкатулку вы обнаружили Демонический сундук";
-			LHoH.gameScreen.itemStock.allScope.add(new Item_chest(0));
+			tmpi=new Item_chest(0);
+			
 			break;
 		case 1:
-			tmpText = "Открыв шкатулку вы обнаружили Сломанные часы";
-			LHoH.gameScreen.itemStock.allScope.add(new Item_BrokenClock(1));
+			tmpi=new Item_BrokenClock(0);
+
 			break;	
 
 		case 2:
-			tmpText = "Открыв шкатулку вы обнаружили Нечистивую печать";
-			LHoH.gameScreen.itemStock.allScope.add(new Item_PowerUp(0));
+			tmpi=new Item_PowerUp(0);
+			
 			break;
 		case 3:
-			tmpText = "Открыв шкатулку вы обнаружили Нечистивую печать";
-			LHoH.gameScreen.itemStock.allScope.add(new Item_PowerUp(1));
+			tmpi=new Item_PowerUp(0);
+			
 			break;
 			
 		case 4:
-			tmpText = "Открыв шкатулку вы обнаружили Склянку с чумой";
-			LHoH.gameScreen.itemStock.allScope.add(new Item_Plague(1));
+			tmpi=new Item_Plague(0);
+
+			break;
+		case 5:
+			tmpi=new Item_Plague(1);
+
 			break;
 		//case 5:
 			//tmpText = "Открыв шкатулку вы обнаружили Огненный Меч";
@@ -62,9 +72,43 @@ public class Item_Casket extends Item {
 		default:
 			break;
 		}
+		}
 
+		
+		if (grade==1){
+			
+			
+		switch (count) {
+		case 0:
+			tmpi=new Item_DemonHeart(0);
 
+			break;
+		case 1:
+			tmpi=new Item_HeadOfTheDuke(0);
 
+			break;	
+
+		case 2:
+			tmpi=new Item_Weapon3(0);
+
+			break;
+		case 3:
+			tmpi=new Item_IronMaiden(0);
+			break;
+			
+		case 4:
+			tmpi=new Item_lamp();
+			break;
+		case 5:
+			tmpi=new Item_BrokenClock(1);
+	break;
+		default:
+			break;
+		}
+		}
+
+		tmpText = "Открыв шкатулку вы обнаружили "+tmpi.getName();
+		LHoH.gameScreen.itemStock.allScope.add(tmpi);
 		LHoH.gameScreen.bottomInfo.chat.addTextChat(tmpText);
 		SelfDestroy();
 

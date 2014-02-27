@@ -200,7 +200,8 @@ public class HeroViewScreen extends JFrame implements ActionListener{
 				String htmltext2;
 				
 				htmltext2 = "<html>Статус:<p><font size=-2>";
-				htmltext2+=LHoH.gameScreen.heroAbilityStock.getAllAbilityTipByHero(hero.getId());
+				
+				htmltext2+=hero.getStatusTip();
 				//htmltext2 += "<p><font size=-2>"+hero.getStatusTip()+"</font></p>";
 				htmltext2 += "</font></p>";
 				labelHeroStatusTip.setText(htmltext2);

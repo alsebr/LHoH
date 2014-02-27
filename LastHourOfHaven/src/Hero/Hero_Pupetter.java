@@ -25,7 +25,7 @@ public class Hero_Pupetter extends Hero {
 		double intp = 61;
 		double statPointPerLvl = 32;
 		double strToPowerRatio = 1;
-		double vitToTTLRatio = 3;
+		double vitToTTLRatio = 2;
 		String htmlTextHeroTip = "Вытягивание силы.";
 		htmlTextHeroTip += "<br> Каждую секунду пиявка вытягивает силы из атакуемого Портала <b>Int</b>";
 		Image image = null;

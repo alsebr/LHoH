@@ -87,8 +87,10 @@ public class TowerFight extends JPanel {
 
 			boss.updateBoss();
 
-			
+			LHoH.gameScreen.player.setTowerProgress(boss.getLvlTower(),
+					boss.getwR());
 		}
+
 	}
 
 	void init(Boss inBoss) {

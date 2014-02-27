@@ -6,50 +6,50 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
-import HeroAbilitisPackage.HeroAbility_Leech;
 import LHoH.Hero;
 import LHoH.HeroStat;
-import LHoH.LHoH;
 
-public class Hero_Leech extends Hero {
-	public Hero_Leech() {
+public class Hero_fly extends Hero {
+	public Hero_fly() {
+
 		super();
-				
-		String name="Пиявка";
-		double costGold=8;
-		double costSoul=10;
+		
+		String name="Муха";
+		double costGold=16;
+		double costSoul=3;
 		double costTear=0;
-		double deltaExp=19;
-		double strp=42;
-		double vitp=120;
-		double intp=31;
-		double statPointPerLvl=11;
+		double deltaExp=5;
+		double strp=23;
+		double vitp=72;
+		double intp=9;
+		double statPointPerLvl=39;
 		double strToPowerRatio=1;
 		double vitToTTLRatio=2;		
-		String htmlTextHeroTip = "Вытягивание силы.";
-		htmlTextHeroTip += "<br> Каждую секунду вытягивает силы из атакуемого Портала <b>Int</b>";
+		String htmlTextHeroTip = "Миньон";
+		htmlTextHeroTip += "<br> Призвана Повелителем";
+		
 		Image image=null;
 		try {
-			image = ImageIO.read(new File("data/image/hero/demon22.gif"));
+			image = ImageIO.read(new File("data/image/hero/demon10.gif"));
 		} catch (IOException e) {
 		}
 		
-		HeroStat heroStatRatio=new HeroStat(0.6, 0.2, 0.2); // summ ==1
+		HeroStat heroStatRatio=new HeroStat(0.33, 0.34, 0.33); // summ ==1
 		HeroStat heroStat=new HeroStat(strp, vitp, intp);
 		
 		//public void init(String name,  Image inImage, double inDeltaExp, double statPointPerLvl, HeroStat heroStat, HeroStat heroStatRatio,double strToPowerRatio,double vitToTTLRatio) {
 		init(name, image, deltaExp, statPointPerLvl,heroStat,heroStatRatio,strToPowerRatio,vitToTTLRatio,htmlTextHeroTip,costGold,costSoul,costTear);
 		
 		//LHoH.gameScreen.heroAbilityStock.useAllAbilityByHero(heroId);
-		//LHoH.gameScreen.heroAbilityStock.addAbility(new HeroAbility_Ifreet(getId()));
+		
+
+	}
+
+	public void addHeroAbilities(){
+		
 		
 	}
-
-
 	
-	public void addHeroAbilities(){
-		LHoH.gameScreen.heroAbilityStock.addAbility(new HeroAbility_Leech(getId()));
-	}
 
 
 

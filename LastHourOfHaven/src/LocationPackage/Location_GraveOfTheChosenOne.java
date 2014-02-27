@@ -13,14 +13,14 @@ public class Location_GraveOfTheChosenOne extends Location {
 
 		super();
 		String inName = "Могила Избранного";
-		int inPower =72;
+		int inPower =160;
 		double inwinR = 0.2;
-		double pLocation_max = 22;
+		double pLocation_max = 90;
 		String imagePath = "loc10";
-		double inbonus50Gold = (double) 0.9 / 60;
-		double inbonus50Soul = (double) 0.14 / 60;
+		double inbonus50Gold = (double) 0.3 / 60;
+		double inbonus50Soul = (double) 0.2 / 60;
 		double inbonus50Tear = 0;
-		double inbonusALLexp = (double) 1.5 / 60;
+		double inbonusALLexp = (double) 1 / 60;
 		
 		
 		Image inEnemy=null;

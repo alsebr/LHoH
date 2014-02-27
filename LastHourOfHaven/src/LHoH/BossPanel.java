@@ -81,13 +81,13 @@ add (LHoH.gameScreen.heroStockScroll);
 void update (){
 	
 	powerH=0;
-	
+	/*
 	for (Hero hero : LHoH.gameScreen.heroStock.allScope) {
 		if (hero.getZone()==1)	{
 			powerH+=hero.getPower();
 		}
 	}
-	
+	*/
 	double winRT;
 	double power=bossPower;
 	double speed=0.0005;

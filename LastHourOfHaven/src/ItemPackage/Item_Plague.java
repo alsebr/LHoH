@@ -18,7 +18,7 @@ try {
 	image = ImageIO.read(new File("data/image/item/item11.gif"));
 } catch (IOException e) {
 }
-
+setName("Склянка с чумой");
 this.grade=grade;
 String tmptext="<html>";
 tmptext+="Склянка с чумой Tier "+grade+"<br>Использовать:<br> Ослабляет врагов в бесконечной башне";

@@ -57,14 +57,15 @@ void addLocation (){
 
 	int count=2;
 	
-	if (LHoH.gameScreen.player.getLocationNewTier()>60) count++;
-	if (LHoH.gameScreen.player.getLocationNewTier()>120) count++;
+	if (LHoH.gameScreen.player.getTotalTowerProgress()>50) count++;
+	if (LHoH.gameScreen.player.getTotalTowerProgress()>100) count++;
 	
-	if (LHoH.gameScreen.player.getLocationNewTier()>400) count++;
-	if (LHoH.gameScreen.player.getLocationNewTier()>400) count++;
+	if (LHoH.gameScreen.player.getTotalTowerProgress()>150) count++;
+	if (LHoH.gameScreen.player.getTotalTowerProgress()>200) count++;
+	if (LHoH.gameScreen.player.getTotalTowerProgress()>250) count++;
+	
 	//if (LHoH.gameScreen.player.getHeroNewTier()>250) count++;
-	Location tmpL = new Location_GraveOfTheChosenOne();
-	allScope.add(tmpL);
+	Location tmpL;
 	
 	
 	count=random.nextInt(count);
@@ -82,18 +83,21 @@ break;
 	case 3:
 		addLocation—rystalPalace();
 		break;
-	case 4:
-		tmpL = new Location_WarriorOfTheLight();
-		allScope.add(tmpL);
-		
-		
-		break;
+	case 4:	
+		tmpL = new Location_GraveOfTheChosenOne();
+		addLocationToScope(tmpL);
+	break;
 	case 5:
-		tmpL = new Location_FalseProphet();
-		allScope.add(tmpL);
+	tmpL = new Location_WarriorOfTheLight();
+	addLocationToScope(tmpL);
 		
 		
 		break;
+	case 6:
+		tmpL = new Location_FalseProphet();
+		addLocationToScope(tmpL);
+		break;
+
 	default:
 		break;
 	}
@@ -119,26 +123,26 @@ public int getNumberAliveLocation(){
 void addLocationSilence(){
 	
 	Location tmpL = new Location_SilenceDesert();
-	allScope.add(tmpL);	
+	addLocationToScope(tmpL);	
 }
 
 void addLocationForhottenForest(){
 
 	Location tmpL = new Location_ForgottenForest();
-	allScope.add(tmpL);	
+	addLocationToScope(tmpL);	
 }
 
 
 void addLocationCavenImp(){
 		
 	Location tmpL = new Location_imp();
-	allScope.add(tmpL);
+	addLocationToScope(tmpL);
 }
 
 void addLocation—rystalPalace(){
 	
 	Location tmpL = new Location_CrystalPalace();
-	allScope.add(tmpL);
+	addLocationToScope(tmpL);
 }
 
 public LocationScope() {
@@ -177,11 +181,22 @@ void reDrow (Graphics g){
 }
 }
 
+Location tmpLocationToAdd=null;
+
+void addLocationToScope(Location tmploc){
+	tmpLocationToAdd=tmploc;
+}
+
 void update (){
 	for (Location location : allScope) {
 location.update();
 
 }
+	if (tmpLocationToAdd!=null){
+		allScope.add(tmpLocationToAdd);
+		tmpLocationToAdd=null;
+	}
+	
 }
 
 public Location getLocationByHeroId(int id){

@@ -13,14 +13,14 @@ public class Location_FalseProphet extends Location {
 
 		super();
 		String inName = "Проповедь лжепророка";
-		int inPower = 192;
+		int inPower = 230;
 		double inwinR = 0.4;
 		double pLocation_max = 100;
 		String imagePath = "loc1";
 		double inbonus50Gold = (double) 0 / 60;
-		double inbonus50Soul = (double) 0.12 / 60;
-		double inbonus50Tear = 0;
-		double inbonusALLexp = (double) 3.7 / 60;
+		double inbonus50Soul = (double) 0.3 / 60;
+		double inbonus50Tear = (double) 0.05 / 60;
+		double inbonusALLexp = (double) 3 / 60;
 		
 		
 		Image inEnemy=null;

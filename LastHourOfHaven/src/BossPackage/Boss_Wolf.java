@@ -10,6 +10,7 @@ import LHoH.Boss;
 import LHoH.Hero;
 import LHoH.LHoH;
 import HeroAbilitisPackage.HeroAbility_HowlOfTheWolf;
+import ItemPackage.Item_BrokenClock;
 import ItemPackage.Item_Casket;
 import ItemPackage.Item_Key1;
 import ItemPackage.Item_PowerUp;
@@ -19,7 +20,7 @@ public class Boss_Wolf extends Boss {
 		super();
 
 		String nameBoss = "Лютоволк";
-		double powerStart = 100;
+		double powerStart = 250;
 		double inWR = 0.03;
 		double inTTL = 55;
 		String imageBossString = "bos5";
@@ -40,7 +41,7 @@ public class Boss_Wolf extends Boss {
 	}
 
 	public void get25PrizeFirst() {
-		LHoH.gameScreen.itemStock.allScope.add(new Item_Casket());
+		LHoH.gameScreen.itemStock.allScope.add(new Item_Casket(1));
 
 	}
 
@@ -54,7 +55,7 @@ public class Boss_Wolf extends Boss {
 	}	
 	
 	public void get50PrizeFirst() {
-
+		LHoH.gameScreen.itemStock.allScope.add(new Item_Casket(1));
 	}
 
 	public void get50PrizeAlwayse() {
@@ -78,9 +79,9 @@ public class Boss_Wolf extends Boss {
 	}
 	
 	public void get100PrizeFirst() {
-		LHoH.gameScreen.itemStock.allScope.add(new Item_PowerUp(1));
-		LHoH.gameScreen.player.addLocationNewTier(100);
-		LHoH.gameScreen.player.addHeroNewTier(100);
+		LHoH.gameScreen.itemStock.allScope.add(new Item_PowerUp(3));
+		
+		
 	}
 
 	public void get100PrizeAlwayse() {
@@ -89,6 +90,7 @@ public class Boss_Wolf extends Boss {
 			LHoH.gameScreen.heroAbilityStock.addAbility(new HeroAbility_HowlOfTheWolf(tmphero.getId(),-70));;
 			LHoH.gameScreen.bottomInfo.chat.addTextChat("Раздается чудовищный вой Лютоволка,"+tmphero.getHeroName()+" замирает в ужасе");			
 		}
+		LHoH.gameScreen.itemStock.allScope.add(new Item_BrokenClock(0));
 	}
 
 	public void useSpecialAbility(){

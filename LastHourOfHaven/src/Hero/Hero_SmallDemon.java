@@ -21,10 +21,10 @@ public class Hero_SmallDemon extends Hero {
 		double deltaExp=9;
 		double strp=24;
 		double vitp=71;
-		double intp=23;
+		double intp=15;
 		double statPointPerLvl=6;
 		double strToPowerRatio=1;
-		double vitToTTLRatio=3;		
+		double vitToTTLRatio=2;		
 		String htmlTextHeroTip = "Демоническая кровь.";
 		htmlTextHeroTip += "<br> ----";
 		

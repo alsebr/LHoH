@@ -15,7 +15,9 @@ import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
+import BossPackage.Boss_ChosenOne;
 import BossPackage.Boss_CrystalGolem;
+import BossPackage.Boss_MirrorGallery;
 import BossPackage.Boss_SwampSpirit;
 import BossPackage.Boss_Tyrael;
 import BossPackage.Boss_Wolf;
@@ -42,7 +44,7 @@ public class TowerChoize extends JPanel {
 		} catch (IOException e) {
 		}
 		try {
-			imageKey2 = ImageIO.read(new File("data/image/item/key2.gif"));
+			imageKey2 = ImageIO.read(new File("data/image/item/item10_p.gif"));
 		} catch (IOException e) {
 		}
 		init();
@@ -55,13 +57,22 @@ public class TowerChoize extends JPanel {
 			tmpBoss=new Boss_SwampSpirit(0);
 			break;
 		case 1:
-			tmpBoss=new Boss_Wolf(1);
+			tmpBoss=new Boss_ChosenOne(1);
 			break;
 		case 2:
-			tmpBoss=new Boss_Tyrael(2);
-	break;
+			tmpBoss=new Boss_Wolf(2);
+			break;
 		case 3:
 			tmpBoss=new Boss_CrystalGolem(3);
+			break;
+		
+		case 4:
+			tmpBoss=new Boss_Tyrael(4);
+			
+	break;
+		case 5:
+			tmpBoss=new Boss_MirrorGallery(5);
+			
 	break;
 
 		default:
@@ -75,17 +86,32 @@ public class TowerChoize extends JPanel {
 	
 	void goFightTower(int inLvl) {
 		if (inLvl != 0) {
-
-			if (LHoH.gameScreen.itemStock.getItem("Демонический ключ")) {
-				LHoH.gameScreen.bottomInfo.chat
-						.addTextChat("Вы вступаете на "
-								+ inLvl
-								+ " этаж Бесконечной башни, использовав Демонический ключ");
-				preferFightLvl(inLvl);
+			if (inLvl<5){
 				
-			} else {
-				LHoH.gameScreen.bottomInfo.chat
-						.addTextChat("Для входа в Бесконечную башню вам нужен Демонический ключ");
+			
+				if (LHoH.gameScreen.itemStock.getItem("Демонический ключ")) {
+					LHoH.gameScreen.bottomInfo.chat
+							.addTextChat("Вы вступаете на "
+									+ inLvl
+									+ " этаж Бесконечной башни, использовав Демонический ключ");
+					preferFightLvl(inLvl);
+					
+				} else {
+					LHoH.gameScreen.bottomInfo.chat
+							.addTextChat("Для входа в Бесконечную башню вам нужен Демонический ключ");
+				}
+			}else{
+				if (LHoH.gameScreen.itemStock.getItem("Серебрянный ключ")) {
+					LHoH.gameScreen.bottomInfo.chat
+							.addTextChat("Вы вступаете на "
+									+ inLvl
+									+ " этаж Бесконечной башни, использовав ДСеребрянный ключ");
+					preferFightLvl(inLvl);
+					
+				} else {
+					LHoH.gameScreen.bottomInfo.chat
+							.addTextChat("Для входа в Бесконечную башню вам нужен Серебрянный ключ");
+			}
 			}
 		} else {
 			LHoH.gameScreen.bottomInfo.chat.addTextChat("Вы вступаете на "
@@ -112,6 +138,33 @@ public class TowerChoize extends JPanel {
 			}
 
 			tmpJB.setBounds(40, 220 + 34 * i, 121, 30);
+			tmpJB.setOpaque(false);
+			tmpJB.setText(tmptext);
+			final int lvlNum = i;
+
+			tmpJB.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					goFightTower(lvlNum);
+				}
+			});
+			arrayButton[i] = tmpJB;
+
+			add(tmpJB);
+
+		}
+		
+		for (int i = 5; i < 10; i++) {
+			int tmpTPL = LHoH.gameScreen.player.getTowerLvlProgress(i);
+			JButton tmpJB = new JButton();
+			String tmptext;
+			if (tmpTPL == -1) {
+				tmpJB.setEnabled(false);
+				tmptext = (i) + " этаж ";
+			} else {
+				tmptext = (i) + " этаж " + " (" + tmpTPL + "%)";
+			}
+
+			tmpJB.setBounds(180, 220 + 34 * (i-5), 121, 30);
 			tmpJB.setOpaque(false);
 			tmpJB.setText(tmptext);
 			final int lvlNum = i;
@@ -158,7 +211,7 @@ public class TowerChoize extends JPanel {
 		g.drawImage(bckground, 0, 0, null);
 
 		g.drawImage(imageKey1, 50, 100, null);
-		// g.drawImage(imageKey2, 0, 200, null);
+		 g.drawImage(imageKey2, 200, 100, null);
 
 		g.setColor(Color.white);
 		g.setFont(new Font("Arial", Font.PLAIN, 30));

@@ -66,7 +66,9 @@ public class Boss {
 	void resetTick(){
 		heroPower_bonus=0;
 	}
-	
+	public void useSpecialAbility_afterBonusHeroPower(){
+		
+	}
 	void updateBoss() {
 		if (isLive()) {
 			resetTick();
@@ -87,7 +89,7 @@ public class Boss {
 			
 			setHeroPower(powerH);
 
-
+			useSpecialAbility_afterBonusHeroPower();
 			
 			TTL -= (double) 1 / 60;
 			if (TTL <= 0)
@@ -98,6 +100,8 @@ public class Boss {
 			double delta = 0;
 			delta = (double) getHeroPower() / power;
 
+			if(delta<0)delta=0;
+			
 			if ((wR >= 0.25) && (!flagGet25ThisTime)) {
 				check25Prize();
 				flagGet25ThisTime=true;
@@ -210,7 +214,7 @@ public class Boss {
 		LHoH.gameScreen.bottomInfo.chat
 		.addTextChat(getNameBoss()+" повержен вами на 25%");
 		
-		if (LHoH.gameScreen.player.getTowerProgress(getLvlTower()) < 25) {
+		if (LHoH.gameScreen.player.getTowerProgress(getLvlTower()) <= 25) {
 			get25PrizeFirst();
 		} 
 		get25PrizeAlwayse();
@@ -220,7 +224,7 @@ public class Boss {
 		LHoH.gameScreen.bottomInfo.chat
 		.addTextChat(getNameBoss()+" повержен вами на 50%");
 		
-		if (LHoH.gameScreen.player.getTowerProgress(getLvlTower()) < 50) {
+		if (LHoH.gameScreen.player.getTowerProgress(getLvlTower()) <= 50) {
 			get50PrizeFirst();
 		} 
 		get50PrizeAlwayse();
@@ -230,7 +234,7 @@ public class Boss {
 		LHoH.gameScreen.bottomInfo.chat
 		.addTextChat(getNameBoss()+" повержен вами на 75%");
 		
-		if (LHoH.gameScreen.player.getTowerProgress(getLvlTower()) < 75) {
+		if (LHoH.gameScreen.player.getTowerProgress(getLvlTower()) <= 75) {
 			get75PrizeFirst();
 		} 
 		get75PrizeAlwayse();

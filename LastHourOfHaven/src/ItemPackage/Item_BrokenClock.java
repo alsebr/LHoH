@@ -29,6 +29,8 @@ public class Item_BrokenClock extends Item {
 				+ "<br>Использовать:<br> Ваши существа перестают тратить время";
 		setToolTipText(tmptext);
 
+		
+		setName("Сломанные часы");
 		// ttl=6;
 	}
 
@@ -61,7 +63,7 @@ public class Item_BrokenClock extends Item {
 			LHoH.gameScreen.heroAbilityStock
 					.addAbility(new HeroAbility_BrokenClock(getId(), (int)getTtl()));
 			
-			LHoH.gameScreen.heroAbilityStock.addAbility(new HeroAbility_CircletOfWisdom(13));
+			
 			
 			
 			LHoH.gameScreen.bottomInfo.chat.addTextChat(tmpText);

@@ -26,7 +26,7 @@ public class Hero_CorpseEater extends Hero {
 		double intp=34;
 		double statPointPerLvl=16;
 		double strToPowerRatio=1;
-		double vitToTTLRatio=3;		
+		double vitToTTLRatio=2;		
 		String htmlTextHeroTip = "Архитектор плоти";
 		htmlTextHeroTip += "<br> При входе в игру создает свое тело из трупов героев <b>~Int</b>";
 		Image image=null;
