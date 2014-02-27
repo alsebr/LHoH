@@ -20,7 +20,7 @@ public class HeroAbility_DemonicSignet extends HeroAbility {
 	public void useAbility() {
 		
 		
-		setAbilityValue2((double)0.002/60*0.5*LHoH.gameScreen.heroStock.getHeroById(heroId).getHeroStat().intp);
+		//setAbilityValue2((double)0.002/60*0.5*LHoH.gameScreen.heroStock.getHeroById(heroId).getHeroStat().intp);
 		
 		Hero tmpHero = LHoH.gameScreen.heroStock.getHeroById(heroId);
 		tmpHero.addPower_bonus(getAbilityValue1());
