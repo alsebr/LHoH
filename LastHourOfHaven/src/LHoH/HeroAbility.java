@@ -13,6 +13,7 @@ private double abilityValue4;
 private int heroAbilityId;
 protected int itemId=0;
 private boolean flagRemoveThisTick=false;
+private boolean flagThisIsTmpBossAbility=false;
 
 private int sequenceNumber=20;  //20-standart          10- stat(first)  30-last
 
@@ -141,4 +142,21 @@ public void setName(String name) {
 public void bossUse(){
 
 }
+
+public void dieIfNoItemWithId(int itemId){
+	if (LHoH.gameScreen.itemStock.checkItemWithId(itemId)){
+		
+	}else{
+		selfDestroy();
+	};
+}
+
+public boolean isFlagThisIsTmpBossAbility() {
+	return flagThisIsTmpBossAbility;
+}
+
+public void setFlagThisIsTmpBossAbility(boolean flagThisIsTmpBossAbility) {
+	this.flagThisIsTmpBossAbility = flagThisIsTmpBossAbility;
+}
+
 }

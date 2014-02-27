@@ -16,10 +16,14 @@ public class Boss {
 	private double wR;
 	private boolean flagTimeEnd = false;
 	private double heroPower = 0;
+	private double heroPower_pure = 0;
 	private double heroPower_bonus = 0;
 	private int status = 0; // 1- live 2- ended  3 - win
 	private int lvlTower;
-
+	boolean flagGet25ThisTime=false;
+	boolean flagGet50ThisTime=false;
+	boolean flagGet75ThisTime=false;
+	boolean flagGet100ThisTime=false;
 	protected Boss() {
 
 	}
@@ -73,6 +77,8 @@ public class Boss {
 				}
 			}
 
+			setHeroPower_pure(powerH);
+			
 			LHoH.gameScreen.heroAbilityStock.useAllAbilityBoss();
 			
 			useSpecialAbility();
@@ -92,15 +98,18 @@ public class Boss {
 			double delta = 0;
 			delta = (double) getHeroPower() / power;
 
-			if ((wR < 0.25) && (wR + delta * speed >= 0.25)) {
+			if ((wR >= 0.25) && (!flagGet25ThisTime)) {
 				check25Prize();
+				flagGet25ThisTime=true;
 
 			}
-			if ((wR < 0.50) && (wR + delta * speed >= 0.50)) {
+			if ((wR >= 0.50) && (!flagGet50ThisTime)) {
 				check50Prize();
+				flagGet50ThisTime=true;
 			}
-			if ((wR < 0.75) && (wR + delta * speed >= 0.75)) {
+			if ((wR >= 0.75) && (!flagGet75ThisTime)) {
 				check75Prize();
+				flagGet75ThisTime=true;
 			}
 			
 			
@@ -108,7 +117,11 @@ public class Boss {
 			setwR(getwR() + delta * speed);
 			
 			if (wR >= 1) {
+				if (!flagGet100ThisTime) {
 				check100Prize();
+				flagGet100ThisTime=true;
+				}
+				
 				wR = 1;
 				setStatusWin();
 
@@ -281,6 +294,18 @@ public class Boss {
 
 	public void addHeroPower_bonus(double heroPower_bonus) {
 		this.heroPower_bonus += heroPower_bonus;
+	}
+
+	public double getHeroPower_bonus() {
+		return heroPower_bonus;
+	}
+	
+	public double getHeroPower_pure() {
+		return heroPower_pure;
+	}
+
+	public void setHeroPower_pure(double heroPower_pure) {
+		this.heroPower_pure = heroPower_pure;
 	}
 	
 }

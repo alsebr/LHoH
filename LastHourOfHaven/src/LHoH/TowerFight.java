@@ -241,7 +241,7 @@ JButton endTower;
 
 		g2.drawString("Мощь: "+Integer.toString((int) boss.getPowerCurrent()), 470, 65);
 
-		g2.drawString(Integer.toString((int) boss.getHeroPower()), 110, 425);
+		g2.drawString(Integer.toString((int) boss.getHeroPower_pure())+"+"+Integer.toString((int) boss.getHeroPower_bonus()), 110, 425);
 
 		
 		

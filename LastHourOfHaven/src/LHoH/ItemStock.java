@@ -17,6 +17,7 @@ import ItemPackage.Item_Key1;
 import ItemPackage.Item_Plague;
 import ItemPackage.Item_PowerUp;
 import ItemPackage.Item_Weapon1;
+import ItemPackage.Item_Weapon2;
 import ItemPackage.Item_chest;
 
 public class ItemStock extends JPanel {
@@ -29,7 +30,7 @@ public class ItemStock extends JPanel {
 		// setBorder(BorderFactory.createLineBorder(Color.red));
 
 		//allScope.add(new Item_chest(0));
-//allScope.add(new Item_BrokenClock(1));
+allScope.add(new Item_BrokenClock(1));
 
 		allScope.add(new Item_PowerUp(0));
 		allScope.add(new Item_PowerUp(0));
@@ -41,6 +42,7 @@ public class ItemStock extends JPanel {
 		allScope.add(new Item_Plague(3));
 		
 		allScope.add(new Item_Weapon1());
+		allScope.add(new Item_Weapon2(2));
 		//allScope.add(new Item_Plague(0));
 
 		// allScope.add(new Item_LegionGorn());
@@ -116,6 +118,17 @@ public class ItemStock extends JPanel {
 			}
 		}
 		return count;
+	}
+	
+	public boolean checkItemWithId(int itemId) {
+		
+		for (Item item : allScope) {
+			if (item.getId() == itemId) {
+				return true;
+
+			}
+		}
+		return false;
 	}
 
 }

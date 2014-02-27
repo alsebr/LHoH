@@ -7,15 +7,17 @@ import LHoH.LHoH;
 
 public class HeroAbility_FireSword extends HeroAbility {
 
-	public HeroAbility_FireSword(double value) {
+	public HeroAbility_FireSword(double value, int itemId) {
 		super();
 
 		init(-2, "Огненный меч");
 		
 		setAbilityValue1(value); // +int
+		setAbilityValue2(itemId);
 		
 		
-		setSequenceNumberStatModify();
+		
+		setSequenceNumberDefault();
 		
 		// TODO Auto-generated constructor stub
 	}
@@ -23,7 +25,7 @@ public class HeroAbility_FireSword extends HeroAbility {
 	@Override
 	protected
 	void update() {
-
+		dieIfNoItemWithId((int)getAbilityValue2());
 	}
 
 	public void bossUse(){

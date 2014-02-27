@@ -19,7 +19,7 @@ try {
 	image = ImageIO.read(new File("data/image/item/item13.gif"));
 } catch (IOException e) {
 }
-
+setTtl(10);
 String tmptext;
 tmptext="<html>";
 tmptext+="Огненный меч. <br>Пассивно:<br> +30 мощь при сражении в Бесконечной башне";
@@ -27,7 +27,7 @@ setToolTipText(tmptext);
 
 setName("Огненный меч");
 
-LHoH.gameScreen.heroAbilityStock.addAbility(new HeroAbility_FireSword(30));
+LHoH.gameScreen.heroAbilityStock.addAbility(new HeroAbility_FireSword(30,getId()));
 
 }
 
