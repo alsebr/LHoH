@@ -5,15 +5,16 @@ import LHoH.HeroAbility;
 import LHoH.HeroStat;
 import LHoH.LHoH;
 
-public class HeroAbility_FireSword extends HeroAbility {
+public class HeroAbility_ScytheofDeatch extends HeroAbility {
 
-	public HeroAbility_FireSword(double value, int itemId) {
+	public HeroAbility_ScytheofDeatch(double value, int itemId) {
 		super();
 
-		init(-2, "Пылающий меч");
+		init(-2, "Коса рипера");
 		
 		setAbilityValue1(value); // +int
 		setAbilityValue2(itemId);
+		setAbilityValue3(0);
 		
 		
 		
@@ -25,18 +26,20 @@ public class HeroAbility_FireSword extends HeroAbility {
 	@Override
 	protected
 	void update() {
+		
+		setAbilityValue3(LHoH.gameScreen.heroStock.getCorpsesAmount()*getAbilityValue1());
 		dieIfNoItemWithId((int)getAbilityValue2());
 	}
 
 	public void bossUse(){
-		(LHoH.gameScreen.towerPanel.towerFight.getBoss()).addHeroPower_bonus(getAbilityValue1());
+		(LHoH.gameScreen.towerPanel.towerFight.getBoss()).addHeroPower_bonus(getAbilityValue3());
 	}
 	
 	public String getAbilityTip() {
 		String htmltext = "";
 		
 
-		htmltext += "Пылающий меч: +" + getAbilityValue1()+" мощи";
+		htmltext += "kos: +" + getAbilityValue1()+" мощи";
 
 		return htmltext;
 

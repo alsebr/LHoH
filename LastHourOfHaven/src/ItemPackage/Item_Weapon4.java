@@ -12,8 +12,8 @@ import HeroAbilitisPackage.HeroAbility_FireSword;
 import LHoH.Item;
 import LHoH.LHoH;
 
-public class Item_Weapon1 extends Item{
-public Item_Weapon1(int grade) {
+public class Item_Weapon4 extends Item{
+public Item_Weapon4(int grade) {
 
 	super();
 	
@@ -32,10 +32,11 @@ if (grade==3) tmpValue=180;
 setTtl(10);
 String tmptext;
 tmptext="<html>";
-tmptext+="Пылающий меч. <br>Пассивно:<br> +"+tmpValue+" мощь при сражении в Бесконечной башне";
+tmptext+="Жертвенный кинжал. <br>Пассивно:<br> +"+tmpValue+" мощь при сражении в Бесконечной башне";
+tmptext+="<br>Активно:<br> +"+tmpValue+" приносит в жертву случайное существо, перезарядка 90 секунд";
 setToolTipText(tmptext);
 
-setName("Пылающий меч");
+setName("Огненный меч");
 
 LHoH.gameScreen.heroAbilityStock.addAbility(new HeroAbility_FireSword(tmpValue,getId()));
 

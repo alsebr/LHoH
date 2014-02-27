@@ -24,7 +24,7 @@ Player (){
 	locationActiveNumber=0;
 	
 	
-	towerProgress=new int[] {0,0,-1,-1,-1,-1,-1,-1};
+	towerProgress=new int[] {0,0,0,0,0,-1,-1,-1};
 }
 
 void setTowerProgress(int inLvl,double proc){

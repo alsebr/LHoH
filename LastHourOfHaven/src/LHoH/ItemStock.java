@@ -41,7 +41,9 @@ allScope.add(new Item_BrokenClock(1));
 		
 		allScope.add(new Item_Plague(3));
 		
-		allScope.add(new Item_Weapon1(0));
+		allScope.add(new Item_Weapon1(3));
+		allScope.add(new Item_Weapon1(3));
+		allScope.add(new Item_Weapon1(3));
 		allScope.add(new Item_Weapon2(2));
 		//allScope.add(new Item_Plague(0));
 

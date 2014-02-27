@@ -20,10 +20,10 @@ public class HeroAbility_Ifreet extends HeroAbility {
 	}
 
 	public void useAbility() {
-		if (LHoH.gameScreen.itemStock.checkItemCount("ќгненный меч") > 0) {
+		if (LHoH.gameScreen.itemStock.checkItemCount("ѕылающий меч") > 0) {
 
 			Hero tmpHero = LHoH.gameScreen.heroStock.getHeroById(heroId);
-			tmpHero.addPower_bonus((tmpHero).getHeroStat().intp*LHoH.gameScreen.itemStock.checkItemCount("ќгненный меч"));
+			tmpHero.addPower_bonus((tmpHero).getHeroStat().intp*LHoH.gameScreen.itemStock.checkItemCount("ѕылающий меч"));
 
 		}
 	}
@@ -31,10 +31,10 @@ public class HeroAbility_Ifreet extends HeroAbility {
 	public String getAbilityTip() {
 		String htmltext = "";
 		double tmppower = 0;
-		if (LHoH.gameScreen.itemStock.checkItemCount("ќгненный меч") > 0) {
+		if (LHoH.gameScreen.itemStock.checkItemCount("ѕылающий меч") > 0) {
 
 			Hero tmpHero = LHoH.gameScreen.heroStock.getHeroById(heroId);
-			tmppower = (tmpHero).getHeroStat().intp*LHoH.gameScreen.itemStock.checkItemCount("ќгненный меч");
+			tmppower = (tmpHero).getHeroStat().intp*LHoH.gameScreen.itemStock.checkItemCount("ѕылающий меч");
 
 		}
 

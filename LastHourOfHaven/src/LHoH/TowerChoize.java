@@ -15,6 +15,7 @@ import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
+import BossPackage.Boss_CrystalGolem;
 import BossPackage.Boss_SwampSpirit;
 import BossPackage.Boss_Tyrael;
 import BossPackage.Boss_Wolf;
@@ -58,6 +59,9 @@ public class TowerChoize extends JPanel {
 			break;
 		case 2:
 			tmpBoss=new Boss_Tyrael(2);
+	break;
+		case 3:
+			tmpBoss=new Boss_CrystalGolem(3);
 	break;
 
 		default:

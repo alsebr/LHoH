@@ -9,11 +9,12 @@ import javax.imageio.ImageIO;
 
 import HeroAbilitisPackage.HeroAbility_BrokenClock;
 import HeroAbilitisPackage.HeroAbility_FireSword;
+import HeroAbilitisPackage.HeroAbility_ScytheofDeatch;
 import LHoH.Item;
 import LHoH.LHoH;
 
-public class Item_Weapon1 extends Item{
-public Item_Weapon1(int grade) {
+public class Item_Weapon3 extends Item{
+public Item_Weapon3(int grade) {
 
 	super();
 	
@@ -24,20 +25,20 @@ try {
 }
 
 double tmpValue=0;
-if (grade==0) tmpValue=30;
-if (grade==1) tmpValue=70;
-if (grade==2) tmpValue=120;
-if (grade==3) tmpValue=180;
+if (grade==0) tmpValue=7;
+if (grade==1) tmpValue=17;
+if (grade==2) tmpValue=27;
+if (grade==3) tmpValue=37;
 
 setTtl(10);
 String tmptext;
 tmptext="<html>";
-tmptext+="Пылающий меч. <br>Пассивно:<br> +"+tmpValue+" мощь при сражении в Бесконечной башне";
+tmptext+="Коса Рипера. <br>Пассивно:<br> +"+tmpValue+" мощь за каждый труп героя при сражении в Бесконечной башне";
 setToolTipText(tmptext);
 
-setName("Пылающий меч");
+setName("Коса Рипера");
 
-LHoH.gameScreen.heroAbilityStock.addAbility(new HeroAbility_FireSword(tmpValue,getId()));
+LHoH.gameScreen.heroAbilityStock.addAbility(new HeroAbility_ScytheofDeatch(tmpValue,getId()));
 
 }
 
