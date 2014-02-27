@@ -41,7 +41,7 @@ allScope.add(new Item_BrokenClock(1));
 		
 		allScope.add(new Item_Plague(3));
 		
-		allScope.add(new Item_Weapon1());
+		allScope.add(new Item_Weapon1(0));
 		allScope.add(new Item_Weapon2(2));
 		//allScope.add(new Item_Plague(0));
 
@@ -49,7 +49,7 @@ allScope.add(new Item_BrokenClock(1));
 		// allScope.add(new Item_TaroDemolog());
 
 		setOpaque(false);
-		// add(LHoH.gameScreen.itemStock);
+		
 
 	}
 
@@ -57,7 +57,7 @@ allScope.add(new Item_BrokenClock(1));
 
 		System.out.println("repaint");
 
-		// removeAll();
+		
 		Graphics2D g2 = (Graphics2D) g;
 		g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
 				RenderingHints.VALUE_ANTIALIAS_ON);

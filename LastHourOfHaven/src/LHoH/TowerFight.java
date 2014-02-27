@@ -41,177 +41,68 @@ public class TowerFight extends JPanel {
 	int status = 0; // 0 - nohere, 1 - battle, 2- win
 	double ttl;
 	JLabel bossTipJLabel;
-JButton endTower;
-	
+	JButton endTower;
+
 	public TowerFight() {
 		setSize(700, 450);
 		setLayout(null);
 		setOpaque(false);
 		// setBorder(BorderFactory.createLineBorder(Color.green));
-		endTower=new JButton();
+		endTower = new JButton();
 		String tmptext;
-		
-			tmptext="Окончить бой";
-		
-		
-			endTower.setBounds(550, 400, 121, 30);
-			endTower.setOpaque(false);
-			endTower.setText(tmptext);
-				
-			endTower.addActionListener(new ActionListener(){
-	    	  public void actionPerformed(ActionEvent e) {
-	    		  endTowerBattle();
-	    	  }
-	    	});
-		
-			bossTipJLabel=new JLabel();
-			bossTipJLabel.setBounds(330, 35, 250, 200);
-			bossTipJLabel.setOpaque(false);
-			
-			add(bossTipJLabel);
-			//revalidate();
-			
+
+		tmptext = "Окончить бой";
+
+		endTower.setBounds(550, 400, 121, 30);
+		endTower.setOpaque(false);
+		endTower.setText(tmptext);
+
+		endTower.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				endTowerBattle();
+			}
+		});
+
+		bossTipJLabel = new JLabel();
+		bossTipJLabel.setBounds(330, 35, 250, 200);
+		bossTipJLabel.setOpaque(false);
+
+		add(bossTipJLabel);
+		// revalidate();
+
 	}
 
-	void endTowerBattle()
-	{
-		LHoH.gameScreen.bottomInfo.chat.addTextChat("Вы покидаете Бесконечную башню");
-		LHoH.gameScreen.player.setTowerProgress (boss.getLvlTower(),boss.getwR());
-		status=0;
+	void endTowerBattle() {
+		LHoH.gameScreen.bottomInfo.chat
+				.addTextChat("Вы покидаете Бесконечную башню");
+		LHoH.gameScreen.player.setTowerProgress(boss.getLvlTower(),
+				boss.getwR());
+		status = 0;
 		LHoH.gameScreen.towerPanel.activateTowerChoizeScreen();
 	}
-	
-	void update(){
-		
-		if (status==1){	
-			
+
+	void update() {
+
+		if (status == 1) {
+
 			boss.updateBoss();
+
 			
-			/*	
-				double winRT;
-				
-				
-				if (lvl==1){	Hero tmphero=LHoH.gameScreen.heroStock.getRandomAliveHero();
-							if ((winR<0.25)&&(winR+delta*speed>=0.25)){
-								LHoH.gameScreen.bottomInfo.chat.addTextChat("Вы получили награду за битву с "+bossName+" (25%)");
-								LHoH.gameScreen.itemStock.allScope.add(new Item_Casket());
-								
-							
-								LHoH.gameScreen.heroAbilityStock.addAbility(new HeroAbility_HowlOfTheWolf(tmphero.getId(),-27));;
-								LHoH.gameScreen.bottomInfo.chat.addTextChat("Раздается чудовищный вой Лютоволка,"+tmphero.name+" замирает в ужасе");
-							}
-							if ((winR<0.50)&&(winR+delta*speed>=0.50)){
-								LHoH.gameScreen.bottomInfo.chat.addTextChat("Вы получили награду за битву с "+bossName+" (50%)");
-								LHoH.gameScreen.itemStock.allScope.add(new Item_chest(0));
-								LHoH.gameScreen.itemStock.allScope.add(new Item_Key1());
-								LHoH.gameScreen.heroAbilityStock.addAbility(new HeroAbility_HowlOfTheWolf(tmphero.getId(),-29));;
-								LHoH.gameScreen.bottomInfo.chat.addTextChat("Раздается чудовищный вой Лютоволка,"+tmphero.name+" замирает в ужасе");
-							}
-							if ((winR<0.75)&&(winR+delta*speed>=0.75)){
-								LHoH.gameScreen.bottomInfo.chat.addTextChat("Вы получили награду за битву с "+bossName+" (75%)");
-								LHoH.gameScreen.itemStock.allScope.add(new Item_Plague(2));
-								LHoH.gameScreen.heroAbilityStock.addAbility(new HeroAbility_HowlOfTheWolf(tmphero.getId(),-32));;
-								LHoH.gameScreen.bottomInfo.chat.addTextChat("Раздается чудовищный вой Лютоволка,"+tmphero.name+" замирает в ужасе");
-							}
-							
-							if (winR>=1) {
-								winR=1;
-								status=2;
-								//hero1.setStatus(2);
-								//winR=0.7;
-								//bossPower=6666;
-								LHoH.gameScreen.bottomInfo.chat.addTextChat("Нами окончательно повержен "+bossName);
-								LHoH.gameScreen.itemStock.allScope.add(new Item_Key2());
-								LHoH.gameScreen.itemStock.allScope.add(new Item_lamp());
-							}
-				}
-				
-				if (lvl==0){
-					
 		}
-				
-				if (lvl==2){
-					if ((winR<0.25)&&(winR+delta*speed>=0.25)){
-						LHoH.gameScreen.bottomInfo.chat.addTextChat("Вы получили награду за битву с "+bossName+" (25%)");
-						LHoH.gameScreen.itemStock.allScope.add(new Item_Soul());
-					}
-					if ((winR<0.50)&&(winR+delta*speed>=0.50)){
-						LHoH.gameScreen.bottomInfo.chat.addTextChat("Вы получили награду за битву с "+bossName+" (50%)");
-						LHoH.gameScreen.itemStock.allScope.add(new Item_Soul());
-					}
-					if ((winR<0.75)&&(winR+delta*speed>=0.75)){
-						LHoH.gameScreen.bottomInfo.chat.addTextChat("Вы получили награду за битву с "+bossName+" (75%)");
-						LHoH.gameScreen.itemStock.allScope.add(new Item_Soul());
-					}
-					winR+=delta*speed;
-					if (winR>=1) {
-						winR=1;
-						status=2;
-						//hero1.setStatus(2);
-						//winR=0.7;
-						//bossPower=6666;
-						LHoH.gameScreen.bottomInfo.chat.addTextChat("Нами окончательно повержен "+bossName);
-						LHoH.gameScreen.itemStock.allScope.add(new Item_LegionGorn());
-						LHoH.gameScreen.player.addLocationNewTier(100);
-						LHoH.gameScreen.player.addHeroNewTier(100);
-					}
-		}
-				*/
-		}
-		}
-		
-		
-	
+	}
 
 	void init(Boss inBoss) {
-		
-		boss=inBoss;
+
+		boss = inBoss;
 		addComp();
-		
-		String tmptext="<html><p><font color=red>";
-		tmptext+=boss.getTipBoss();
-		tmptext+="</font></p>";
+
+		String tmptext = "<html><p><font color=red>";
+		tmptext += boss.getTipBoss();
+		tmptext += "</font></p>";
 		bossTipJLabel.setText(tmptext);
-		
-		status=1;
-/*		
-		if (inLvl==1){
-			
-		
-		lvl = inLvl;
-		try {
-			bckground = ImageIO.read(new File("data/image/bos/bos5.gif"));
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 
-		
-		bossName = "Лютоволк";
-		winR = 0.03;
-		bossPower = 250;
-		
-		ttl=1*59;
-		}
-		if (inLvl==2){
-			
-			lvl = inLvl;
-			try {
-				bckground = ImageIO.read(new File("data/image/bos/bos1.gif"));
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+		status = 1;
 
-			addComp();
-			bossName = "Тираэль — архангел Высоких Небес";
-			winR = 0.03;
-			bossPower = 600;
-			status = 1;
-			ttl=1*30;			
-		}
-		
-		*/
 	}
 
 	void addComp() {
@@ -230,7 +121,8 @@ JButton endTower;
 		g.setColor(new Color(255, 1, 1, 77));
 		g.drawImage(boss.getImageBoss(), 0, 0, null);
 
-		g2.fillRect(0, (int) (450 * (1 - boss.getwR())), 700, (int) (450 * (boss.getwR())));
+		g2.fillRect(0, (int) (450 * (1 - boss.getwR())), 700,
+				(int) (450 * (boss.getwR())));
 
 		g.setColor(Color.red);
 		g2.setFont(new Font("Arial", Font.BOLD, 22));
@@ -239,26 +131,26 @@ JButton endTower;
 		g.setColor(Color.red);
 		g2.setFont(new Font("Arial", Font.BOLD, 30));
 
-		g2.drawString("Мощь: "+Integer.toString((int) boss.getPowerCurrent()), 470, 65);
+		g2.drawString(
+				"Мощь: " + Integer.toString((int) boss.getPowerCurrent()), 470,
+				65);
 
-		g2.drawString(Integer.toString((int) boss.getHeroPower_pure())+"+"+Integer.toString((int) boss.getHeroPower_bonus()), 110, 425);
+		g2.drawString(Integer.toString((int) boss.getHeroPower_pure()) + "+"
+				+ Integer.toString((int) boss.getHeroPower_bonus()), 110, 425);
 
-		
-		
-		
-		g2.drawString("Время: "+FrameWorkLHoH.ttlToTime(boss.getTTL()), 470, 95);
-		
-		
+		g2.drawString("Время: " + FrameWorkLHoH.ttlToTime(boss.getTTL()), 470,
+				95);
+
 		g2.setColor(Color.red);
-        g2.setStroke(new BasicStroke(2));
-        for (int i = 0; i < 4; i++) {
-        	g2.setStroke(new BasicStroke(2));
-        	if (i==2) g2.setStroke(new BasicStroke(4));
-        	g2.draw(new Line2D.Double(670, getHeight()/4*i, 700, getHeight()/4*i));	
+		g2.setStroke(new BasicStroke(2));
+		for (int i = 0; i < 4; i++) {
+			g2.setStroke(new BasicStroke(2));
+			if (i == 2)
+				g2.setStroke(new BasicStroke(4));
+			g2.draw(new Line2D.Double(670, getHeight() / 4 * i, 700,
+					getHeight() / 4 * i));
 		}
-        
-        
-		
+
 	}
 
 	public Boss getBoss() {

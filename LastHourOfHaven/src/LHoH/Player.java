@@ -2,6 +2,10 @@ package LHoH;
 
 public class Player {
 double gold, soul,tear,ttl;
+public double getSoul() {
+	return soul;
+}
+
 int maxPortal;
 int locationAddCostGold;
 int locationActiveNumber;
@@ -39,6 +43,15 @@ void setTowerProgress(int inLvl,double proc){
 public double getTowerProgress(int inLvl){
 	
 	return (towerProgress[inLvl]);
+	
+}
+
+public double getTotalTowerProgress(){
+	double tmpcount=0;
+	for (int i = 0; i < towerProgress.length; i++) {
+		if((towerProgress[i])!=-1) tmpcount+=towerProgress[i];
+	}
+	return tmpcount;
 	
 }
 
@@ -87,7 +100,7 @@ boolean takeResurs(double dGold,double dSoul, double dTear){
 }
 
 public double getHeroNewTier() {
-	return heroNewTier;
+	return getTotalTowerProgress();//heroNewTier;
 }
 
 public void addHeroNewTier(double heroNewTier) {
@@ -101,6 +114,8 @@ public double getLocationNewTier() {
 public void addLocationNewTier(double locationNewTier) {
 	this.locationNewTier += locationNewTier;
 }
+
+
 
 
 

@@ -7,9 +7,12 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
+import HeroAbilitisPackage.HeroAbility_FearOfTheDark;
+import HeroAbilitisPackage.HeroAbility_Ifreet;
 import LHoH.HeroStat;
 import LHoH.Hero;
 import LHoH.HeroStat;
+import LHoH.LHoH;
 
 public class Hero_SmallShadow extends Hero {
 	public Hero_SmallShadow() {
@@ -27,8 +30,8 @@ public class Hero_SmallShadow extends Hero {
 		double statPointPerLvl=12;
 		double strToPowerRatio=1;
 		double vitToTTLRatio=3;		
-		String htmlTextHeroTip = "Тьма.";
-		htmlTextHeroTip += "<br> Мощь тени растет очень быстро";
+		String htmlTextHeroTip = "Страх темноты";
+		htmlTextHeroTip += "<br> Мощь тени увеличивается в % от ее int";
 		
 		Image image=null;
 		try {
@@ -49,6 +52,8 @@ public class Hero_SmallShadow extends Hero {
 
 	public void addHeroAbilities(){
 		
+		
+			LHoH.gameScreen.heroAbilityStock.addAbility(new HeroAbility_FearOfTheDark(getId()));
 		
 	}
 	

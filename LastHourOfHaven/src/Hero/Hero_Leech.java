@@ -27,7 +27,7 @@ public class Hero_Leech extends Hero {
 		double strToPowerRatio=1;
 		double vitToTTLRatio=3;		
 		String htmlTextHeroTip = "Вытягивание силы.";
-		htmlTextHeroTip += "<br> Каждую секунду пиявка вытягивает силы из атакуемого Портала <b>Int</b>";
+		htmlTextHeroTip += "<br> Каждую секунду вытягивает силы из атакуемого Портала <b>Int</b>";
 		Image image=null;
 		try {
 			image = ImageIO.read(new File("data/image/hero/demon22.gif"));

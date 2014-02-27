@@ -92,7 +92,7 @@ public class Taverna extends JPanel {
 
 			// };
 			for (int i = 0; i < arrayHeroPlayerLvlNeed.length; i++) {
-				if (LHoH.gameScreen.player.getHeroNewTier() > arrayHeroPlayerLvlNeed[i]) {
+				if (LHoH.gameScreen.player.getHeroNewTier() >= arrayHeroPlayerLvlNeed[i]) {
 					count++;
 				}
 			}
@@ -202,7 +202,7 @@ public class Taverna extends JPanel {
 
 	}
 
-	public double[] arrayHeroPlayerLvlNeed = { 0, 0, 40, 230, 350, 550,
+	public double[] arrayHeroPlayerLvlNeed = { 0, 0, 40, 135, 210, 550,
 			850, 1050,1250 ,1500,30000};
 	public Hero[] arrayHeroPlayerNew =new Hero[11];
 

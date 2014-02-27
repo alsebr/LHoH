@@ -222,6 +222,11 @@ public class Location extends JPanel {
 		g2.setStroke(new BasicStroke(2));
 		g2.draw(new Line2D.Double(d.getWidth() / 2, 19, d.getWidth() / 2, d
 				.getHeight() - 19));
+		
+		
+		g2.draw(new Line2D.Double(d.getWidth()/2 +xd/2, 29, d.getWidth()/2+xd/2, d
+				.getHeight() - 29));
+		
 
 		g2.draw(new Line2D.Double(x1, 19, x1, (int) (d.getHeight() - 19)));
 		g2.draw(new Line2D.Double(x2, 19, x2, (int) (d.getHeight() - 19)));
@@ -299,8 +304,20 @@ public class Location extends JPanel {
 			double speed = 0.0005;
 
 			if (powerH > power) {
-				winRT = 1;
+				winRT = 0.5+(double)power/powerH;
+				if (winRT>1) winRT=1;
 				delta = (double) powerH / power;
+				
+				
+				if (winRT>=winR){
+					
+				}else{
+					delta = -1;
+				}
+					
+				
+				
+				
 			}
 
 			if (powerH < power) {
@@ -335,15 +352,21 @@ public class Location extends JPanel {
 				// LHoH.gameScreen.bottomInfo.chat.addTextChat(name+" захвачен нами");
 			}
 
+			
+			double tmpModif=1;
+			if (winR>=0.75) tmpModif=1.5;
+			if (winR==1) tmpModif=2;
+			
+			
 			if (winR > 0.5) {
 				//System.out.println("1+"+bonus50Gold_final);
-				LHoH.gameScreen.player.addGold(bonus50Gold_final);
-				LHoH.gameScreen.player.addSoul(bonus50Soul_final);
-				LHoH.gameScreen.player.addTear(bonus50Tear_final);
-				pLocation_current+=(double)1/60;
+				LHoH.gameScreen.player.addGold(bonus50Gold_final*tmpModif);
+				LHoH.gameScreen.player.addSoul(bonus50Soul_final*tmpModif);
+				LHoH.gameScreen.player.addTear(bonus50Tear_final*tmpModif);
+				pLocation_current+=(double)1/60*tmpModif;
 			}
 
-			hero1.addExp(bonusALLexp_final);
+			hero1.addExp(bonusALLexp_final*tmpModif);
 
 			hero1.removeHeroIfDead();
 

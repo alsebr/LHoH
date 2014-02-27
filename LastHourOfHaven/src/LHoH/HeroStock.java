@@ -86,12 +86,13 @@ public class HeroStock extends JPanel {
 	public Hero getRandomAliveHero() {
 
 		Random randomGenerator = new Random();
-		
+
 		Location tmploc;
 
 		for (Hero hero : allScope) {
-			if ((tmploc=LHoH.gameScreen.locationScope.getLocationByHeroId(hero.getId()))!=null) {
-				if (tmploc.getLocationName()=="Могила Избранного"){
+			if ((tmploc = LHoH.gameScreen.locationScope
+					.getLocationByHeroId(hero.getId())) != null) {
+				if (tmploc.getLocationName() == "Могила Избранного") {
 					return hero;
 				}
 			}
@@ -99,42 +100,67 @@ public class HeroStock extends JPanel {
 
 		return getTrueRandomAliveHero();
 	}
-	
-	
-	public Hero getTrueRandomAliveHero() {
-
-		Random randomGenerator = new Random();
-		Hero tmphero;
-
-		for (int i = 0; i < 500; i++) {
-			int tmpid = randomGenerator.nextInt(allScope.size());
-			tmphero = allScope.get(tmpid);
-
-			if (tmphero.status == 1)
-				return tmphero;
-
-		}
-
-		return null;
-	}
-	
-	
-	
 
 	Hero getRandomAliveHeroNotId(int id) {
 
 		Random randomGenerator = new Random();
 		Hero tmphero;
+		Location tmploc;
 
-		for (int i = 0; i < 500; i++) {
-			int tmpid = randomGenerator.nextInt(allScope.size());
-			tmphero = allScope.get(tmpid);
+		tmphero = getRandomAliveHero();
+		if (tmphero != null) {
 			if (tmphero.getId() != id) {
-				if (tmphero.status == 1)
-					return tmphero;
+				return tmphero;
 			}
 		}
 
+		if (allScope.size() != 0) {
+
+			for (int i = 0; i < 500; i++) {
+
+				int tmpid = randomGenerator.nextInt(allScope.size());
+				tmphero = allScope.get(tmpid);
+
+				if (tmphero.status == 1) {
+					if (tmphero.getId() != id) {
+						return tmphero;
+					}
+
+				}
+
+			}
+		}
+		return null;
+	}
+	
+	
+	public int getCorpsesAmount(){
+		int tmpAmount=0;
+		for (Hero hero : allScope) {
+			if (hero.isDead())
+				tmpAmount++;
+		}
+
+		return tmpAmount;
+	}
+
+	public Hero getTrueRandomAliveHero() {
+
+		Random randomGenerator = new Random();
+		Hero tmphero;
+
+		if (allScope.size() != 0) {
+
+			for (int i = 0; i < 500; i++) {
+
+				int tmpid = randomGenerator.nextInt(allScope.size());
+				tmphero = allScope.get(tmpid);
+
+				if (tmphero.status == 1)
+					return tmphero;
+
+			}
+		}
 		return null;
 	}
 
